@@ -1,0 +1,28 @@
+npm warn exec The following package was not found and will be installed: serve@14.2.6
+ INFO  Accepting connections at http://localhost:8080
+ HTTP  9/15/2026 6:22:51 PM ::1 HEAD /
+ HTTP  9/15/2026 6:22:51 PM ::1 Returned 200 in 336 ms
+ HTTP  9/15/2026 6:23:32 PM ::1 GET /
+ HTTP  9/15/2026 6:23:32 PM ::1 Returned 200 in 22 ms
+ HTTP  9/15/2026 6:23:32 PM ::1 GET /src/app.js
+ HTTP  9/15/2026 6:23:32 PM ::1 Returned 200 in 5 ms
+ HTTP  9/15/2026 6:23:33 PM ::1 GET /src/router.js
+ HTTP  9/15/2026 6:23:33 PM ::1 GET /src/store.js
+ HTTP  9/15/2026 6:23:33 PM ::1 GET /src/auth.js
+ HTTP  9/15/2026 6:23:33 PM ::1 GET /src/views/landing.js
+ HTTP  9/15/2026 6:23:33 PM ::1 GET /src/views/authModals.js
+ HTTP  9/15/2026 6:23:33 PM ::1 Returned 200 in 35 ms
+ HTTP  9/15/2026 6:23:33 PM ::1 GET /src/views/customer.js
+ HTTP  9/15/2026 6:23:33 PM ::1 Returned 200 in 23 ms
+ HTTP  9/15/2026 6:23:33 PM ::1 Returned 200 in 22 ms
+ HTTP  9/15/2026 6:23:33 PM ::1 Returned 200 in 47 ms
+ HTTP  9/15/2026 6:23:33 PM ::1 GET /src/views/attendant.js
+ HTTP  9/15/2026 6:23:33 PM ::1 GET /src/views/manager.js
+ HTTP  9/15/2026 6:23:33 PM ::1 Returned 200 in 57 ms
+ HTTP  9/15/2026 6:23:33 PM ::1 Returned 200 in 62 ms
+ HTTP  9/15/2026 6:23:33 PM ::1 Returned 200 in 42 ms
+ HTTP  9/15/2026 6:23:33 PM ::1 Returned 200 in 55 ms
+ HTTP  9/15/2026 6:23:33 PM ::1 GET /src/api.js
+ HTTP  9/15/2026 6:23:33 PM ::1 Returned 200 in 8 ms
+ HTTP  9/15/2026 6:23:33 PM ::1 GET /src/config.js
+ HTTP  9/15/2026 6:23:33 PM ::1 Returned 200 in 2 ms
