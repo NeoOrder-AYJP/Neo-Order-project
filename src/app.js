@@ -27,7 +27,6 @@ window.showToast = (message, type = 'success') => {
 function updateHeaderUI() {
   const session = getSession();
   const userHeaderInfo = document.getElementById('user-header-info');
-  const nav = document.getElementById('main-nav');
 
   if (!userHeaderInfo) return;
 
@@ -59,9 +58,11 @@ function updateHeaderUI() {
 }
 
 // App Initialization
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   const appRoot = document.getElementById('app-root');
   const modalsContainer = document.getElementById('modals-container');
+
+  if (!appRoot || !modalsContainer) return;
 
   // Render Modals Once
   renderAuthModals(modalsContainer);
@@ -85,7 +86,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   store.subscribe(() => {
     updateHeaderUI();
+    router.handleRoute();
   });
 
   updateHeaderUI();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
