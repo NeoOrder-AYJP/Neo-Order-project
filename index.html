@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabor & Gestão — Sistema de Pedidos</title>
+  <!-- Font Awesome para Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Estilos Globais e Design System -->
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Navbar -->
+    <header class="navbar">
+      <a class="nav-brand" id="brand-logo">
+        <i class="fa-solid fa-utensils"></i>
+        <span>Sabor & Gestão</span>
+      </a>
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injetado dinamicamente via JS (Botões de Login ou User Badge + Sair) -->
+      </div>
+    </header>
+
+    <!-- Conteúdo Principal Dinâmico -->
+    <main class="main-container" id="main-content">
+      <!-- As telas serão renderizadas aqui -->
+    </main>
+
+    <!-- Modal de Autenticação / Login -->
+    <div class="modal-backdrop" id="login-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="login-modal-title">Entrar no Sistema</h2>
+          <button class="modal-close" id="close-login-modal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="login-modal-body">
+          <!-- Formulário dinâmico de Login -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Chamado de Funcionário -->
+    <div class="modal-backdrop" id="call-staff-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Chamar Funcionário</h2>
+          <button class="modal-close" id="close-call-modal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <form id="call-staff-form">
+          <div class="form-group">
+            <label class="form-label" for="call-reason">Qual a sua solicitação?</label>
+            <textarea class="form-control" id="call-reason" placeholder="Ex: Preciso de talheres extras, água, conta..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fa-solid fa-paper-plane"></i> Enviar Solicitação
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Botão Flutuante de Chamada (para Cliente Logado) -->
+    <button class="floating-call-btn" id="floating-call-btn" style="display: none;">
+      <i class="fa-solid fa-bell"></i>
+      <span>Chamar Funcionário</span>
+    </button>
+  </div>
+
+  <!-- Ponto de Entrada da Aplicação -->
+  <script type="module" src="src/js/app.js"></script>
+</body>
+</html>

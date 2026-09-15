@@ -32,18 +32,18 @@ Cada entrada deve conter:
 
 ---
 
-## Pendencias
+## Historico de Tarefas Concluidas
 
-| ID | Data | Prioridade | Modulo | Descricao | Responsavel | Prazo |
-|----|------|------------|--------|-----------|-------------|-------|
-| P-001 | 03/09/2026 | Alta | Landing Page | Implementar slides automaticos rotativos com destaques do cardapio. | A definir | A definir |
-| P-002 | 03/09/2026 | Alta | Autenticacao | Implementar login por mesa com credenciais criadas pelo gerente. | A definir | A definir |
-| P-003 | 03/09/2026 | Alta | Pedidos | Implementar carrinho, selecao de quantidades e finalizacao de pedidos. | A definir | A definir |
-| P-004 | 03/09/2026 | Alta | Estoque | Implementar controle de ingredientes e calculo automatico de disponibilidade de pratos. | A definir | A definir |
-| P-005 | 03/09/2026 | Alta | Chamados | Implementar botao de chamada de funcionario com justificativa e dashboard de chamados com notificacao sonora. | A definir | A definir |
-| P-006 | 03/09/2026 | Alta | Faturamento | Implementar dashboard de faturamento mensal exclusiva para gerentes. | A definir | A definir |
-| P-007 | 03/09/2026 | Media | Backup | Implementar exportacao e importacao de dados em JSON. | A definir | A definir |
-| P-008 | 03/09/2026 | Media | Responsividade | Garantir funcionamento correto em dispositivos moveis e desktops. | A definir | A definir |
+| ID | Data | Modulo | Descricao | Responsavel | Status |
+|----|------|--------|-----------|-------------|--------|
+| P-001 | 03/09/2026 | Landing Page | Implementar slides automaticos rotativos com destaques do cardapio. | Jules | Concluido |
+| P-002 | 03/09/2026 | Autenticacao | Implementar login por mesa com credenciais criadas pelo gerente. | Jules | Concluido |
+| P-003 | 03/09/2026 | Pedidos | Implementar carrinho, selecao de quantidades e finalizacao de pedidos. | Jules | Concluido |
+| P-004 | 03/09/2026 | Estoque | Implementar controle de ingredientes e calculo automatico de disponibilidade de pratos. | Jules | Concluido |
+| P-005 | 03/09/2026 | Chamados | Implementar botao de chamada de funcionario com justificativa e dashboard de chamados com notificacao sonora. | Jules | Concluido |
+| P-006 | 03/09/2026 | Faturamento | Implementar dashboard de faturamento mensal exclusiva para gerentes. | Jules | Concluido |
+| P-007 | 03/09/2026 | Backup | Implementar exportacao e importacao de dados em JSON. | Jules | Concluido |
+| P-008 | 03/09/2026 | Responsividade | Garantir funcionamento correto em dispositivos moveis e desktops. | Jules | Concluido |
 
 ---
 
