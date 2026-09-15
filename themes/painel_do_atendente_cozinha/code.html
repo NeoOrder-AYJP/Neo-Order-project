@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-tertiary-container":"#fffbff","tertiary-fixed":"#ffddb8","secondary-container":"#fed7cb","surface-variant":"#e5e2dd","surface-dim":"#dcdad5","surface-container":"#f0ede9","on-secondary-container":"#795c52","error-container":"#ffdad6","on-surface-variant":"#59413a","surface":"#fcf9f4","inverse-primary":"#ffb59f","outline-variant":"#e2bfb5","secondary":"#75584e","surface-container-low":"#f6f3ee","surface-tint":"#af3101","inverse-on-surface":"#f3f0eb","on-secondary-fixed-variant":"#5b4138","error":"#ba1a1a","outline":"#8d7168","surface-container-highest":"#e5e2dd","surface-bright":"#fcf9f4","on-secondary":"#ffffff","tertiary-container":"#a36700","secondary-fixed-dim":"#e4beb3","primary":"#ab2f00","on-error":"#ffffff","on-error-container":"#93000a","on-primary-fixed":"#3a0a00","primary-container":"#ce461a","surface-container-lowest":"#ffffff","on-tertiary-fixed-variant":"#653e00","on-primary-container":"#fffbff","on-background":"#1c1c19","on-tertiary":"#ffffff","on-secondary-fixed":"#2b160f","on-tertiary-fixed":"#2a1700","tertiary-fixed-dim":"#ffb95f","on-primary":"#ffffff","on-primary-fixed-variant":"#862300","background":"#fcf9f4","primary-fixed":"#ffdbd1","secondary-fixed":"#ffdbcf","inverse-surface":"#31302d","on-surface":"#1c1c19","primary-fixed-dim":"#ffb59f","surface-container-high":"#ebe8e3","tertiary":"#825100"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-md":"1rem","space-xs":"0.25rem","space-sm":"0.5rem","space-xl":"2rem","gutter-lg":"1.75rem","gutter-sm":"0.75rem","margin-mobile":"1rem","space-lg":"1.5rem","margin-desktop":"2.5rem",gutter:"1.25rem",margin:"1.5rem"},fontFamily:{"headline-md":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"title-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"]},fontSize:{"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"600"}],"display-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"title-md":["16px",{lineHeight:"24px",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"headline-lg-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"700"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface min-h-screen flex flex-col selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(41,21,14,0.04)]"><div class="h-20 w-full px-margin-desktop flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm cursor-pointer"><img alt="Sabor &amp; Gestão Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsIsIOS0cnZsU6Bd-_l2zpE1kqD3TEVt7rcc48Zu0ISJLCvUZQuu-rvfzN3o9zdpSLgAvBQwCbPMKXQHDcmRWBYAUILUSnYT-VRMjVhyFw3BeymNNNFKxmZRQlzkns6GvHH2EZuCkWWxRMqrMb8Waw2Jvi3KrwCZ_pNaYOgVCi7qqRmBys_ejUkKyK0DUVN4Nj982-nUyEIgjqK_Ml65qT0xPegPyRTEf22dzcRFlBbmfKzTKuzzNc"/><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface tracking-tight leading-none">Sabor &amp; Gestão</span><span class="font-label-sm text-label-sm text-on-surface-variant font-normal tracking-wide mt-1">Gastronomia &amp; Operações</span></div></div><nav class="hidden xl:flex items-center gap-space-xs bg-surface-container-low p-1 rounded-xl" data-active-classes="bg-primary text-on-primary font-semibold shadow-[0_2px_8px_-2px_rgba(171,47,0,0.3)]"><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="inicio-cardapio" href="#">Início / Cardápio</a><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="mesa-05-cliente" href="#">Mesa 05 (Cliente)</a><a aria-current="page" class="px-space-md py-space-sm rounded-lg transition-all bg-primary text-on-primary font-semibold shadow-[0_2px_8px_-2px_rgba(171,47,0,0.3)]" data-path="painel-do-atendente" href="#">Painel do Atendente</a><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="gestao-faturamento" href="#">Gestão &amp; Faturamento</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-lowest shadow-[0_2px_8px_-2px_rgba(41,21,14,0.05)]"><span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Online (localStorage)</span></div><div class="h-6 w-px bg-surface-variant hidden sm:block"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right hidden lg:flex"><span class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Gerência Operacional</span><span class="font-body-sm text-body-sm text-on-surface-variant">Turno Noite</span></div><div class="relative flex items-center p-0.5 rounded-full ring-2 ring-outline-variant/40 hover:ring-primary transition-all cursor-pointer"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyDxNbAXpD5WDUW1tiM3icPhUKLARWdsY5l5wmV4YkFtiDngNRKIBXyVXenuDqEl5DiDCjat8IgkEgewf6sqUS3AumZXdu_Hv0uxJSbTGe7CAgD63BFCtFt1UcXfPNd9zF17l-fKtRROpE6GsSrtwaalzIcGgKsUNELImw0f2iGUbyu3AW8sfiGP1nrIJBjlcStnnCAFMg4dWTiMy7jk4tG1bmSdV1H9k60HeFWP0LBp8S2ovvcvT8"/></div></div></div></div></header><main class="w-full pt-20 bg-background flex-1"><div class="flex flex-col w-full">
+<!-- Status & Quick Control Top Bar -->
+<div class="w-full bg-surface-container-low px-margin-desktop py-space-md shadow-sm">
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<!-- Metrics Overview -->
+<div class="flex flex-wrap items-center gap-space-sm sm:gap-space-md">
+<div class="flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-space-sm rounded-xl shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-ping"></span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Turno Noturno</span>
+<span class="font-title-md text-title-md text-on-surface" id="stat-active-orders">8 Pedidos em andamento</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-space-sm rounded-xl shadow-sm">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Urgência</span>
+<span class="font-title-md text-title-md text-primary font-bold" id="stat-pending-calls">2 Chamados pendentes</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-space-sm rounded-xl shadow-sm">
+<span class="material-symbols-outlined text-on-surface-variant">timer</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Tempo Médio Espera</span>
+<span class="font-title-md text-title-md text-on-surface">14 min</span>
+</div>
+</div>
+<div class="hidden 2xl:flex items-center gap-space-xs bg-surface-container px-space-md py-space-sm rounded-xl">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Capacidade Operacional: 82%</span>
+</div>
+</div>
+<!-- Audio Trigger & Quick Filters -->
+<div class="flex items-center gap-space-sm">
+<button class="flex items-center gap-space-xs px-space-lg py-space-sm rounded-xl font-label-md text-label-md bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary shadow-sm transition-all active:scale-[0.98]" id="btn-sound-toggle" onclick="toggleAudioFeedback()">
+<span class="material-symbols-outlined text-xl" id="icon-sound">volume_up</span>
+<span id="text-sound">Notificações Sonoras: Ativadas</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-xl font-label-md text-label-md bg-primary text-on-primary shadow-sm hover:opacity-95 transition-all" onclick="simularNovoPedido()">
+<span class="material-symbols-outlined text-lg">add</span>
+<span>Simular Pedido</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main 2-Column Split Console -->
+<div class="w-full px-margin-desktop py-space-lg">
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter-lg">
+<!-- LEFT SECTION: 65% Kanban / Real-Time Order Stream (8 cols in 12-col grid) -->
+<div class="xl:col-span-8 flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-6 bg-primary rounded-full"></div>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Fluxo de Pedidos em Tempo Real</h1>
+<span class="px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant">KDS Integrado</span>
+</div>
+<div class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span>Atualização automática</span>
+</div>
+</div>
+<!-- Kanban Horizontal Columns -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Column 1: Recebidos -->
+<div class="flex flex-col gap-space-sm bg-surface-container-low p-space-sm rounded-xl">
+<div class="flex items-center justify-between px-space-xs py-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<span class="font-label-lg text-label-lg text-on-surface uppercase tracking-wide">Recebidos</span>
+</div>
+<span class="px-space-xs py-0.5 rounded-md font-label-sm text-label-sm bg-surface-container-highest text-on-surface-variant" id="badge-count-recebidos">3</span>
+</div>
+<div class="flex flex-col gap-space-sm min-h-[480px]" id="col-recebidos">
+<!-- Ticket 101 -->
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all" id="ticket-101">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-title-md text-title-md text-primary font-bold">Mesa 05</span>
+<span class="px-space-xs py-0.5 rounded-md font-label-sm text-label-sm bg-surface-container text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span> 4 min
+                  </span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-space-sm">Comanda #1048 • Atendente Sofia</span>
+<div class="flex flex-col gap-space-xs my-space-xs py-space-xs bg-surface-container-low/60 px-space-sm rounded-lg">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface font-semibold">1x Ancho Angus Prime</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">R$ 89</span>
+</div>
+<span class="font-body-sm text-body-sm text-tertiary-container font-medium">Ponto: Ao Ponto para Mal</span>
+<div class="flex justify-between items-start pt-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">1x Batatas Rústicas Trufadas</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">R$ 38</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs">
+<button class="w-full py-space-sm px-space-md rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary font-label-md text-label-md text-on-surface transition-all flex items-center justify-center gap-1" onclick="moverTicket('ticket-101', 'col-preparo', 'Em Preparo')">
+<span>Iniciar Preparo</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Ticket 102 -->
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all" id="ticket-102">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-title-md text-title-md text-primary font-bold">Mesa 02</span>
+<span class="px-space-xs py-0.5 rounded-md font-label-sm text-label-sm bg-surface-container text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span> 7 min
+                  </span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-space-sm">Comanda #1049 • Atendente Carlos</span>
+<div class="flex flex-col gap-space-xs my-space-xs py-space-xs bg-surface-container-low/60 px-space-sm rounded-lg">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface font-semibold">2x Negroni Clássico</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">R$ 76</span>
+</div>
+<div class="flex justify-between items-start pt-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">1x Carpaccio Tartufado</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">R$ 54</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary font-medium">Sem alcaparras</span>
+</div>
+<div class="mt-space-md pt-space-xs">
+<button class="w-full py-space-sm px-space-md rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary font-label-md text-label-md text-on-surface transition-all flex items-center justify-center gap-1" onclick="moverTicket('ticket-102', 'col-preparo', 'Em Preparo')">
+<span>Iniciar Preparo</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 2: Em Preparo -->
+<div class="flex flex-col gap-space-sm bg-surface-container-low p-space-sm rounded-xl">
+<div class="flex items-center justify-between px-space-xs py-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-label-lg text-label-lg text-on-surface uppercase tracking-wide">Em Preparo</span>
+</div>
+<span class="px-space-xs py-0.5 rounded-md font-label-sm text-label-sm bg-surface-container-highest text-on-surface-variant" id="badge-count-preparo">2</span>
+</div>
+<div class="flex flex-col gap-space-sm min-h-[480px]" id="col-preparo">
+<!-- Ticket 103 -->
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all" id="ticket-103">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-title-md text-title-md text-on-surface font-bold">Mesa 08</span>
+<span class="px-space-xs py-0.5 rounded-md font-label-sm text-label-sm bg-tertiary-fixed text-on-tertiary-fixed font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">hourglass_top</span> 12 min
+                  </span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-space-sm">Comanda #1044 • Fogo &amp; Grelha</span>
+<div class="flex flex-col gap-space-xs my-space-xs py-space-xs bg-surface-container-low/60 px-space-sm rounded-lg">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface font-semibold">1x Polvo Grelhado no Carvão</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">R$ 115</span>
+</div>
+<div class="flex justify-between items-start pt-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">1x Risoto de Parmesão</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">R$ 64</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs">
+<button class="w-full py-space-sm px-space-md rounded-lg bg-secondary text-on-secondary hover:bg-primary font-label-md text-label-md transition-all flex items-center justify-center gap-1" onclick="moverTicket('ticket-103', 'col-prontos', 'Prontos para Entrega')">
+<span class="material-symbols-outlined text-sm">check</span>
+<span>Marcar como Pronto</span>
+</button>
+</div>
+</div>
+<!-- Ticket 104 -->
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all" id="ticket-104">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-title-md text-title-md text-on-surface font-bold">Mesa 14</span>
+<span class="px-space-xs py-0.5 rounded-md font-label-sm text-label-sm bg-tertiary-fixed text-on-tertiary-fixed font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">hourglass_top</span> 16 min
+                  </span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-space-sm">Comanda #1042 • Garde Manger</span>
+<div class="flex flex-col gap-space-xs my-space-xs py-space-xs bg-surface-container-low/60 px-space-sm rounded-lg">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface font-semibold">2x Salada Burrata Pugliese</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">R$ 96</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs">
+<button class="w-full py-space-sm px-space-md rounded-lg bg-secondary text-on-secondary hover:bg-primary font-label-md text-label-md transition-all flex items-center justify-center gap-1" onclick="moverTicket('ticket-104', 'col-prontos', 'Prontos para Entrega')">
+<span class="material-symbols-outlined text-sm">check</span>
+<span>Marcar como Pronto</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 3: Prontos para Entrega (Com destaque de urgência) -->
+<div class="flex flex-col gap-space-sm bg-secondary-container/40 p-space-sm rounded-xl">
+<div class="flex items-center justify-between px-space-xs py-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-lg text-label-lg text-primary font-bold uppercase tracking-wide">Prontos</span>
+</div>
+<span class="px-space-xs py-0.5 rounded-md font-label-sm text-label-sm bg-primary text-on-primary font-bold" id="badge-count-prontos">2</span>
+</div>
+<div class="flex flex-col gap-space-sm min-h-[480px]" id="col-prontos">
+<!-- Ticket 105 (Urgente na bancada) -->
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-md transition-all" id="ticket-105">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Mesa 07</span>
+</div>
+<span class="px-space-xs py-0.5 rounded-md font-label-sm text-label-sm bg-error-container text-on-error-container font-bold">
+                    Passage: 2 min
+                  </span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-space-sm">Passando quente! Aquecedor ativo</span>
+<div class="flex flex-col gap-space-xs my-space-xs py-space-xs bg-surface-container-low px-space-sm rounded-lg">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface font-bold">2x Filé au Poivre com Aligot</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">R$ 198</span>
+</div>
+<span class="font-body-sm text-body-sm text-primary font-medium">Bancada 01</span>
+</div>
+<div class="mt-space-md pt-space-xs">
+<button class="w-full py-space-sm px-space-md rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-all flex items-center justify-center gap-1 active:scale-[0.98]" onclick="moverTicket('ticket-105', 'col-entregues', 'Entregues')">
+<span class="material-symbols-outlined text-sm">room_service</span>
+<span>Confirmar Entrega</span>
+</button>
+</div>
+</div>
+<!-- Ticket 106 -->
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-md transition-all" id="ticket-106">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Mesa 11</span>
+</div>
+<span class="px-space-xs py-0.5 rounded-md font-label-sm text-label-sm bg-tertiary-fixed text-on-tertiary-fixed font-bold">
+                    Passage: 4 min
+                  </span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-space-sm">Bar Central • Bebidas Prontas</span>
+<div class="flex flex-col gap-space-xs my-space-xs py-space-xs bg-surface-container-low px-space-sm rounded-lg">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface font-bold">2x Moscow Mule Artesanal</span>
+<span class="font-label-sm text-label-sm text-on-surface">R$ 68</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs">
+<button class="w-full py-space-sm px-space-md rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-all flex items-center justify-center gap-1 active:scale-[0.98]" onclick="moverTicket('ticket-106', 'col-entregues', 'Entregues')">
+<span class="material-symbols-outlined text-sm">room_service</span>
+<span>Confirmar Entrega</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 4: Entregues Recentemente -->
+<div class="flex flex-col gap-space-sm bg-surface-container-low p-space-sm rounded-xl">
+<div class="flex items-center justify-between px-space-xs py-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-wide">Entregues</span>
+</div>
+<span class="px-space-xs py-0.5 rounded-md font-label-sm text-label-sm bg-surface-container-highest text-on-surface-variant" id="badge-count-entregues">1</span>
+</div>
+<div class="flex flex-col gap-space-sm min-h-[480px]" id="col-entregues">
+<!-- Ticket 100 -->
+<div class="flex flex-col bg-surface-container-lowest/80 p-space-md rounded-xl shadow-sm opacity-80" id="ticket-100">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-title-md text-title-md text-on-surface">Mesa 03</span>
+<span class="px-space-xs py-0.5 rounded-md font-label-sm text-label-sm bg-surface-container text-on-surface-variant">Entregue há 8 min</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">1x Dadinhos de Tapioca, 2x Chá Gelado</span>
+<div class="mt-space-sm flex items-center gap-1 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm">done_all</span>
+<span>Servido à mesa com sucesso</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT SECTION: 35% Live Waiter Call Feed (4 cols in 12-col grid) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-6 bg-tertiary rounded-full"></div>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Chamados das Mesas</h2>
+</div>
+<span class="px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-bold animate-pulse" id="active-calls-counter">
+            2 pendentes
+          </span>
+</div>
+<!-- Feed List -->
+<div class="flex flex-col gap-space-md" id="feed-chamados">
+<!-- Call Card 1: Mesa 05 -->
+<div class="flex flex-col bg-surface-container-lowest p-space-lg rounded-xl shadow-md relative overflow-hidden transition-all" id="chamado-card-mesa-05">
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-tertiary to-primary"></div>
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-primary animate-ping"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Mesa 05</span>
+</div>
+<div class="flex items-center gap-1 px-space-sm py-space-xs rounded-full bg-secondary-container font-label-sm text-label-sm text-on-secondary-container font-semibold">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>há 3 min</span>
+</div>
+</div>
+<!-- Justification badge & text -->
+<div class="bg-surface-container-low p-space-md rounded-xl mb-space-md">
+<div class="flex items-center gap-space-xs mb-1">
+<span class="material-symbols-outlined text-primary text-base">wine_bar</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">Motivo do Chamado</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">
+                “Precisa de água mineral sem gás e taças limpas na mesa.”
+              </p>
+</div>
+<!-- Action buttons -->
+<div class="flex items-center gap-space-sm">
+<button class="flex-1 py-space-sm px-space-md rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-all flex items-center justify-center gap-space-xs active:scale-[0.98]" onclick="atenderChamado('chamado-card-mesa-05', 'Mesa 05')">
+<span class="material-symbols-outlined text-base">check_circle</span>
+<span>Marcar como Atendido</span>
+</button>
+<button class="p-space-sm rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant transition-all" onclick="tocarAlertaBeep()" title="Re-alertar Atendente">
+<span class="material-symbols-outlined text-lg">campaign</span>
+</button>
+</div>
+</div>
+<!-- Call Card 2: Mesa 12 -->
+<div class="flex flex-col bg-surface-container-lowest p-space-lg rounded-xl shadow-md relative overflow-hidden transition-all" id="chamado-card-mesa-12">
+<div class="absolute top-0 left-0 right-0 h-1 bg-tertiary"></div>
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Mesa 12</span>
+</div>
+<div class="flex items-center gap-1 px-space-sm py-space-xs rounded-full bg-surface-container-high font-label-sm text-label-sm text-on-surface-variant font-semibold">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>há 7 min</span>
+</div>
+</div>
+<!-- Justification badge & text -->
+<div class="bg-surface-container-low p-space-md rounded-xl mb-space-md">
+<div class="flex items-center gap-space-xs mb-1">
+<span class="material-symbols-outlined text-tertiary text-base">receipt_long</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">Fechamento de Conta</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">
+                “Pedir a conta detalhada e máquina de cartão para pagamento.”
+              </p>
+</div>
+<!-- Action buttons -->
+<div class="flex items-center gap-space-sm">
+<button class="flex-1 py-space-sm px-space-md rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-all flex items-center justify-center gap-space-xs active:scale-[0.98]" onclick="atenderChamado('chamado-card-mesa-12', 'Mesa 12')">
+<span class="material-symbols-outlined text-base">check_circle</span>
+<span>Marcar como Atendido</span>
+</button>
+<button class="p-space-sm rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant transition-all" onclick="tocarAlertaBeep()" title="Re-alertar Atendente">
+<span class="material-symbols-outlined text-lg">campaign</span>
+</button>
+</div>
+</div>
+<!-- Empty State (Hidden while items exist) -->
+<div class="hidden flex-col items-center justify-center p-space-xl bg-surface-container-low rounded-xl text-center" id="empty-chamados">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant mb-space-xs">task_alt</span>
+<span class="font-title-md text-title-md text-on-surface">Todos os chamados atendidos</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Aguardando novas solicitações das mesas em atendimento.</span>
+</div>
+</div>
+<!-- Quick Summary Card -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between mt-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary">support_agent</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Tempo de Resposta Médio</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Meta do Turno: &lt; 4 minutos</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">2.8 min</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Toast Notification Toast Alert Element -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-space-sm bg-inverse-surface text-inverse-on-surface px-space-lg py-space-md rounded-xl shadow-xl" id="toast-operational">
+<span class="material-symbols-outlined text-secondary-fixed" id="toast-icon">check_circle</span>
+<span class="font-label-md text-label-md" id="toast-text">Ação realizada com sucesso</span>
+</div>
+</div>
+<script>
+  let soundEnabled = true;
+  let audioContext = null;
+
+  // Initialize Web Audio API to bypass browser autoplay constraints on explicit click (RF-30)
+  function initAudioContext() {
+    if (!audioContext) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) {
+        audioContext = new AudioContextClass();
+      }
+    }
+    if (audioContext && audioContext.state === 'suspended') {
+      audioContext.resume();
+    }
+  }
+
+  function toggleAudioFeedback() {
+    initAudioContext();
+    soundEnabled = !soundEnabled;
+    const btnText = document.getElementById('text-sound');
+    const btnIcon = document.getElementById('icon-sound');
+
+    if (soundEnabled) {
+      btnText.textContent = 'Notificações Sonoras: Ativadas';
+      btnIcon.textContent = 'volume_up';
+      tocarAlertaBeep(600, 150);
+      showToast('Alertas sonoros ativados para novos chamados e pratos prontos.');
+    } else {
+      btnText.textContent = 'Notificações Sonoras: Silenciadas';
+      btnIcon.textContent = 'volume_off';
+      showToast('Alertas sonoros silenciados.');
+    }
+  }
+
+  function tocarAlertaBeep(freq = 780, duration = 200) {
+    if (!soundEnabled) return;
+    try {
+      initAudioContext();
+      if (!audioContext) return;
+      const osc = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, audioContext.currentTime);
+      gain.gain.setValueAtTime(0.15, audioContext.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + (duration / 1000));
+      osc.connect(gain);
+      gain.connect(audioContext.destination);
+      osc.start();
+      osc.stop(audioContext.currentTime + (duration / 1000));
+    } catch (e) {
+      // Graceful fallback
+    }
+  }
+
+  function atenderChamado(cardId, mesaNome) {
+    const card = document.getElementById(cardId);
+    if (!card) return;
+
+    card.classList.add('opacity-0', 'scale-95');
+    setTimeout(() => {
+      card.remove();
+      updateCallCounters();
+      showToast(`Chamado da ${mesaNome} marcado como atendido.`);
+      tocarAlertaBeep(880, 100);
+    }, 250);
+  }
+
+  function updateCallCounters() {
+    const container = document.getElementById('feed-chamados');
+    const activeCards = container.querySelectorAll('[id^="chamado-card-"]');
+    const count = activeCards.length;
+
+    const counterBadge = document.getElementById('active-calls-counter');
+    const statBadge = document.getElementById('stat-pending-calls');
+    const emptyState = document.getElementById('empty-chamados');
+
+    if (counterBadge) counterBadge.textContent = `${count} pendentes`;
+    if (statBadge) statBadge.textContent = `${count} Chamados pendentes`;
+
+    if (count === 0 && emptyState) {
+      emptyState.classList.remove('hidden');
+      emptyState.classList.add('flex');
+    }
+  }
+
+  function moverTicket(ticketId, targetColId, actionLabel) {
+    const ticket = document.getElementById(ticketId);
+    const targetCol = document.getElementById(targetColId);
+    if (!ticket || !targetCol) return;
+
+    // Trigger audio feedback
+    tocarAlertaBeep(520, 120);
+
+    // Reparent ticket
+    targetCol.appendChild(ticket);
+
+    // Update bottom action CTA depending on the destination column
+    const actionContainer = ticket.querySelector('.mt-space-md');
+    if (actionContainer) {
+      if (targetColId === 'col-prontos') {
+        actionContainer.innerHTML = `
+          <button onclick="moverTicket('${ticketId}', 'col-entregues', 'Entregues')" class="w-full py-space-sm px-space-md rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-all flex items-center justify-center gap-1 active:scale-[0.98]">
+            <span class="material-symbols-outlined text-sm">room_service</span>
+            <span>Confirmar Entrega</span>
+          </button>
+        `;
+        showToast(`Pedido pronto na bancada para entrega!`);
+        tocarAlertaBeep(920, 250);
+      } else if (targetColId === 'col-entregues') {
+        actionContainer.innerHTML = `
+          <div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm">
+            <span class="material-symbols-outlined text-sm">done_all</span>
+            <span>Entregue na mesa</span>
+          </div>
+        `;
+        ticket.classList.add('opacity-75');
+        showToast(`Entrega concluída com sucesso.`);
+      }
+    }
+
+    refreshColumnCounts();
+  }
+
+  function refreshColumnCounts() {
+    const colR = document.getElementById('col-recebidos').children.length;
+    const colP = document.getElementById('col-preparo').children.length;
+    const colPr = document.getElementById('col-prontos').children.length;
+    const colE = document.getElementById('col-entregues').children.length;
+
+    const bR = document.getElementById('badge-count-recebidos');
+    const bP = document.getElementById('badge-count-preparo');
+    const bPr = document.getElementById('badge-count-prontos');
+    const bE = document.getElementById('badge-count-entregues');
+
+    if (bR) bR.textContent = colR;
+    if (bP) bP.textContent = colP;
+    if (bPr) bPr.textContent = colPr;
+    if (bE) bE.textContent = colE;
+
+    const statTotal = document.getElementById('stat-active-orders');
+    if (statTotal) {
+      statTotal.textContent = `${colR + colP + colPr} Pedidos em andamento`;
+    }
+  }
+
+  function simularNovoPedido() {
+    const colRecebidos = document.getElementById('col-recebidos');
+    const randTable = Math.floor(Math.random() * 18) + 1;
+    const padTable = randTable < 10 ? `0${randTable}` : randTable;
+    const newId = `ticket-sim-${Date.now()}`;
+
+    const newTicketHtml = `
+      <div id="${newId}" class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all animate-fade-in">
+        <div class="flex items-center justify-between mb-space-xs">
+          <span class="font-title-md text-title-md text-primary font-bold">Mesa ${padTable}</span>
+          <span class="px-space-xs py-0.5 rounded-md font-label-sm text-label-sm bg-surface-container text-on-surface-variant flex items-center gap-1">
+            <span class="material-symbols-outlined text-xs">schedule</span> Agora
+          </span>
+        </div>
+        <span class="font-label-sm text-label-sm text-on-surface-variant mb-space-sm">Comanda #${Math.floor(1000 + Math.random() * 9000)} &bull; Pedido Digital</span>
+        
+        <div class="flex flex-col gap-space-xs my-space-xs py-space-xs bg-surface-container-low/60 px-space-sm rounded-lg">
+          <div class="flex justify-between items-start">
+            <span class="font-label-md text-label-md text-on-surface font-semibold">1x Bife de Chorizo Grelhado</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">R$ 92</span>
+          </div>
+          <span class="font-body-sm text-body-sm text-tertiary-container font-medium">Ponto: Malpassado</span>
+        </div>
+
+        <div class="mt-space-md pt-space-xs">
+          <button onclick="moverTicket('${newId}', 'col-preparo', 'Em Preparo')" class="w-full py-space-sm px-space-md rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary font-label-md text-label-md text-on-surface transition-all flex items-center justify-center gap-1">
+            <span>Iniciar Preparo</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    `;
+
+    colRecebidos.insertAdjacentHTML('afterbegin', newTicketHtml);
+    refreshColumnCounts();
+    tocarAlertaBeep(800, 200);
+    showToast(`Novo pedido recebido da Mesa ${padTable}!`);
+  }
+
+  function showToast(message) {
+    const toast = document.getElementById('toast-operational');
+    const toastText = document.getElementById('toast-text');
+    if (!toast || !toastText) return;
+
+    toastText.textContent = message;
+    toast.classList.remove('translate-y-24', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    setTimeout(() => {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-24', 'opacity-0');
+    }, 3200);
+  }
+</script></main><footer class="w-full bg-surface-container-low mt-auto"><div class="w-full px-margin-desktop py-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant"><div class="flex items-center gap-space-sm"><span class="font-label-md text-label-md text-on-surface font-semibold">Sabor &amp; Gestão</span><span class="font-body-sm text-body-sm">• Sistema Unificado de Atendimento e Retaguarda</span></div><div class="flex items-center gap-space-lg font-label-sm text-label-sm"><span>Terminal POS v2.4.0</span><span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> Cozinha Conectada</span><span>Mesa Ativa: 05</span></div></div></footer></body></html>
