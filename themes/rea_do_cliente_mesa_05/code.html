@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-tertiary-container":"#fffbff","tertiary-fixed":"#ffddb8","secondary-container":"#fed7cb","surface-variant":"#e5e2dd","surface-dim":"#dcdad5","surface-container":"#f0ede9","on-secondary-container":"#795c52","error-container":"#ffdad6","on-surface-variant":"#59413a","surface":"#fcf9f4","inverse-primary":"#ffb59f","outline-variant":"#e2bfb5","secondary":"#75584e","surface-container-low":"#f6f3ee","surface-tint":"#af3101","inverse-on-surface":"#f3f0eb","on-secondary-fixed-variant":"#5b4138","error":"#ba1a1a","outline":"#8d7168","surface-container-highest":"#e5e2dd","surface-bright":"#fcf9f4","on-secondary":"#ffffff","tertiary-container":"#a36700","secondary-fixed-dim":"#e4beb3","primary":"#ab2f00","on-error":"#ffffff","on-error-container":"#93000a","on-primary-fixed":"#3a0a00","primary-container":"#ce461a","surface-container-lowest":"#ffffff","on-tertiary-fixed-variant":"#653e00","on-primary-container":"#fffbff","on-background":"#1c1c19","on-tertiary":"#ffffff","on-secondary-fixed":"#2b160f","on-tertiary-fixed":"#2a1700","tertiary-fixed-dim":"#ffb95f","on-primary":"#ffffff","on-primary-fixed-variant":"#862300","background":"#fcf9f4","primary-fixed":"#ffdbd1","secondary-fixed":"#ffdbcf","inverse-surface":"#31302d","on-surface":"#1c1c19","primary-fixed-dim":"#ffb59f","surface-container-high":"#ebe8e3","tertiary":"#825100"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-md":"1rem","space-xs":"0.25rem","space-sm":"0.5rem","space-xl":"2rem","gutter-lg":"1.75rem","gutter-sm":"0.75rem","margin-mobile":"1rem","space-lg":"1.5rem","margin-desktop":"2.5rem",gutter:"1.25rem",margin:"1.5rem"},fontFamily:{"headline-md":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"title-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"]},fontSize:{"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"600"}],"display-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"title-md":["16px",{lineHeight:"24px",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"headline-lg-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"700"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface min-h-screen flex flex-col selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(41,21,14,0.04)]"><div class="h-20 w-full px-margin-desktop flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm cursor-pointer"><img alt="Sabor &amp; Gestão Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsIsIOS0cnZsU6Bd-_l2zpE1kqD3TEVt7rcc48Zu0ISJLCvUZQuu-rvfzN3o9zdpSLgAvBQwCbPMKXQHDcmRWBYAUILUSnYT-VRMjVhyFw3BeymNNNFKxmZRQlzkns6GvHH2EZuCkWWxRMqrMb8Waw2Jvi3KrwCZ_pNaYOgVCi7qqRmBys_ejUkKyK0DUVN4Nj982-nUyEIgjqK_Ml65qT0xPegPyRTEf22dzcRFlBbmfKzTKuzzNc"/><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface tracking-tight leading-none">Sabor &amp; Gestão</span><span class="font-label-sm text-label-sm text-on-surface-variant font-normal tracking-wide mt-1">Gastronomia &amp; Operações</span></div></div><nav class="hidden xl:flex items-center gap-space-xs bg-surface-container-low p-1 rounded-xl" data-active-classes="bg-primary text-on-primary font-semibold shadow-[0_2px_8px_-2px_rgba(171,47,0,0.3)]"><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="inicio-cardapio" href="#">Início / Cardápio</a><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="mesa-05-cliente" href="#">Mesa 05 (Cliente)</a><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="painel-do-atendente" href="#">Painel do Atendente</a><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="gestao-faturamento" href="#">Gestão &amp; Faturamento</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-lowest shadow-[0_2px_8px_-2px_rgba(41,21,14,0.05)]"><span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Online (localStorage)</span></div><div class="h-6 w-px bg-surface-variant hidden sm:block"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right hidden lg:flex"><span class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Gerência Operacional</span><span class="font-body-sm text-body-sm text-on-surface-variant">Turno Noite</span></div><div class="relative flex items-center p-0.5 rounded-full ring-2 ring-outline-variant/40 hover:ring-primary transition-all cursor-pointer"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyDxNbAXpD5WDUW1tiM3icPhUKLARWdsY5l5wmV4YkFtiDngNRKIBXyVXenuDqEl5DiDCjat8IgkEgewf6sqUS3AumZXdu_Hv0uxJSbTGe7CAgD63BFCtFt1UcXfPNd9zF17l-fKtRROpE6GsSrtwaalzIcGgKsUNELImw0f2iGUbyu3AW8sfiGP1nrIJBjlcStnnCAFMg4dWTiMy7jk4tG1bmSdV1H9k60HeFWP0LBp8S2ovvcvT8"/></div></div></div></div></header><main class="w-full pt-20 bg-background flex-1"><div class="flex flex-col w-full">
+<!-- Status & Quick Action Bar (RF-12 / RF-18) -->
+<section class="w-full px-margin-mobile md:px-margin-desktop py-space-md">
+<div class="bg-surface-container-lowest rounded-xl p-space-md md:p-space-lg shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-sm text-headline-sm">
+          05
+        </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Mesa 05 — Atendimento Aberto</h1>
+<span class="w-2.5 h-2.5 rounded-full bg-[#16A34A] animate-pulse ml-1"></span>
+</div>
+<div class="flex items-center gap-space-md text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-body-sm">schedule</span>
+              Abertura: 19:42 (1h 18m decorridos)
+            </span>
+<span class="hidden sm:inline">•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-body-sm">badge</span>
+              Garçom Resp.: <strong>Mateus Silva</strong>
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-space-xs px-space-lg py-space-sm rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary-container active:scale-[0.98] transition-all" id="openCallModalBtn">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<span>Chamar Funcionário</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Main 2-Column Responsive Workspace -->
+<div class="w-full px-margin-mobile md:px-margin-desktop pb-space-xl grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Coluna Principal (Cardapio Interativo RF-13, RF-14, RN-01) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Category Chips Filter -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-space-xs">
+<button class="menu-filter-btn px-space-md py-space-sm rounded-xl font-label-md text-label-md bg-primary text-on-primary shadow-sm" data-category="all">
+          Todos os Pratos
+        </button>
+<button class="menu-filter-btn px-space-md py-space-sm rounded-xl font-label-md text-label-md bg-surface-container text-on-surface-variant hover:text-on-surface" data-category="principais">
+          Pratos Principais
+        </button>
+<button class="menu-filter-btn px-space-md py-space-sm rounded-xl font-label-md text-label-md bg-surface-container text-on-surface-variant hover:text-on-surface" data-category="entradas">
+          Entradas &amp; Petiscos
+        </button>
+<button class="menu-filter-btn px-space-md py-space-sm rounded-xl font-label-md text-label-md bg-surface-container text-on-surface-variant hover:text-on-surface" data-category="bebidas">
+          Bebidas &amp; Coquetéis
+        </button>
+<button class="menu-filter-btn px-space-md py-space-sm rounded-xl font-label-md text-label-md bg-surface-container text-on-surface-variant hover:text-on-surface" data-category="sobremesas">
+          Sobremesas
+        </button>
+</div>
+<!-- Dish Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- Dish 1: Filet Mignon -->
+<div class="dish-card bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between" data-category="principais" data-id="1" data-name="Tornedor de Filé ao Molho Roti" data-price="78.00">
+<div>
+<div class="relative w-full h-44 overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Tornedor de filé mignon grelhado com legumes glaceados e redução de molho roti aromático servido em prato de cerâmica rústica sob iluminação quente e intimista de bistrô contemporâneo com tons âmbar e terracota" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZyuKykUb9cKGQiZY3FuTR4WLkqFbI0ML64mkUpvpI-S7ldKxsH9r9mhfMCJAXZjKVtm34sz_5kgjvIdKJIlPJNwb50VV49gN9b0ZSXcjY03EzxUf1Q2wLLCCHlovPgQ0KTucLKQ6A6UHlf5a4Rxq1NDOoxFwFRudeEWUeaUbjmVh0mydxWWB_NesBIIjNEhhyHUzV8WNb92f-ZZBUtfNxFzerwP7Nl2Vi6Knnu11yYuOlL1UbsaBR"/>
+<span class="absolute top-space-xs right-space-xs px-space-sm py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-label-sm flex items-center gap-1 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> Disponível
+              </span>
+</div>
+<div class="p-space-md flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Prato Principal</span>
+<h3 class="font-title-md text-title-md text-on-surface mt-0.5">Tornedor de Filé ao Molho Roti</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">
+                Filé grelhado no ponto da casa com musseline de mandioca tostada e mini legumes na manteiga de sálvia.
+              </p>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center justify-between gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">R$ 78,00</span>
+<div class="flex items-center gap-space-xs">
+<div class="flex items-center bg-surface-container rounded-lg p-0.5">
+<button class="btn-qty-minus w-7 h-7 rounded flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-high transition-colors" type="button">-</button>
+<span class="qty-display w-6 text-center font-label-md text-label-md text-on-surface">1</span>
+<button class="btn-qty-plus w-7 h-7 rounded flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-high transition-colors" type="button">+</button>
+</div>
+<button class="btn-add-cart px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                Adicionar
+              </button>
+</div>
+</div>
+</div>
+<!-- Dish 2: Risoto Trufado -->
+<div class="dish-card bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between" data-category="principais" data-id="2" data-name="Risoto de Cogumelos Trufados" data-price="64.50">
+<div>
+<div class="relative w-full h-44 overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Cremoso risoto de cogumelos selvagens com azeite de trufas finalizado com lâminas de parmesão curado e brotos verdes frescos servido em bowl fundo artesanal de cerâmica tom creme" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPLuacOVzMazzE5xu-8kT06N-rxZV7FN0rLmphReKREwNFN59q7q-8JMGsddryigFq4dpDIeMieOK74jgiBM4US1KK2CvY5wYqiauIdpnDg9JFBFzEtO3W-fmv5oG2Hursznt4q73D9PDcbWbCronqgg1AMZEP6Z5BKrZ5Bw3Emj1kmDMI26KInhmdsMwuUgiypQw9rVr6Vb4dMqj7a64rotCBDOlZmmvKYrCjSlpyPfnbOHMQ65Tr"/>
+<span class="absolute top-space-xs right-space-xs px-space-sm py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-label-sm flex items-center gap-1 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> Disponível
+              </span>
+</div>
+<div class="p-space-md flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Prato Principal</span>
+<h3 class="font-title-md text-title-md text-on-surface mt-0.5">Risoto de Cogumelos Trufados</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">
+                Arroz carnaroli lentamente hidratado em caldo de cogumelos porcini e finalizado com azeite trufado.
+              </p>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center justify-between gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">R$ 64,50</span>
+<div class="flex items-center gap-space-xs">
+<div class="flex items-center bg-surface-container rounded-lg p-0.5">
+<button class="btn-qty-minus w-7 h-7 rounded flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-high transition-colors" type="button">-</button>
+<span class="qty-display w-6 text-center font-label-md text-label-md text-on-surface">1</span>
+<button class="btn-qty-plus w-7 h-7 rounded flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-high transition-colors" type="button">+</button>
+</div>
+<button class="btn-add-cart px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                Adicionar
+              </button>
+</div>
+</div>
+</div>
+<!-- Dish 3: Ceviche Fresco (Entrada) -->
+<div class="dish-card bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between" data-category="entradas" data-id="3" data-name="Ceviche Clássico de Robalo" data-price="42.00">
+<div>
+<div class="relative w-full h-44 overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Ceviche peruano refinado com cubos de robalo fresco leche de tigre milho crocante cebola roxa finamente fatiada e batata doce sobre prato raso escuro elegante" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIyM7O245tK_Nf2nw0hKBOe6Nh-qqK8P2qNGScDPr9jlKvOQ80t7RVNOCFwHVr4to9sGpu-hflxh85NfkqzSho3c7pdD1uYJ5qoQDO_wlIovmmyV-Ttg0SzDvYFTMkdMnfD7nlGBZ7NmKIZqw5bo4U3_QmtQmN2arO7ssqX0kD6IBff9cyfiIDT7irUNaqjwnUd9SLGSoSehM5zUT08tSJuPkCsSOj6RSs5eybgIZ7TBpGv2lb4VAN"/>
+<span class="absolute top-space-xs right-space-xs px-space-sm py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-label-sm flex items-center gap-1 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> Disponível
+              </span>
+</div>
+<div class="p-space-md flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Entrada</span>
+<h3 class="font-title-md text-title-md text-on-surface mt-0.5">Ceviche Clássico de Robalo</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">
+                Cubos de peixe branco fresco marinados em leche de tigre cítrico, milho crocante e lâminas de batata doce.
+              </p>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center justify-between gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">R$ 42,00</span>
+<div class="flex items-center gap-space-xs">
+<div class="flex items-center bg-surface-container rounded-lg p-0.5">
+<button class="btn-qty-minus w-7 h-7 rounded flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-high transition-colors" type="button">-</button>
+<span class="qty-display w-6 text-center font-label-md text-label-md text-on-surface">1</span>
+<button class="btn-qty-plus w-7 h-7 rounded flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-high transition-colors" type="button">+</button>
+</div>
+<button class="btn-add-cart px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                Adicionar
+              </button>
+</div>
+</div>
+</div>
+<!-- Dish 4: INDISPONÍVEL (RN-01 & RF-14 - Esgotado / 86'd) -->
+<div class="dish-card bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between opacity-60 grayscale cursor-not-allowed select-none" data-category="principais" data-id="4" data-name="Polvo Grelhado com Páprica" data-price="96.00">
+<div>
+<div class="relative w-full h-44 overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Tentáculos de polvo grelhado crocante com batatas ao murro e azeite de páprica defumada montado em travessa rústica" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4Mi-6t3THDscf-HaMtSrOaMFiNsTy8EKagtmb2FBQXSEAiEsrE5F9Bl5W-UXsKL8VUbAXHiD1YOtl0JGr69d9Cq8mPP3tcKSNCzXumzgrpeAnL8X6unS028PZtKD-QYEJsHwpgZ_QAyGRJLk7RTXXPC8VkKIB9I-aU3AXMiyadSB1MUeqMrWpZ1ZDUZQpKEXcmDJl5ou8aOTczDH8qfeWJG14QdEb0nwAG1Gf_Gl0_RE4Rc26o9Cg"/>
+<span class="absolute top-space-xs right-space-xs px-space-sm py-0.5 rounded-full bg-[#FEE2E2] text-[#DC2626] font-label-sm text-label-sm flex items-center gap-1 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DC2626]"></span> Esgotado (86'd)
+              </span>
+</div>
+<div class="p-space-md flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Prato Principal</span>
+<h3 class="font-title-md text-title-md text-on-surface mt-0.5">Polvo Grelhado com Páprica</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">
+                Tentáculos macios grelhados no carvão vegetal com batatas ao murro e redução cítrica de páprica.
+              </p>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center justify-between gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface-variant">R$ 96,00</span>
+<button class="px-space-md py-2 rounded-lg bg-surface-variant text-on-surface-variant font-label-md text-label-md cursor-not-allowed flex items-center gap-1" disabled="">
+<span class="material-symbols-outlined text-sm">block</span>
+              Indisponível
+            </button>
+</div>
+</div>
+<!-- Dish 5: Bebida Especial -->
+<div class="dish-card bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between" data-category="bebidas" data-id="5" data-name="Gin Tônica de Tangerina &amp; Alecrim" data-price="32.00">
+<div>
+<div class="relative w-full h-44 overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Taça balloon de vidro cristalino com coquetel gin tônica brilhante gomos de tangerina fresca ramo de alecrim tostado e gelo translúcido em balcão de restaurante sofisticado" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChTM7NFHDV32nT1MyRNSEDrraTO-VDwR-QGm0Ta_riOaM1wF07rjKkr9GgyGRV0Trq4x1tTYp9NaPCK4_m2xYvshU57kEllrbYBEvG7s7_uqHVuWmm1Hfgb3VURFsxWozR4yBoWvg8Z8vhAKVSB0Cy-65JEzuNyi8jomAMVK8M4imUqFU9M6SrTKmTBqQsTb-_39ionztwQLNn6PZ_Fn1AEiEvnNiobbzBYkdria1hnk2gYNb-59Pb"/>
+<span class="absolute top-space-xs right-space-xs px-space-sm py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-label-sm flex items-center gap-1 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> Disponível
+              </span>
+</div>
+<div class="p-space-md flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Bebida</span>
+<h3 class="font-title-md text-title-md text-on-surface mt-0.5">Gin Tônica Tangerina &amp; Alecrim</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">
+                Gin artesanal destilado, água tônica premium, infusão natural de tangerina e ramo de alecrim maçaricado.
+              </p>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center justify-between gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">R$ 32,00</span>
+<div class="flex items-center gap-space-xs">
+<div class="flex items-center bg-surface-container rounded-lg p-0.5">
+<button class="btn-qty-minus w-7 h-7 rounded flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-high transition-colors" type="button">-</button>
+<span class="qty-display w-6 text-center font-label-md text-label-md text-on-surface">1</span>
+<button class="btn-qty-plus w-7 h-7 rounded flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-high transition-colors" type="button">+</button>
+</div>
+<button class="btn-add-cart px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                Adicionar
+              </button>
+</div>
+</div>
+</div>
+<!-- Dish 6: Sobremesa Pavlova -->
+<div class="dish-card bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between" data-category="sobremesas" data-id="6" data-name="Pavlova Desconstruída de Frutas Vermelhas" data-price="28.00">
+<div>
+<div class="relative w-full h-44 overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Sobremesa pavlova com suspiro aerado crocante creme chantilly de baunilha de bourbon e calda espessa de frutas vermelhas silvestres morango amora e mirtilo com acabamento gourmet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5grPBRpwFD5NK5PMn3_9u0m1d3dt7UTxwRf6vdVEA8nkJZzTnXEuWLKmBRm_HpQdmbqvjOtOFQbrJQAxusDwOVgnG85D1aZ34NLlHKItDZhRb0RNKzSx6pUQh4Ft_iZH9KPcAGr2Ks2YRHu-ZgB6V9lgsieclBYaqPFVc_V4y0e0J_foYxskcBqBHKEOwuFYHzr4sMAgploRpnPAxcpExF1ovEwYR63Ht_ri7iFTPsJG9NDrwlx15"/>
+<span class="absolute top-space-xs right-space-xs px-space-sm py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-label-sm flex items-center gap-1 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> Disponível
+              </span>
+</div>
+<div class="p-space-md flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Sobremesa</span>
+<h3 class="font-title-md text-title-md text-on-surface mt-0.5">Pavlova de Frutas Vermelhas</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">
+                Merengue crocante com centro macio, creme chantilly de baunilha bourbon e calda ácida de amoras e morangos.
+              </p>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center justify-between gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">R$ 28,00</span>
+<div class="flex items-center gap-space-xs">
+<div class="flex items-center bg-surface-container rounded-lg p-0.5">
+<button class="btn-qty-minus w-7 h-7 rounded flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-high transition-colors" type="button">-</button>
+<span class="qty-display w-6 text-center font-label-md text-label-md text-on-surface">1</span>
+<button class="btn-qty-plus w-7 h-7 rounded flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-high transition-colors" type="button">+</button>
+</div>
+<button class="btn-add-cart px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                Adicionar
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Coluna Lateral: Carrinho Ativo & Conta da Mesa (RF-15, RF-16, RF-17, RF-26) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Box 1: Carrinho da Rodada Atual (Pronto para Enviar à Cozinha) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary">restaurant</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Nova Rodada</h2>
+</div>
+<span class="px-space-sm py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm" id="cartCountBadge">
+            0 itens
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Adicione itens e envie diretamente aos cozinheiros em 1 clique.
+        </p>
+<!-- Dynamic Cart Items Container -->
+<div class="flex flex-col gap-space-sm my-space-md max-h-56 overflow-y-auto pr-1" id="cartItemsContainer">
+<div class="py-space-lg text-center flex flex-col items-center justify-center text-on-surface-variant" id="emptyCartState">
+<span class="material-symbols-outlined text-4xl text-outline-variant mb-2">shopping_basket</span>
+<span class="font-body-md text-body-md">Seu pedido atual está vazio.</span>
+<span class="font-body-sm text-body-sm mt-0.5">Selecione pratos no cardápio ao lado.</span>
+</div>
+</div>
+<div class="pt-space-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-md text-label-md text-on-surface-variant">
+<span>Subtotal desta remessa:</span>
+<span class="font-title-md text-title-md text-on-surface font-semibold" id="cartSubtotal">R$ 0,00</span>
+</div>
+<button class="w-full mt-space-xs py-space-sm px-space-md rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-primary-container disabled:bg-surface-variant disabled:text-on-surface-variant disabled:cursor-not-allowed transition-all flex items-center justify-center gap-space-xs" disabled="" id="sendToKitchenBtn">
+<span class="material-symbols-outlined text-lg">local_fire_department</span>
+            Confirmar Pedido (Enviar à Cozinha)
+          </button>
+</div>
+</div>
+<!-- Box 2: Histórico de Pedidos & Status Ao Vivo (RF-16 / RF-17) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary">receipt_long</span>
+<h2 class="font-title-md text-title-md text-on-surface">Pedidos da Mesa 05</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2 Remessas</span>
+</div>
+<!-- Live Orders Timeline List -->
+<div class="flex flex-col gap-space-md my-space-sm">
+<!-- Round 2: Em Preparo -->
+<div class="p-space-sm bg-surface-container-low rounded-xl flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Remessa #02 (20:14)</span>
+<span class="px-2 py-0.5 rounded-full bg-[#FEF3C7] text-[#D97706] font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D97706] animate-ping"></span>
+                Em preparo — há 12 min
+              </span>
+</div>
+<div class="flex flex-col text-on-surface font-body-sm text-body-sm pl-space-xs">
+<div class="flex justify-between">
+<span>1x Risoto de Cogumelos Trufados</span>
+<span class="font-medium">R$ 64,50</span>
+</div>
+<div class="flex justify-between">
+<span>1x Gin Tônica Tangerina</span>
+<span class="font-medium">R$ 32,00</span>
+</div>
+</div>
+</div>
+<!-- Round 1: Entregue -->
+<div class="p-space-sm bg-surface-container-low rounded-xl flex flex-col gap-space-xs opacity-90">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Remessa #01 (19:48)</span>
+<span class="px-2 py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                Entregue na mesa
+              </span>
+</div>
+<div class="flex flex-col text-on-surface font-body-sm text-body-sm pl-space-xs">
+<div class="flex justify-between">
+<span>2x Ceviche Clássico de Robalo</span>
+<span class="font-medium">R$ 84,00</span>
+</div>
+<div class="flex justify-between">
+<span>2x Água Mineral sem Gás</span>
+<span class="font-medium">R$ 16,00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Conta da Mesa & Fechamento Resumo (RF-26, RF-27) -->
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Subtotal de itens consumidos:</span>
+<span>R$ 196,50</span>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Serviço opcional sugerido (10%):</span>
+<span>R$ 19,65</span>
+</div>
+<div class="flex justify-between items-baseline font-headline-sm text-headline-sm text-on-surface pt-space-xs">
+<span>Total Atual:</span>
+<span class="text-primary font-bold">R$ 216,15</span>
+</div>
+<div class="p-space-sm bg-secondary-container/40 rounded-xl mt-space-xs flex items-center gap-space-xs text-on-secondary-container">
+<span class="material-symbols-outlined text-sm">credit_card</span>
+<span class="font-label-sm text-label-sm">Aceita PIX, Cartão e Dinheiro no fechamento.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Interativo de Chamar Funcionário (RF-18 / Level 3 Depth) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-margin-mobile bg-[#29150E]/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200" id="callStaffModal">
+<div class="relative w-full max-w-lg bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden transform scale-95 transition-transform duration-200" id="callStaffModalCard">
+<!-- Accent Top Bar -->
+<div class="w-full h-1.5 bg-primary"></div>
+<div class="p-space-lg flex flex-col gap-space-md">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="p-2 rounded-xl bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Chamar Garçom</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Mesa 05 • Garçom Mateus Silva</span>
+</div>
+</div>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" id="closeCallModalBtn">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Quick Reason Chips -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Motivo Rápido</span>
+<div class="flex flex-wrap gap-space-xs" id="quickReasonChips">
+<button class="reason-chip px-space-md py-1 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" data-text="Mais guardanapos e copos limpos" type="button">
+              Guardanapos / Copos
+            </button>
+<button class="reason-chip px-space-md py-1 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" data-text="Água mineral com gás gelada" type="button">
+              Água com gás
+            </button>
+<button class="reason-chip px-space-md py-1 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" data-text="Solicitar conta para pagamento" type="button">
+              Pedir a Conta
+            </button>
+<button class="reason-chip px-space-md py-1 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" data-text="Dúvida com prato do cardápio" type="button">
+              Dúvida / Cardápio
+            </button>
+</div>
+</div>
+<!-- Custom Note Field -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-medium" for="callJustification">
+            Justificativa ou Observação:
+          </label>
+<textarea class="w-full p-space-md bg-surface-container-low rounded-xl text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest transition-all" id="callJustification" placeholder="Ex: Mesa 05 precisa de mais guardanapos e água mineral com gás..." rows="3"></textarea>
+</div>
+<!-- Actions -->
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-lg py-space-sm rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" id="cancelCallBtn" type="button">
+            Cancelar
+          </button>
+<button class="px-space-lg py-space-sm rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1" id="submitCallBtn" type="button">
+<span class="material-symbols-outlined text-sm">send</span>
+            Enviar Solicitação
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Toast Notification Feedback -->
+<div class="fixed bottom-6 right-6 z-50 max-w-sm bg-inverse-surface text-inverse-on-surface p-space-md rounded-xl shadow-xl flex items-center gap-space-sm translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toastNotification">
+<span class="material-symbols-outlined text-[#16A34A]" id="toastIcon">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-inverse-on-surface" id="toastTitle">Sucesso</span>
+<span class="font-body-sm text-body-sm text-inverse-on-surface/90" id="toastMessage">Ação concluída com êxito.</span>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // State
+    const cart = [];
+    let modalOpen = false;
+
+    // Toast Helper
+    function showToast(title, message, isSuccess = true) {
+      const toast = document.getElementById('toastNotification');
+      const toastTitle = document.getElementById('toastTitle');
+      const toastMessage = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
+
+      if (!toast) return;
+
+      toastTitle.textContent = title;
+      toastMessage.textContent = message;
+      toastIcon.textContent = isSuccess ? 'check_circle' : 'notifications_active';
+      toastIcon.className = isSuccess ? 'material-symbols-outlined text-[#16A34A]' : 'material-symbols-outlined text-primary';
+
+      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+      }, 3500);
+    }
+
+    // Modal Controls
+    const callModal = document.getElementById('callStaffModal');
+    const callModalCard = document.getElementById('callStaffModalCard');
+    const openCallModalBtn = document.getElementById('openCallModalBtn');
+    const closeCallModalBtn = document.getElementById('closeCallModalBtn');
+    const cancelCallBtn = document.getElementById('cancelCallBtn');
+    const submitCallBtn = document.getElementById('submitCallBtn');
+    const callJustification = document.getElementById('callJustification');
+    const reasonChips = document.querySelectorAll('.reason-chip');
+
+    function toggleModal(show) {
+      modalOpen = show;
+      if (show) {
+        callModal.classList.remove('opacity-0', 'pointer-events-none');
+        callModalCard.classList.remove('scale-95');
+        callModalCard.classList.add('scale-100');
+        callJustification.focus();
+      } else {
+        callModal.classList.add('opacity-0', 'pointer-events-none');
+        callModalCard.classList.remove('scale-100');
+        callModalCard.classList.add('scale-95');
+      }
+    }
+
+    if (openCallModalBtn) openCallModalBtn.addEventListener('click', () => toggleModal(true));
+    if (closeCallModalBtn) closeCallModalBtn.addEventListener('click', () => toggleModal(false));
+    if (cancelCallBtn) cancelCallBtn.addEventListener('click', () => toggleModal(false));
+
+    reasonChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const text = chip.getAttribute('data-text');
+        if (callJustification.value.trim() === '') {
+          callJustification.value = text;
+        } else {
+          callJustification.value += ' + ' + text;
+        }
+      });
+    });
+
+    if (submitCallBtn) {
+      submitCallBtn.addEventListener('click', () => {
+        const reason = callJustification.value.trim() || 'Mesa 05 solicita apoio presencial de garçom.';
+        toggleModal(false);
+        callJustification.value = '';
+        showToast('Chamado Enviado', 'Garçom Mateus Silva foi notificado no relógio e terminal.', false);
+      });
+    }
+
+    // Category Filter Buttons
+    const filterButtons = document.querySelectorAll('.menu-filter-btn');
+    const dishCards = document.querySelectorAll('.dish-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+          b.classList.add('bg-surface-container', 'text-on-surface-variant');
+        });
+        btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+
+        const cat = btn.getAttribute('data-category');
+        dishCards.forEach(card => {
+          if (cat === 'all' || card.getAttribute('data-category') === cat) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Item Quantity Steppers
+    dishCards.forEach(card => {
+      const minusBtn = card.querySelector('.btn-qty-minus');
+      const plusBtn = card.querySelector('.btn-qty-plus');
+      const display = card.querySelector('.qty-display');
+
+      if (minusBtn && plusBtn && display) {
+        plusBtn.addEventListener('click', () => {
+          let val = parseInt(display.textContent, 10);
+          display.textContent = val + 1;
+        });
+
+        minusBtn.addEventListener('click', () => {
+          let val = parseInt(display.textContent, 10);
+          if (val > 1) {
+            display.textContent = val - 1;
+          }
+        });
+      }
+    });
+
+    // Cart Management
+    const cartItemsContainer = document.getElementById('cartItemsContainer');
+    const emptyCartState = document.getElementById('emptyCartState');
+    const cartCountBadge = document.getElementById('cartCountBadge');
+    const cartSubtotal = document.getElementById('cartSubtotal');
+    const sendToKitchenBtn = document.getElementById('sendToKitchenBtn');
+
+    function renderCart() {
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '';
+        cartItemsContainer.appendChild(emptyCartState);
+        emptyCartState.style.display = 'flex';
+        cartCountBadge.textContent = '0 itens';
+        cartSubtotal.textContent = 'R$ 0,00';
+        sendToKitchenBtn.disabled = true;
+        return;
+      }
+
+      emptyCartState.style.display = 'none';
+      cartItemsContainer.innerHTML = '';
+
+      let total = 0;
+      let totalItems = 0;
+
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        totalItems += item.quantity;
+
+        const row = document.createElement('div');
+        row.className = 'flex items-center justify-between p-space-xs bg-surface-container-low rounded-lg';
+        row.innerHTML = `
+          <div class="flex flex-col min-w-0 flex-1 pr-2">
+            <span class="font-label-md text-label-md text-on-surface truncate font-semibold">${item.name}</span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant">R$ ${item.price.toFixed(2).replace('.', ',')} un</span>
+          </div>
+          <div class="flex items-center gap-space-xs">
+            <span class="font-label-md text-label-md text-on-surface font-semibold">${item.quantity}x</span>
+            <button class="remove-cart-item text-error hover:bg-error-container p-1 rounded transition-colors" data-index="${index}">
+              <span class="material-symbols-outlined text-sm">delete</span>
+            </button>
+          </div>
+        `;
+        cartItemsContainer.appendChild(row);
+      });
+
+      cartCountBadge.textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'itens'}`;
+      cartSubtotal.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+      sendToKitchenBtn.disabled = false;
+
+      // Attach remove handlers
+      const removeBtns = cartItemsContainer.querySelectorAll('.remove-cart-item');
+      removeBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = parseInt(btn.getAttribute('data-index'), 10);
+          cart.splice(idx, 1);
+          renderCart();
+        });
+      });
+    }
+
+    // Add to Cart Action
+    const addToCartBtns = document.querySelectorAll('.btn-add-cart');
+    addToCartBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.dish-card');
+        const id = card.getAttribute('data-id');
+        const name = card.getAttribute('data-name');
+        const price = parseFloat(card.getAttribute('data-price'));
+        const qtyDisplay = card.querySelector('.qty-display');
+        const quantity = parseInt(qtyDisplay ? qtyDisplay.textContent : '1', 10);
+
+        const existingItem = cart.find(item => item.id === id);
+        if (existingItem) {
+          existingItem.quantity += quantity;
+        } else {
+          cart.push({ id, name, price, quantity });
+        }
+
+        renderCart();
+        showToast('Item Adicionado', `${quantity}x ${name} adicionado à rodada atual.`);
+      });
+    });
+
+    // Send to Kitchen Action (RF-15 / RNF-05)
+    if (sendToKitchenBtn) {
+      sendToKitchenBtn.addEventListener('click', () => {
+        if (cart.length === 0) return;
+        const count = cart.reduce((acc, curr) => acc + curr.quantity, 0);
+        cart.length = 0;
+        renderCart();
+        showToast('Enviado à Cozinha!', `Comanda de ${count} itens despachada com prioridade para a Praça Quente.`);
+      });
+    }
+  })();
+</script></main><footer class="w-full bg-surface-container-low mt-auto"><div class="w-full px-margin-desktop py-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant"><div class="flex items-center gap-space-sm"><span class="font-label-md text-label-md text-on-surface font-semibold">Sabor &amp; Gestão</span><span class="font-body-sm text-body-sm">• Sistema Unificado de Atendimento e Retaguarda</span></div><div class="flex items-center gap-space-lg font-label-sm text-label-sm"><span>Terminal POS v2.4.0</span><span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> Cozinha Conectada</span><span>Mesa Ativa: 05</span></div></div></footer></body></html>
