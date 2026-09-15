@@ -1,7 +1,7 @@
 # Especificação Técnica — Sistema de Gerenciamento de Pedidos de Restaurante
 
-Versao: 1.1  
-Data: 03/09/2026  
+Versao: 1.2
+Data: 15/09/2026  
 Status: Aprovado para desenvolvimento
 
 ---
