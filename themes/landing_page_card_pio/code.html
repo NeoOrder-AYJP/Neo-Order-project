@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-tertiary-container":"#fffbff","tertiary-fixed":"#ffddb8","secondary-container":"#fed7cb","surface-variant":"#e5e2dd","surface-dim":"#dcdad5","surface-container":"#f0ede9","on-secondary-container":"#795c52","error-container":"#ffdad6","on-surface-variant":"#59413a","surface":"#fcf9f4","inverse-primary":"#ffb59f","outline-variant":"#e2bfb5","secondary":"#75584e","surface-container-low":"#f6f3ee","surface-tint":"#af3101","inverse-on-surface":"#f3f0eb","on-secondary-fixed-variant":"#5b4138","error":"#ba1a1a","outline":"#8d7168","surface-container-highest":"#e5e2dd","surface-bright":"#fcf9f4","on-secondary":"#ffffff","tertiary-container":"#a36700","secondary-fixed-dim":"#e4beb3","primary":"#ab2f00","on-error":"#ffffff","on-error-container":"#93000a","on-primary-fixed":"#3a0a00","primary-container":"#ce461a","surface-container-lowest":"#ffffff","on-tertiary-fixed-variant":"#653e00","on-primary-container":"#fffbff","on-background":"#1c1c19","on-tertiary":"#ffffff","on-secondary-fixed":"#2b160f","on-tertiary-fixed":"#2a1700","tertiary-fixed-dim":"#ffb95f","on-primary":"#ffffff","on-primary-fixed-variant":"#862300","background":"#fcf9f4","primary-fixed":"#ffdbd1","secondary-fixed":"#ffdbcf","inverse-surface":"#31302d","on-surface":"#1c1c19","primary-fixed-dim":"#ffb59f","surface-container-high":"#ebe8e3","tertiary":"#825100"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-md":"1rem","space-xs":"0.25rem","space-sm":"0.5rem","space-xl":"2rem","gutter-lg":"1.75rem","gutter-sm":"0.75rem","margin-mobile":"1rem","space-lg":"1.5rem","margin-desktop":"2.5rem",gutter:"1.25rem",margin:"1.5rem"},fontFamily:{"headline-md":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"title-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"]},fontSize:{"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"600"}],"display-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"title-md":["16px",{lineHeight:"24px",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"headline-lg-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"700"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface min-h-screen flex flex-col selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(41,21,14,0.04)]"><div class="h-20 w-full px-margin-desktop flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm cursor-pointer"><img alt="Sabor &amp; Gestão Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsIsIOS0cnZsU6Bd-_l2zpE1kqD3TEVt7rcc48Zu0ISJLCvUZQuu-rvfzN3o9zdpSLgAvBQwCbPMKXQHDcmRWBYAUILUSnYT-VRMjVhyFw3BeymNNNFKxmZRQlzkns6GvHH2EZuCkWWxRMqrMb8Waw2Jvi3KrwCZ_pNaYOgVCi7qqRmBys_ejUkKyK0DUVN4Nj982-nUyEIgjqK_Ml65qT0xPegPyRTEf22dzcRFlBbmfKzTKuzzNc"/><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface tracking-tight leading-none">Sabor &amp; Gestão</span><span class="font-label-sm text-label-sm text-on-surface-variant font-normal tracking-wide mt-1">Gastronomia &amp; Operações</span></div></div><nav class="hidden xl:flex items-center gap-space-xs bg-surface-container-low p-1 rounded-xl" data-active-classes="bg-primary text-on-primary font-semibold shadow-[0_2px_8px_-2px_rgba(171,47,0,0.3)]"><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="inicio-cardapio" href="#">Início / Cardápio</a><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="mesa-05-cliente" href="#">Mesa 05 (Cliente)</a><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="painel-do-atendente" href="#">Painel do Atendente</a><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="gestao-faturamento" href="#">Gestão &amp; Faturamento</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-lowest shadow-[0_2px_8px_-2px_rgba(41,21,14,0.05)]"><span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Online (localStorage)</span></div><div class="h-6 w-px bg-surface-variant hidden sm:block"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right hidden lg:flex"><span class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Gerência Operacional</span><span class="font-body-sm text-body-sm text-on-surface-variant">Turno Noite</span></div><div class="relative flex items-center p-0.5 rounded-full ring-2 ring-outline-variant/40 hover:ring-primary transition-all cursor-pointer"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyDxNbAXpD5WDUW1tiM3icPhUKLARWdsY5l5wmV4YkFtiDngNRKIBXyVXenuDqEl5DiDCjat8IgkEgewf6sqUS3AumZXdu_Hv0uxJSbTGe7CAgD63BFCtFt1UcXfPNd9zF17l-fKtRROpE6GsSrtwaalzIcGgKsUNELImw0f2iGUbyu3AW8sfiGP1nrIJBjlcStnnCAFMg4dWTiMy7jk4tG1bmSdV1H9k60HeFWP0LBp8S2ovvcvT8"/></div></div></div></div></header><main class="w-full pt-20 bg-background flex-1"><div class="flex flex-col w-full">
+<section class="relative w-full px-margin-mobile lg:px-margin-desktop pt-space-lg pb-space-xl overflow-hidden">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-semibold flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+            Gastronomia Autoral • Pratos do Chef
+          </span>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">Experiências que definem o paladar contemporâneo</h1>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<button aria-label="Slide anterior" class="w-11 h-11 rounded-full bg-surface-container-lowest text-on-surface flex items-center justify-center shadow-sm hover:bg-surface-container-high transition-transform active:scale-95" id="slide-prev">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button aria-label="Próximo slide" class="w-11 h-11 rounded-full bg-surface-container-lowest text-on-surface flex items-center justify-center shadow-sm hover:bg-surface-container-high transition-transform active:scale-95" id="slide-next">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="relative w-full rounded-2xl bg-surface-container-lowest shadow-sm overflow-hidden min-h-[420px] md:min-h-[460px]">
+<div class="w-full h-full flex transition-transform duration-700 ease-out" id="carousel-track">
+<div class="w-full shrink-0 grid grid-cols-1 lg:grid-cols-12 min-h-[420px] md:min-h-[460px]">
+<div class="lg:col-span-6 p-space-lg md:p-space-xl flex flex-col justify-between bg-surface-container-lowest">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Destaque da Tradição</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">star</span> 4.9 (184 avaliações)
+                  </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Feijoada Especial da Casa</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Cortes nobres selecionados, paio defumado artesanalmente e costelinha tenra. Acompanha arroz jasmine na manteiga de garrafa, couve crocante fatiada fina e farofa de castanha de baru.</p>
+<div class="flex items-center gap-space-sm pt-space-xs text-on-surface-variant font-label-md text-label-md">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">schedule</span> 35 min</span>
+<span>•</span>
+<span>Serve 2 pessoas</span>
+</div>
+</div>
+<div class="pt-space-md flex items-baseline justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant block">Valor individual</span>
+<span class="font-display-lg text-display-lg text-primary font-bold">R$ 58,90</span>
+</div>
+<button class="px-space-lg py-space-sm rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary-container transition-all active:scale-[0.98]" onclick="openTableOrderModal()">
+                  Pedir na Mesa
+                </button>
+</div>
+</div>
+<div class="lg:col-span-6 relative min-h-[260px] lg:min-h-full">
+<img class="w-full h-full object-cover" data-alt="Prato suntuoso de feijoada brasileira sofisticada em panela de barro esmaltada preta, fumegante, com guarnições organizadas simetricamente, couve finíssima verde vibrante e fatias de laranja fresca sob luz suave de restaurante sofisticado em ângulo de 45 graus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX4QcXO7IXHXAsgd7_IXxtWVZO5VDsMQ0-gIx5KzTBXKh4jLK4bIOL6GM5vyJU11GgM7CDhW5kEFxmX_qzybzjcHznqj6R3xJW5eDOlV293G2jRD5r4_HUuuMSYLe4HL9fZ-Xz7Va5HtUmDN4mthYccgYbpY_3wJFDDMr1gZ4YK32qu563biucPuL2NPq5hPb6b0MgmzOpZUEQnK8bw6TguvdN5cPV65Xztk3Hpgbhw_m3X4jbXSUM"/>
+</div>
+</div>
+<div class="w-full shrink-0 grid grid-cols-1 lg:grid-cols-12 min-h-[420px] md:min-h-[460px]">
+<div class="lg:col-span-6 p-space-lg md:p-space-xl flex flex-col justify-between bg-surface-container-lowest">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Fogo de Chão</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">star</span> 5.0 (240 avaliações)
+                  </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Picanha na Brasa com Farofa Crocante</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Corte nobre Angus maturado, selado na brasa vulcânica com flor de sal defumada. Guarnecido com purê de mandioquinha defumada e farofa de panko com raspas de limão siciliano.</p>
+<div class="flex items-center gap-space-sm pt-space-xs text-on-surface-variant font-label-md text-label-md">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">local_fire_department</span> Ponto da Casa</span>
+<span>•</span>
+<span>Grelhados Nobres</span>
+</div>
+</div>
+<div class="pt-space-md flex items-baseline justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant block">Valor individual</span>
+<span class="font-display-lg text-display-lg text-primary font-bold">R$ 84,00</span>
+</div>
+<button class="px-space-lg py-space-sm rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary-container transition-all active:scale-[0.98]" onclick="openTableOrderModal()">
+                  Pedir na Mesa
+                </button>
+</div>
+</div>
+<div class="lg:col-span-6 relative min-h-[260px] lg:min-h-full">
+<img class="w-full h-full object-cover" data-alt="Picanha grelhada suculenta fatiada ao meio revelando interior rosado impecável, crosta bem tostada de grelha com grãos de flor de sal, acompanhada de farofa dourada crocante em tábua de madeira nobre escura." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSOz-5gG9lZJ8Csa4ZF2t0QE26ftaJsHZZYR74-ksquwFak7WdHc5C9ceOOz6GlLfkgFTVVt1clHHAtJZJiAek8X-Ir6jLoiPJBkK-CuK-zgXvrEHP-eLUZUUYfc5QBhbp5gOHyLz62d8_8Duqsbe9YoMtszpY8KPudYN547sXWv3flJdi9du4cs-3Ec_eYApDRSrc0zEzUZqIZEOTRDEToJwaRYNUQ8HN7_QKrtT99iS4LowVNWOx"/>
+</div>
+</div>
+<div class="w-full shrink-0 grid grid-cols-1 lg:grid-cols-12 min-h-[420px] md:min-h-[460px]">
+<div class="lg:col-span-6 p-space-lg md:p-space-xl flex flex-col justify-between bg-surface-container-lowest">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Frutos da Costa</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">star</span> 4.8 (112 avaliações)
+                  </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Moqueca de Frutos do Mar</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Camarões rosa graúdos, lulas frescas e robalo cozidos lentamente em infusão de leite de coco artesanal, azeite de dendê da Bahia e pimentões grelhados no carvão.</p>
+<div class="flex items-center gap-space-sm pt-space-xs text-on-surface-variant font-label-md text-label-md">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">restaurant</span> Sugestão Sommelier</span>
+<span>•</span>
+<span>Origem Sustentável</span>
+</div>
+</div>
+<div class="pt-space-md flex items-baseline justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant block">Valor individual</span>
+<span class="font-display-lg text-display-lg text-primary font-bold">R$ 79,50</span>
+</div>
+<button class="px-space-lg py-space-sm rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary-container transition-all active:scale-[0.98]" onclick="openTableOrderModal()">
+                  Pedir na Mesa
+                </button>
+</div>
+</div>
+<div class="lg:col-span-6 relative min-h-[260px] lg:min-h-full">
+<img class="w-full h-full object-cover" data-alt="Panela de barro aberta exalando vapor aromático com moqueca baiana borbulhante em tom laranja aveludado, camarões grandes vermelhos, anéis de lula tenra e folhas frescas de coentro no topo, iluminação lateral aconchegante." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzWzptPTOcOXR8Jddzqy9E_-cmxTXR_1mz_4VtAyxlOWNWSMRDYZqzFw2kLClKOBNS4reqBFPAN6hsTLZgUO3obopIQLS5Ha6_WfgOdb8jznSd2KXTTI7kANz3eW7zuDZ0_iH55kPsaOy7DoyGxUiE6wzesY6ihmSh1UVfKPtIfl-Gh7PJ_fFcAn1j2nNjWiuItV97kR74vPV81wrv6sjSwbGDDAuYNE-FjG6cypAgxZCQujF42oRQ"/>
+</div>
+</div>
+</div>
+<div class="absolute bottom-4 left-6 flex items-center gap-2 z-10">
+<button class="carousel-dot w-8 h-1.5 rounded-full bg-primary transition-all duration-300" onclick="setSlide(0)"></button>
+<button class="carousel-dot w-2 h-1.5 rounded-full bg-outline-variant transition-all duration-300" onclick="setSlide(1)"></button>
+<button class="carousel-dot w-2 h-1.5 rounded-full bg-outline-variant transition-all duration-300" onclick="setSlide(2)"></button>
+</div>
+</div>
+</div>
+</section>
+<section class="w-full px-margin-mobile lg:px-margin-desktop py-space-md">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 p-space-lg rounded-2xl bg-surface-container-low shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[26px]">table_restaurant</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Já está acomodado no restaurante?</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Inicie seu pedido imediatamente inserindo o número da mesa e sua chave de serviço.</span>
+</div>
+</div>
+<button class="w-full sm:w-auto px-space-lg py-space-sm rounded-xl bg-primary text-on-primary font-label-lg text-label-lg whitespace-nowrap shadow-md hover:bg-primary-container transition-all active:scale-[0.98]" onclick="openTableOrderModal()">
+          Fazer Pedido na Mesa
+        </button>
+</div>
+<div class="md:col-span-4 p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-variant text-on-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">badge</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Acesso Operacional</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Garçons, copa e cozinha</span>
+</div>
+</div>
+<button class="px-space-md py-space-sm rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" onclick="openStaffModal()">
+          Área do Funcionário
+        </button>
+</div>
+</div>
+</section>
+<section class="w-full px-margin-mobile lg:px-margin-desktop py-space-xl">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Catálogo Gastronômico</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Cardápio Completo</h2>
+</div>
+<div class="relative w-full lg:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" id="dish-search" placeholder="Buscar por prato, corte ou ingrediente..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-space-xs overflow-x-auto pb-space-xs no-scrollbar">
+<button class="category-filter px-space-md py-space-xs rounded-full font-label-md text-label-md bg-primary text-on-primary shadow-sm whitespace-nowrap transition-colors" data-category="all">
+          Todos os Pratos
+        </button>
+<button class="category-filter px-space-md py-space-xs rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high whitespace-nowrap transition-colors" data-category="carnes">
+          Carnes Nobres
+        </button>
+<button class="category-filter px-space-md py-space-xs rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high whitespace-nowrap transition-colors" data-category="peixes">
+          Peixes &amp; Frutos do Mar
+        </button>
+<button class="category-filter px-space-md py-space-xs rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high whitespace-nowrap transition-colors" data-category="aves">
+          Aves
+        </button>
+<button class="category-filter px-space-md py-space-xs rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high whitespace-nowrap transition-colors" data-category="sobremesas">
+          Sobremesas Artesanais
+        </button>
+<button class="category-filter px-space-md py-space-xs rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high whitespace-nowrap transition-colors" data-category="bebidas">
+          Bebidas &amp; Drinks
+        </button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter" id="dishes-grid">
+<div class="dish-card flex flex-col rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow overflow-hidden group" data-cat="carnes">
+<div class="relative w-full h-48 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Ancho bovino grelhado ao chimichurri fresco servido com batatas rústicas douradas ao alecrim, composição em prato de cerâmica artesanal rústica sob iluminação de estúdio gastronômico." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXEEPJ0_y0oios0sId66ROKyALwbfCSJwxRQx6Wjfi60JkTj-Jo7BD1ltsBnKeLD04BvNqD2KXiw_bPw-h2ZopqeJfViHicjwa-DbkYZfqPE4rgsH0mdGW8Ey_hIX1svwAhPao82-P5VvRhZ5eOt_pQok--BupiEa_zWtpNVcVERnV5tU5se0VevHzVfJuE4cdlPAsabqoiUI_8KJXKUlZGrewUTCqSocIxZjJWRWr1HnTl5M5RDcd"/>
+<span class="absolute top-3 right-3 px-space-sm py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-label-sm font-semibold flex items-center gap-1.5 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> Disponível
+            </span>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-baseline justify-between gap-2">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Bife de Ancho com Chimichurri</h3>
+<span class="font-title-md text-title-md text-primary font-bold whitespace-nowrap">R$ 76,00</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Corte nobre de costela bovina com marmoreio elevado, chimichurri clássico de ervas frescas e batatas ao murro.</p>
+<div class="pt-space-xs flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Ancho Angus</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Chimichurri</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Batatas</span>
+</div>
+</div>
+<button class="w-full mt-space-xs py-2 rounded-xl bg-surface-container-low hover:bg-primary hover:text-on-primary font-label-md text-label-md text-on-surface transition-all flex items-center justify-center gap-1" onclick="openTableOrderModal()">
+<span class="material-symbols-outlined text-[18px]">add</span> Adicionar ao Pedido
+            </button>
+</div>
+</div>
+<div class="dish-card flex flex-col rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow overflow-hidden group" data-cat="peixes">
+<div class="relative w-full h-48 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Filé de salmão grelhado com pele crocante servido sobre risoto cremoso de limão siciliano e alho-poró, decorado com brotos orgânicos e azeite verde herbáceo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWMRwm8w0gwVuh5-ru9jAZ6PHpDfuyal_MmqDK0eAwb6TonI-udAO9czrwbGhXOrPfjrm72-tC2tYdmMdkse1bQ5urT3kXzqJVBewAXmjr2r4xfxb5f279wC5Urn-RX6JOaOaDc50FxYQ3GAJpu5h9g-2luCOzUmqkkFoZ3hlndzuajKE632GGZ7zDCZokzoUiw9YX5Q4uT6Rb75RyDd6Ue32ZNLZst0JXzGGl6hR1R4EljRV3UNSu"/>
+<span class="absolute top-3 right-3 px-space-sm py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-label-sm font-semibold flex items-center gap-1.5 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> Disponível
+            </span>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-baseline justify-between gap-2">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Salmão em Crosta com Risoto</h3>
+<span class="font-title-md text-title-md text-primary font-bold whitespace-nowrap">R$ 82,90</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lombo de salmão norueguês grelhado em crosta de gergelim tricolor, acompanhado de risoto cremoso de limão siciliano.</p>
+<div class="pt-space-xs flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Salmão</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Arbóreo</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Limão Siciliano</span>
+</div>
+</div>
+<button class="w-full mt-space-xs py-2 rounded-xl bg-surface-container-low hover:bg-primary hover:text-on-primary font-label-md text-label-md text-on-surface transition-all flex items-center justify-center gap-1" onclick="openTableOrderModal()">
+<span class="material-symbols-outlined text-[18px]">add</span> Adicionar ao Pedido
+            </button>
+</div>
+</div>
+<div class="dish-card flex flex-col rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow overflow-hidden group" data-cat="aves">
+<div class="relative w-full h-48 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Supremo de frango recheado com queijo brie e damasco, coberto por redução de vinho do porto e servido com legumes baby tostados em manteiga trufada." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC23UuhdhvThimcylMlSljofd9PltnJqc6z0_hOYYvG4lfRMHarJNLr1goW0FCngU5B_s520We2jU_xvtGleMtrCAZxh7HS7SWhpifwGKim4jltnYvcGtKLmwa6mej7t3qsfPWUWvaUp2h6Dv2AjbMJRh6TSClUcNjbO4tVJTFOzChqKfx-ik4eAUHKKF2x96A7Zv_QsPRmdbNHmCXIoQscJSFjXol2y5wFVJK5ENqSrapkiM85Ea3C"/>
+<span class="absolute top-3 right-3 px-space-sm py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-label-sm font-semibold flex items-center gap-1.5 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> Disponível
+            </span>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-baseline justify-between gap-2">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Galeto Recheado com Brie</h3>
+<span class="font-title-md text-title-md text-primary font-bold whitespace-nowrap">R$ 54,00</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Peito de frango caipira recheado com queijo brie cremoso e geleia artesanal de damasco, reduzido em redução de tangerina.</p>
+<div class="pt-space-xs flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Frango Caipira</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Brie</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Damasco</span>
+</div>
+</div>
+<button class="w-full mt-space-xs py-2 rounded-xl bg-surface-container-low hover:bg-primary hover:text-on-primary font-label-md text-label-md text-on-surface transition-all flex items-center justify-center gap-1" onclick="openTableOrderModal()">
+<span class="material-symbols-outlined text-[18px]">add</span> Adicionar ao Pedido
+            </button>
+</div>
+</div>
+<div class="dish-card opacity-60 flex flex-col rounded-2xl bg-surface-container-lowest shadow-sm overflow-hidden pointer-events-none" data-cat="peixes">
+<div class="relative w-full h-48 overflow-hidden bg-surface-container grayscale">
+<img class="w-full h-full object-cover" data-alt="Polvo inteiro grelhado com tentáculos crocantes sobre cama de mousseline de batata roxa e molho romesco em prato contemporâneo escuro." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPLqmmonOWUgCT9ymwKC92YJnK4hgO_ceu3gnJHNEwt9sPVaU610KTrf_14P8Ar1xQnp-LDgIax-Jrx8wktCOTQkd3TJiiSHDjVVL91gfhJHxwcLGPHk-LHcay0X5pJn53gCOw8Qfb5u2v190ufwwGFwhysIcG1aJvkzypbncZzG3-cfuZKvcLseEGOyVhM5oYnyry-GccL9OfxZV-a_w1lkDCPPiORc8JemmM7BPeWpBqZuxPlBte"/>
+<span class="absolute top-3 right-3 px-space-sm py-0.5 rounded-full bg-surface-dim text-on-surface-variant font-label-sm text-label-sm font-semibold flex items-center gap-1.5 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span> Esgotado
+            </span>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-baseline justify-between gap-2">
+<h3 class="font-title-md text-title-md text-on-surface line-through font-semibold">Polvo Confitado na Brasa</h3>
+<span class="font-title-md text-title-md text-outline font-bold whitespace-nowrap">R$ 96,00</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tentáculo de polvo espanhol braseado com azeite de páprica doce e mousseline de batata baroa defumada.</p>
+<div class="p-2 rounded-lg bg-surface-container text-outline text-body-sm font-medium">
+                Indisponível hoje por safra controlada de pesca marítima.
+              </div>
+</div>
+<button class="w-full mt-space-xs py-2 rounded-xl bg-surface-container text-outline font-label-md text-label-md cursor-not-allowed" disabled="">
+              Item Indisponível
+            </button>
+</div>
+</div>
+<div class="dish-card flex flex-col rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow overflow-hidden group" data-cat="sobremesas">
+<div class="relative w-full h-48 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Petit gateau de chocolate belga 70 por cento escorrendo recheio quente aveludado, servido com sorvete artesanal de pistache da sicília e praliné crocante." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL1JZWBp1zU4-J54oCecj0DtwG01yLff16QnlReQterMdE6mxwvNRhHg-yLpdyfTKNLy9Kgb8E-QBKGFITrl8IshbiTTRnFUk7C51ErbgTyhNLdajwWoifdtwLV4iQuSSeJYmOmxkuTjZUn6KrgAWgCL7ma0Wkqtxodn3OvUZQ9oUmE60exRCgedhVGtp4fKaklGszbymTylL77qqM8-oFzp7Ptg_UTm8P6r-opxCu3byP-inHL-SM"/>
+<span class="absolute top-3 right-3 px-space-sm py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-label-sm font-semibold flex items-center gap-1.5 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> Disponível
+            </span>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-baseline justify-between gap-2">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Fondant de Chocolate 70%</h3>
+<span class="font-title-md text-title-md text-primary font-bold whitespace-nowrap">R$ 32,50</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Bolo quente com coração líquido de cacau orgânico Callebaut, acompanhado de gelato de pistache artesanal e crocante de amêndoas.</p>
+<div class="pt-space-xs flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Cacau 70%</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Pistache</span>
+</div>
+</div>
+<button class="w-full mt-space-xs py-2 rounded-xl bg-surface-container-low hover:bg-primary hover:text-on-primary font-label-md text-label-md text-on-surface transition-all flex items-center justify-center gap-1" onclick="openTableOrderModal()">
+<span class="material-symbols-outlined text-[18px]">add</span> Adicionar ao Pedido
+            </button>
+</div>
+</div>
+<div class="dish-card flex flex-col rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow overflow-hidden group" data-cat="bebidas">
+<div class="relative w-full h-48 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Drink botânico refinado em taça taça balloon bojuda com gelo translúcido, infusão de gin premium, morangos macerados, alecrim e tônica artesanal aromatizada." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpxrEBCLGZJUoKLis8BFLOm3Zk6ze5aXI5ybTGOUdpHGzHrqVAC6IZm0RPqSjUnGxi6wqlI0a-5mBqb-LzJeeFV5K5Ln3dDmahKUDRDxS1n3pAgbc7vl418oP5PNfw0dKq9Vf7FCKVMCEYgIHdjMwE8NUnCcAR8AlQNiW8X4SP6Dk5DRICVRlWLoMQ838N81n61P7xXeUT1niImYa8ZtrDFafYb7VEA1g82zt1JxAShdjssVLAx4rB"/>
+<span class="absolute top-3 right-3 px-space-sm py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-label-sm font-semibold flex items-center gap-1.5 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> Disponível
+            </span>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-baseline justify-between gap-2">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Gin &amp; Infusão de Frutas Vermelhas</h3>
+<span class="font-title-md text-title-md text-primary font-bold whitespace-nowrap">R$ 38,00</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Gin London Dry destilado com botânicos silvestres, redução caseira de amora e zimbro tostado, completado com água tônica botânica.</p>
+<div class="pt-space-xs flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Gin London</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Zimbro</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Amora</span>
+</div>
+</div>
+<button class="w-full mt-space-xs py-2 rounded-xl bg-surface-container-low hover:bg-primary hover:text-on-primary font-label-md text-label-md text-on-surface transition-all flex items-center justify-center gap-1" onclick="openTableOrderModal()">
+<span class="material-symbols-outlined text-[18px]">add</span> Adicionar ao Pedido
+            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="w-full px-margin-mobile lg:px-margin-desktop py-space-xl bg-surface-container-low mt-space-lg">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined">schedule</span>
+<span class="font-title-md text-title-md font-semibold">Horário de Funcionamento</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Terça a Sexta: 12h00 às 15h30 | 19h00 às 23h30</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Sábados e Domingos: 12h00 às 00h00 (Sem intervalo)</p>
+<p class="font-body-sm text-body-sm text-outline mt-1">Segundas-feiras: Fechado para descanso e manutenção técnica da cozinha.</p>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined">pin_drop</span>
+<span class="font-title-md text-title-md font-semibold">Endereço &amp; Reservas</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Alameda dos Sabores Nobres, 1420 - Jardins</p>
+<p class="font-body-md text-body-md text-on-surface-variant">São Paulo - SP • CEP 01423-001</p>
+<p class="font-body-sm text-body-sm text-outline mt-1">Serviço de valet cortesia no local e adega climatizada.</p>
+</div>
+<div class="flex flex-col justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Selo de Auditoria do Sistema</span>
+<span class="font-title-md text-title-md text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px] text-primary">verified</span> Sabor &amp; Gestão v1.2
+          </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Arquitetura de pedidos em tempo real via localStorage &amp; sincronização direta com a fila KDS.</p>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-2">
+<span>Latência Média: 18ms</span>
+<span class="text-primary font-semibold">Terminal Pronto</span>
+</div>
+</div>
+</div>
+</section>
+<div class="fixed inset-0 z-50 bg-[#29150E]/40 backdrop-blur-sm hidden items-center justify-center p-4" id="table-order-modal">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-2xl shadow-xl p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">room_service</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Acesso à Sua Mesa</span>
+</div>
+<button class="w-8 h-8 rounded-full hover:bg-surface-variant flex items-center justify-center text-on-surface-variant" onclick="closeTableOrderModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Digite o número gravado no totem da sua mesa e a chave alfanumérica fornecida pelo anfitrião para autorizar os pedidos em sua conta.
+      </p>
+<form class="flex flex-col gap-space-sm" id="table-login-form" onsubmit="handleTableAccess(event)">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold" for="modal-mesa-num">Número da Mesa</label>
+<input class="w-full px-space-md py-2.5 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" id="modal-mesa-num" max="99" min="1" placeholder="Ex: 05" required="" type="number"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold" for="modal-mesa-pin">Senha de Atendimento (PIN)</label>
+<input class="w-full px-space-md py-2.5 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" id="modal-mesa-pin" maxlength="6" placeholder="******" required="" type="password"/>
+</div>
+<div class="pt-space-xs flex items-center gap-space-sm">
+<button class="flex-1 py-2.5 rounded-xl bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" onclick="closeTableOrderModal()" type="button">
+            Cancelar
+          </button>
+<button class="flex-1 py-2.5 rounded-xl bg-primary text-on-primary font-label-md text-label-lg shadow-md hover:bg-primary-container transition-all active:scale-[0.98]" type="submit">
+            Entrar no Cardápio
+          </button>
+</div>
+</form>
+</div>
+</div>
+<div class="fixed inset-0 z-50 bg-[#29150E]/40 backdrop-blur-sm hidden items-center justify-center p-4" id="staff-modal">
+<div class="w-full max-w-sm bg-surface-container-lowest rounded-2xl shadow-xl p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-variant text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Área do Funcionário</span>
+</div>
+<button class="w-8 h-8 rounded-full hover:bg-surface-variant flex items-center justify-center text-on-surface-variant" onclick="closeStaffModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Selecione o módulo operacional desejado para login de turno:</p>
+<div class="flex flex-col gap-space-xs">
+<a class="p-space-sm rounded-xl bg-surface-container-low hover:bg-secondary-container transition-colors flex items-center justify-between text-on-surface" data-path="painel-do-atendente" href="#">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary">touch_app</span>
+<span class="font-label-md text-label-md">Painel do Atendente (POS)</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">chevron_right</span>
+</a>
+<a class="p-space-sm rounded-xl bg-surface-container-low hover:bg-secondary-container transition-colors flex items-center justify-between text-on-surface" data-path="gestao-faturamento" href="#">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary">query_stats</span>
+<span class="font-label-md text-label-md">Gestão &amp; Faturamento</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+<script>
+    let currentSlide = 0;
+    const totalSlides = 3;
+    const track = document.getElementById('carousel-track');
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    function updateCarousel() {
+      if (track) {
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }
+      dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.classList.remove('w-2', 'bg-outline-variant');
+          dot.classList.add('w-8', 'bg-primary');
+        } else {
+          dot.classList.remove('w-8', 'bg-primary');
+          dot.classList.add('w-2', 'bg-outline-variant');
+        }
+      });
+    }
+
+    function setSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    const nextBtn = document.getElementById('slide-next');
+    const prevBtn = document.getElementById('slide-prev');
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      });
+    }
+
+    let slideInterval = setInterval(() => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    }, 6000);
+
+    const filterButtons = document.querySelectorAll('.category-filter');
+    const dishCards = document.querySelectorAll('.dish-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+          b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+        });
+        btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+        btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+
+        const cat = btn.getAttribute('data-category');
+        dishCards.forEach(card => {
+          if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    const searchInput = document.getElementById('dish-search');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        dishCards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          if (text.includes(query)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    }
+
+    function openTableOrderModal() {
+      const modal = document.getElementById('table-order-modal');
+      if (modal) modal.classList.replace('hidden', 'flex');
+    }
+
+    function closeTableOrderModal() {
+      const modal = document.getElementById('table-order-modal');
+      if (modal) modal.classList.replace('flex', 'hidden');
+    }
+
+    function openStaffModal() {
+      const modal = document.getElementById('staff-modal');
+      if (modal) modal.classList.replace('hidden', 'flex');
+    }
+
+    function closeStaffModal() {
+      const modal = document.getElementById('staff-modal');
+      if (modal) modal.classList.replace('flex', 'hidden');
+    }
+
+    function handleTableAccess(event) {
+      event.preventDefault();
+      const mesa = document.getElementById('modal-mesa-num').value;
+      localStorage.setItem('sg_active_table', mesa || '05');
+      closeTableOrderModal();
+      const targetNav = document.querySelector('a[data-path="mesa-05-cliente"]');
+      if (targetNav) {
+        targetNav.click();
+      } else {
+        alert(`Mesa ${mesa} identificada com sucesso! Redirecionando para cardápio interativo.`);
+      }
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low mt-auto"><div class="w-full px-margin-desktop py-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant"><div class="flex items-center gap-space-sm"><span class="font-label-md text-label-md text-on-surface font-semibold">Sabor &amp; Gestão</span><span class="font-body-sm text-body-sm">• Sistema Unificado de Atendimento e Retaguarda</span></div><div class="flex items-center gap-space-lg font-label-sm text-label-sm"><span>Terminal POS v2.4.0</span><span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> Cozinha Conectada</span><span>Mesa Ativa: 05</span></div></div></footer></body></html>
