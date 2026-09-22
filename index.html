@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabor & Gestão — Sistema de Gerenciamento de Restaurante</title>
+
+  <!-- Google Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  <!-- Pure Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="header-container">
+      <!-- Logo & Brand -->
+      <div id="brand-logo" class="brand-logo">
+        <div class="brand-icon">S</div>
+        <div>
+          <div class="brand-title">Sabor & Gestão</div>
+          <div class="brand-subtitle">Gastronomia & Operações</div>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav id="nav-links" class="nav-links">
+        <button data-path="landing" class="nav-btn active">Início / Cardápio</button>
+        <button data-path="client" class="nav-btn">Área do Cliente (Mesa)</button>
+        <button data-path="staff" class="nav-btn">Painel do Atendente</button>
+        <button data-path="manager" class="nav-btn">Gestão & Faturamento</button>
+      </nav>
+
+      <!-- User Session Info -->
+      <div id="user-session-info" class="flex items-center gap-3">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main>
+    <div id="view-landing" class="view-section hidden"></div>
+    <div id="view-client" class="view-section hidden"></div>
+    <div id="view-staff" class="view-section hidden"></div>
+    <div id="view-manager" class="view-section hidden"></div>
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast-message" class="hidden">
+    <span class="material-symbols-outlined" style="color: var(--tertiary)">info</span>
+    <span id="toast-text">Ação executada com sucesso.</span>
+  </div>
+
+  <!-- Global Application Scripts -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
