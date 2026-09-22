@@ -18,11 +18,9 @@ export function showToast(message) {
   const toastText = document.getElementById('toast-text');
   if (toastEl && toastText) {
     toastText.textContent = message;
-    toastEl.classList.remove('translate-y-20', 'opacity-0');
-    toastEl.classList.add('translate-y-0', 'opacity-100');
+    toastEl.classList.remove('hidden');
     setTimeout(() => {
-      toastEl.classList.remove('translate-y-0', 'opacity-100');
-      toastEl.classList.add('translate-y-20', 'opacity-0');
+      toastEl.classList.add('hidden');
     }, 3500);
   }
 }
@@ -43,11 +41,9 @@ export function navigateTo(viewName) {
   // Update navbar button highlight
   document.querySelectorAll('.nav-btn').forEach(btn => {
     if (btn.dataset.path === viewName) {
-      btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
-      btn.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high');
+      btn.classList.add('active');
     } else {
-      btn.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
-      btn.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high');
+      btn.classList.remove('active');
     }
   });
 
@@ -66,7 +62,7 @@ export function updateSessionHeader() {
 
   if (!currentUser) {
     sessionInfo.innerHTML = `
-      <button onclick="window.navigateTo('landing')" class="px-3 py-1.5 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition-all text-xs font-semibold">
+      <button onclick="window.navigateTo('landing')" class="btn btn-secondary btn-sm">
         Entrar / Acessar
       </button>
     `;
@@ -74,12 +70,12 @@ export function updateSessionHeader() {
     const roleBadge = currentUser.tipo === 'mesa' ? 'Mesa' : (currentUser.perfil === 'gerente' ? 'Gerente' : 'Atendente');
     sessionInfo.innerHTML = `
       <div class="flex items-center gap-3">
-        <div class="flex flex-col text-right">
-          <span class="text-xs font-bold text-on-surface">${currentUser.nome}</span>
-          <span class="text-[10px] text-on-surface-variant font-semibold uppercase tracking-wider">${roleBadge}</span>
+        <div class="flex flex-col" style="text-align: right;">
+          <span style="font-size: 13px; font-weight: 700;">${currentUser.nome}</span>
+          <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">${roleBadge}</span>
         </div>
-        <button onclick="window.handleLogout()" class="px-2.5 py-1 rounded-lg bg-surface-container-high text-on-surface-variant hover:bg-error/10 hover:text-error transition-all text-xs font-medium flex items-center gap-1">
-          <span class="material-symbols-outlined text-sm">logout</span>
+        <button onclick="window.handleLogout()" class="btn btn-secondary btn-sm flex items-center gap-1">
+          <span class="material-symbols-outlined" style="font-size: 16px;">logout</span>
           <span>Sair</span>
         </button>
       </div>
@@ -95,7 +91,6 @@ window.handleLogout = function() {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Add listeners for nav buttons
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const path = e.currentTarget.dataset.path;

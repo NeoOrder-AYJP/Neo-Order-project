@@ -1,7 +1,7 @@
-// js/views/manager.js - Manager Full Operations & Analytics Dashboard
+// js/views/manager.js - Manager Full Operations & Analytics Dashboard View
 import { store, currentUser, showToast } from '../app.js';
 
-let activeTab = 'analytics'; // 'analytics' | 'dishes' | 'stock' | 'accounts'
+let activeTab = 'analytics';
 
 export function renderManagerView() {
   const container = document.getElementById('view-manager');
@@ -9,214 +9,135 @@ export function renderManagerView() {
 
   if (!currentUser || currentUser.tipo !== 'funcionario' || currentUser.perfil !== 'gerente') {
     container.innerHTML = `
-      <div class="max-w-md mx-auto my-16 p-8 text-center bg-surface-container-lowest rounded-2xl shadow-xl border border-surface-variant">
-        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-red-100 text-red-700 flex items-center justify-center">
-          <span class="material-symbols-outlined text-3xl">admin_panel_settings</span>
+      <div class="container" style="max-width: 500px; margin-top: 64px; text-align: center;">
+        <div class="card">
+          <h2>Acesso Exclusivo a Gerentes</h2>
+          <p style="color: var(--text-muted); margin-top: 8px;">Você precisa estar autenticado como Gerente para acessar esta área.</p>
+          <button onclick="window.navigateTo('landing')" class="btn btn-primary" style="margin-top: 24px;">Ir para Login</button>
         </div>
-        <h2 class="text-xl font-bold text-on-surface">Acesso Exclusivo a Gerentes</h2>
-        <p class="text-sm text-on-surface-variant mt-2">Você precisa estar autenticado como Gerente para acessar esta área.</p>
-        <button onclick="window.navigateTo('landing')" class="mt-6 px-6 py-2.5 rounded-xl bg-primary text-on-primary font-bold text-sm shadow-md hover:bg-primary-container transition-all">
-          Ir para Login
-        </button>
       </div>
     `;
     return;
   }
 
   container.innerHTML = `
-    <div class="max-w-7xl mx-auto px-4 md:px-margin-desktop py-8 space-y-8">
+    <div class="container flex flex-col gap-6">
 
-      <!-- Top Hero / Navigation Bar -->
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 p-6 bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm">
+      <!-- Top Bar -->
+      <div class="card flex items-center justify-between" style="flex-wrap: wrap; gap: 16px;">
         <div>
-          <div class="flex items-center gap-2">
-            <span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">Módulo Administrativo</span>
-            <span class="text-xs text-on-surface-variant">• ${currentUser.nome}</span>
-          </div>
-          <h1 class="text-2xl font-extrabold text-on-surface mt-1">Gestão Estratégica & Faturamento</h1>
+          <span class="badge badge-pending">Módulo Administrativo</span>
+          <h1 style="font-size: 24px; margin-top: 4px;">Gestão Estratégica & Faturamento</h1>
         </div>
 
-        <!-- Backup & Restore Actions (RF-41, RF-42) -->
-        <div class="flex flex-wrap items-center gap-3">
+        <div class="flex gap-2">
           <input type="file" id="json-file-input" accept=".json" class="hidden">
-          <button id="btn-import-backup" class="px-4 py-2.5 rounded-xl bg-surface-container-high text-on-surface hover:bg-surface-variant font-bold text-xs shadow-sm transition-all flex items-center gap-2">
-            <span class="material-symbols-outlined text-base">upload_file</span>
+          <button id="btn-import-backup" class="btn btn-secondary btn-sm">
+            <span class="material-symbols-outlined">upload_file</span>
             <span>Importar JSON</span>
           </button>
-          <button id="btn-export-backup" class="px-4 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-primary-container font-bold text-xs shadow-md transition-all flex items-center gap-2">
-            <span class="material-symbols-outlined text-base">cloud_download</span>
+          <button id="btn-export-backup" class="btn btn-primary btn-sm">
+            <span class="material-symbols-outlined">cloud_download</span>
             <span>Exportar Backup</span>
           </button>
         </div>
       </div>
 
       <!-- Navigation Tabs -->
-      <div class="flex flex-wrap gap-2 border-b border-surface-variant pb-2">
-        <button data-tab="analytics" class="mgr-tab-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-primary text-on-primary shadow-sm flex items-center gap-2">
-          <span class="material-symbols-outlined text-base">monitoring</span>
-          <span>Faturamento & Indicadores</span>
-        </button>
-        <button data-tab="dishes" class="mgr-tab-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all flex items-center gap-2">
-          <span class="material-symbols-outlined text-base">restaurant_menu</span>
-          <span>Gestão de Cardápio</span>
-        </button>
-        <button data-tab="stock" class="mgr-tab-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all flex items-center gap-2">
-          <span class="material-symbols-outlined text-base">inventory_2</span>
-          <span>Estoque de Ingredientes</span>
-        </button>
-        <button data-tab="accounts" class="mgr-tab-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all flex items-center gap-2">
-          <span class="material-symbols-outlined text-base">group</span>
-          <span>Contas de Mesas & Funcionários</span>
-        </button>
+      <div class="flex gap-2" style="border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+        <button data-tab="analytics" class="mgr-tab-btn btn btn-sm btn-primary">Faturamento & Indicadores</button>
+        <button data-tab="dishes" class="mgr-tab-btn btn btn-sm btn-secondary">Gestão de Cardápio</button>
+        <button data-tab="stock" class="mgr-tab-btn btn btn-sm btn-secondary">Estoque de Ingredientes</button>
+        <button data-tab="accounts" class="mgr-tab-btn btn btn-sm btn-secondary">Contas de Mesas & Funcionários</button>
       </div>
 
-      <!-- Tab Content Area -->
-      <div id="mgr-tab-content">
-        <!-- Rendered dynamically -->
-      </div>
+      <!-- Tab Content -->
+      <div id="mgr-tab-content"></div>
 
     </div>
 
-    <!-- Dish Modal Form -->
-    <div id="modal-dish-form" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
-      <div class="bg-surface-container-lowest rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-surface-variant relative space-y-4 max-h-[90vh] overflow-y-auto">
-        <button id="close-modal-dish" class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-        <h3 id="dish-modal-title" class="text-lg font-bold text-on-surface">Cadastrar Novo Prato</h3>
-
-        <form id="form-dish-save" class="space-y-4">
+    <!-- Dish Modal -->
+    <div id="modal-dish-form" class="modal-overlay hidden">
+      <div class="modal-content">
+        <button id="close-modal-dish" class="modal-close">×</button>
+        <h3 id="dish-modal-title" style="margin-bottom: 16px;">Cadastrar Novo Prato</h3>
+        <form id="form-dish-save">
           <input type="hidden" id="input-dish-id">
-          <div>
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">Nome do Prato</label>
-            <input type="text" id="input-dish-nome" required class="w-full px-4 py-2 rounded-xl border border-outline/30 bg-surface text-sm">
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Preço (R$)</label>
-              <input type="number" step="0.01" id="input-dish-preco" required class="w-full px-4 py-2 rounded-xl border border-outline/30 bg-surface text-sm">
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Categoria</label>
-              <select id="input-dish-categoria" required class="w-full px-4 py-2 rounded-xl border border-outline/30 bg-surface text-sm">
+          <div class="form-group"><label>Nome</label><input type="text" id="input-dish-nome" required></div>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="form-group"><label>Preço (R$)</label><input type="number" step="0.01" id="input-dish-preco" required></div>
+            <div class="form-group"><label>Categoria</label>
+              <select id="input-dish-categoria" required>
                 <option value="Pratos Principais">Pratos Principais</option>
                 <option value="Peixes & Frutos do Mar">Peixes & Frutos do Mar</option>
                 <option value="Massas">Massas</option>
-                <option value="Sobremesas">Sobremesas</option>
-                <option value="Bebidas">Bebidas</option>
               </select>
             </div>
           </div>
-          <div>
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">Descrição</label>
-            <textarea id="input-dish-descricao" rows="2" class="w-full px-4 py-2 rounded-xl border border-outline/30 bg-surface text-sm"></textarea>
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">URL da Imagem</label>
-            <input type="url" id="input-dish-imagem" required class="w-full px-4 py-2 rounded-xl border border-outline/30 bg-surface text-sm">
-          </div>
-          <div class="flex items-center gap-2">
-            <input type="checkbox" id="input-dish-destaque" class="w-4 h-4 rounded text-primary">
-            <label for="input-dish-destaque" class="text-xs font-bold text-on-surface">Prato em Destaque (Carrossel)</label>
+          <div class="form-group"><label>Descrição</label><textarea id="input-dish-descricao" rows="2"></textarea></div>
+          <div class="form-group"><label>URL da Imagem</label><input type="url" id="input-dish-imagem" required></div>
+          <div style="margin-bottom: 16px;"><input type="checkbox" id="input-dish-destaque"> <label for="input-dish-destaque">Destaque na Landing Page</label></div>
+
+          <div style="border-top: 1px solid var(--border-color); padding-top: 12px; margin-bottom: 16px;">
+            <label style="color: var(--primary);">Receita (Ingredientes Consumidos)</label>
+            <div id="dish-recipe-builder" class="flex flex-col gap-2" style="margin-top: 8px;"></div>
+            <button type="button" id="btn-add-recipe-row" class="btn btn-secondary btn-sm" style="margin-top: 8px;">+ Adicionar Ingrediente</button>
           </div>
 
-          <!-- Recipe Ingredients Section (RF-24) -->
-          <div class="border-t border-surface-variant pt-3 space-y-2">
-            <label class="block text-xs font-bold text-primary uppercase">Receita (Ingredientes Necessários)</label>
-            <div id="dish-recipe-builder" class="space-y-2">
-              <!-- Rendered dynamically -->
-            </div>
-            <button type="button" id="btn-add-recipe-row" class="text-xs font-bold text-primary hover:underline flex items-center gap-1">
-              + Adicionar Ingrediente à Receita
-            </button>
-          </div>
-
-          <button type="submit" class="w-full py-3 rounded-xl bg-primary text-on-primary font-bold text-sm hover:bg-primary-container shadow-md transition-all">
-            Salvar Prato
-          </button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Salvar Prato</button>
         </form>
       </div>
     </div>
 
-    <!-- Ingredient Modal Form -->
-    <div id="modal-ing-form" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
-      <div class="bg-surface-container-lowest rounded-2xl max-w-md w-full p-6 shadow-2xl border border-surface-variant relative space-y-4">
-        <button id="close-modal-ing" class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-        <h3 id="ing-modal-title" class="text-lg font-bold text-on-surface">Cadastrar Ingrediente</h3>
-
-        <form id="form-ing-save" class="space-y-4">
+    <!-- Ingredient Modal -->
+    <div id="modal-ing-form" class="modal-overlay hidden">
+      <div class="modal-content">
+        <button id="close-modal-ing" class="modal-close">×</button>
+        <h3 id="ing-modal-title" style="margin-bottom: 16px;">Ingrediente</h3>
+        <form id="form-ing-save">
           <input type="hidden" id="input-ing-id">
-          <div>
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">Nome do Ingrediente</label>
-            <input type="text" id="input-ing-nome" required class="w-full px-4 py-2 rounded-xl border border-outline/30 bg-surface text-sm">
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Unidade de Medida</label>
-              <select id="input-ing-unidade" required class="w-full px-4 py-2 rounded-xl border border-outline/30 bg-surface text-sm">
+          <div class="form-group"><label>Nome</label><input type="text" id="input-ing-nome" required></div>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="form-group"><label>Unidade</label>
+              <select id="input-ing-unidade" required>
                 <option value="kg">kg</option>
                 <option value="g">g</option>
-
                 <option value="l">l</option>
-                <option value="ml">ml</option>
                 <option value="un">un</option>
               </select>
             </div>
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Quantidade em Estoque</label>
-              <input type="number" step="0.01" id="input-ing-quantidade" required class="w-full px-4 py-2 rounded-xl border border-outline/30 bg-surface text-sm">
-            </div>
+            <div class="form-group"><label>Quantidade</label><input type="number" step="0.01" id="input-ing-quantidade" required></div>
           </div>
-          <button type="submit" class="w-full py-3 rounded-xl bg-primary text-on-primary font-bold text-sm hover:bg-primary-container shadow-md transition-all">
-            Salvar Ingrediente
-          </button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Salvar Ingrediente</button>
         </form>
       </div>
     </div>
 
-    <!-- User Account Modal Form -->
-    <div id="modal-user-form" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
-      <div class="bg-surface-container-lowest rounded-2xl max-w-md w-full p-6 shadow-2xl border border-surface-variant relative space-y-4">
-        <button id="close-modal-user" class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-        <h3 id="user-modal-title" class="text-lg font-bold text-on-surface">Criar Conta</h3>
-
-        <form id="form-user-save" class="space-y-4">
-          <input type="hidden" id="input-user-id">
-          <div>
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">Tipo de Conta</label>
-            <select id="input-user-tipo" required class="w-full px-4 py-2 rounded-xl border border-outline/30 bg-surface text-sm">
+    <!-- Account Modal -->
+    <div id="modal-user-form" class="modal-overlay hidden">
+      <div class="modal-content">
+        <button id="close-modal-user" class="modal-close">×</button>
+        <h3 style="margin-bottom: 16px;">Criar Conta</h3>
+        <form id="form-user-save">
+          <div class="form-group"><label>Tipo de Conta</label>
+            <select id="input-user-tipo" required>
               <option value="mesa">Mesa (Cliente)</option>
               <option value="funcionario">Funcionário</option>
             </select>
           </div>
-          <div>
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">Nome de Exibição</label>
-            <input type="text" id="input-user-nome" required placeholder="ex: Mesa 06 ou Maria Atendente" class="w-full px-4 py-2 rounded-xl border border-outline/30 bg-surface text-sm">
+          <div class="form-group"><label>Nome de Exibição</label><input type="text" id="input-user-nome" required placeholder="ex: Mesa 06"></div>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="form-group"><label>Login</label><input type="text" id="input-user-login" required></div>
+            <div class="form-group"><label>Senha</label><input type="password" id="input-user-senha" required></div>
           </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Login</label>
-              <input type="text" id="input-user-login" required class="w-full px-4 py-2 rounded-xl border border-outline/30 bg-surface text-sm">
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Senha</label>
-              <input type="password" id="input-user-senha" required class="w-full px-4 py-2 rounded-xl border border-outline/30 bg-surface text-sm">
-            </div>
-          </div>
-          <div id="group-user-perfil" class="hidden">
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">Perfil de Funcionário</label>
-            <select id="input-user-perfil" class="w-full px-4 py-2 rounded-xl border border-outline/30 bg-surface text-sm">
+          <div id="group-user-perfil" class="form-group hidden">
+            <label>Perfil de Funcionário</label>
+            <select id="input-user-perfil">
               <option value="atendente">Atendente</option>
               <option value="gerente">Gerente</option>
             </select>
           </div>
-          <button type="submit" class="w-full py-3 rounded-xl bg-primary text-on-primary font-bold text-sm hover:bg-primary-container shadow-md transition-all">
-            Salvar Conta
-          </button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Salvar Conta</button>
         </form>
       </div>
     </div>
@@ -231,14 +152,13 @@ function renderManagerTab(tab) {
   const content = document.getElementById('mgr-tab-content');
   if (!content) return;
 
-  // Update button active styling
   document.querySelectorAll('.mgr-tab-btn').forEach(btn => {
     if (btn.dataset.tab === tab) {
-      btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
-      btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+      btn.classList.add('btn-primary');
+      btn.classList.remove('btn-secondary');
     } else {
-      btn.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
-      btn.classList.add('bg-surface-container', 'text-on-surface-variant');
+      btn.classList.remove('btn-primary');
+      btn.classList.add('btn-secondary');
     }
   });
 
@@ -248,124 +168,80 @@ function renderManagerTab(tab) {
   else if (tab === 'accounts') renderAccountsTab(content);
 }
 
-// Tab 1: Financial Analytics (RF-32 to RF-36, RN-08, RN-09)
 function renderAnalyticsTab(container, period = 'Este Mês') {
   const metrics = store.getFinancialMetrics(period);
-
   container.innerHTML = `
-    <div class="space-y-6">
-      <!-- Period Selector Filter -->
+    <div class="flex flex-col gap-6">
       <div class="flex items-center justify-between">
-        <h2 class="text-xl font-bold text-on-surface">Visão Geral do Faturamento</h2>
-        <div class="flex gap-2 bg-surface-container-low p-1 rounded-xl">
-          <button data-period="Hoje" class="period-filter-btn px-4 py-1.5 rounded-lg text-xs font-bold ${period === 'Hoje' ? 'bg-primary text-white shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}">Hoje</button>
-          <button data-period="7 Dias" class="period-filter-btn px-4 py-1.5 rounded-lg text-xs font-bold ${period === '7 Dias' ? 'bg-primary text-white shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}">7 Dias</button>
-          <button data-period="Este Mês" class="period-filter-btn px-4 py-1.5 rounded-lg text-xs font-bold ${period === 'Este Mês' ? 'bg-primary text-white shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}">Este Mês</button>
+        <h3>Faturamento & Vendas</h3>
+        <div class="flex gap-2">
+          <button data-period="Hoje" class="period-filter-btn btn btn-sm ${period === 'Hoje' ? 'btn-primary' : 'btn-secondary'}">Hoje</button>
+          <button data-period="7 Dias" class="period-filter-btn btn btn-sm ${period === '7 Dias' ? 'btn-primary' : 'btn-secondary'}">7 Dias</button>
+          <button data-period="Este Mês" class="period-filter-btn btn btn-sm ${period === 'Este Mês' ? 'btn-primary' : 'btn-secondary'}">Este Mês</button>
         </div>
       </div>
 
-      <!-- Key Performance Indicators Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div class="p-6 bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm space-y-2">
-          <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Faturamento Total</span>
-          <div class="text-3xl font-extrabold text-primary">R$ ${metrics.totalFaturado.toFixed(2)}</div>
-          <p class="text-[11px] text-on-surface-variant">Exclui pedidos cancelados (RN-04)</p>
+      <div class="grid grid-cols-3 gap-6">
+        <div class="card">
+          <span style="font-size: 12px; color: var(--text-muted); text-transform: uppercase;">Faturamento Total</span>
+          <div style="font-size: 28px; font-weight: 700; color: var(--primary);">R$ ${metrics.totalFaturado.toFixed(2)}</div>
         </div>
-
-        <div class="p-6 bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm space-y-2">
-          <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Pedidos Concluídos</span>
-          <div class="text-3xl font-extrabold text-on-surface">${metrics.qtdPedidos}</div>
-          <p class="text-[11px] text-on-surface-variant">Período selecionado: ${metrics.period}</p>
+        <div class="card">
+          <span style="font-size: 12px; color: var(--text-muted); text-transform: uppercase;">Pedidos Finalizados</span>
+          <div style="font-size: 28px; font-weight: 700;">${metrics.qtdPedidos}</div>
         </div>
-
-        <div class="p-6 bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm space-y-2">
-          <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Ticket Médio</span>
-          <div class="text-3xl font-extrabold text-secondary">R$ ${metrics.ticketMedio.toFixed(2)}</div>
-          <p class="text-[11px] text-on-surface-variant">Valor médio por pedido</p>
+        <div class="card">
+          <span style="font-size: 12px; color: var(--text-muted); text-transform: uppercase;">Ticket Médio</span>
+          <div style="font-size: 28px; font-weight: 700; color: var(--secondary);">R$ ${metrics.ticketMedio.toFixed(2)}</div>
         </div>
       </div>
 
-      <!-- Top Selling Dishes Ranking -->
-      <div class="p-6 bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm space-y-4">
-        <h3 class="text-base font-bold text-on-surface">Pratos Mais Vendidos</h3>
-        ${metrics.topDishes.length > 0 ? `
-          <div class="divide-y divide-surface-variant/50">
-            ${metrics.topDishes.map((item, idx) => `
-              <div class="py-3 flex items-center justify-between text-sm">
-                <div class="flex items-center gap-3">
-                  <span class="w-6 h-6 rounded-full bg-primary/10 text-primary font-bold text-xs flex items-center justify-center">${idx + 1}</span>
-                  <span class="font-bold text-on-surface">${item.nome}</span>
-                </div>
-                <span class="font-extrabold text-primary">${item.quantidade} unidades</span>
-              </div>
-            `).join('')}
+      <div class="card">
+        <h4 style="margin-bottom: 12px;">Mais Vendidos</h4>
+        ${metrics.topDishes.length > 0 ? metrics.topDishes.map((item, i) => `
+          <div class="flex items-center justify-between" style="padding: 8px 0; border-bottom: 1px solid var(--border-color);">
+            <span>${i + 1}. <strong>${item.nome}</strong></span>
+            <span style="font-weight: 700; color: var(--primary);">${item.quantidade} un.</span>
           </div>
-        ` : `
-          <p class="text-xs text-on-surface-variant italic py-4">Nenhuma venda registrada no período selecionado.</p>
-        `}
+        `).join('') : '<p style="color: var(--text-muted);">Sem vendas no período.</p>'}
       </div>
     </div>
   `;
 
   document.querySelectorAll('.period-filter-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const p = e.currentTarget.dataset.period;
-      renderAnalyticsTab(container, p);
-    });
+    btn.addEventListener('click', (e) => renderAnalyticsTab(container, e.currentTarget.dataset.period));
   });
 }
 
-// Tab 2: Dishes CRUD (RF-37 to RF-40)
 function renderDishesTab(container) {
   const dishes = store.getDishes();
-
   container.innerHTML = `
-    <div class="space-y-6">
+    <div class="flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h2 class="text-xl font-bold text-on-surface">Gestão de Pratos do Cardápio</h2>
-        <button id="btn-open-add-dish" class="px-4 py-2.5 rounded-xl bg-primary text-on-primary font-bold text-xs shadow-md hover:bg-primary-container transition-all flex items-center gap-2">
-          <span class="material-symbols-outlined text-base">add</span>
-          <span>Novo Prato</span>
-        </button>
+        <h3>Pratos do Cardápio</h3>
+        <button id="btn-open-add-dish" class="btn btn-primary btn-sm">+ Novo Prato</button>
       </div>
-
-      <div class="bg-surface-container-lowest rounded-2xl border border-surface-variant overflow-hidden shadow-sm">
-        <table class="w-full text-left text-sm">
-          <thead class="bg-surface-container-low text-xs font-bold text-on-surface-variant border-b border-surface-variant">
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <table>
+          <thead>
             <tr>
-              <th class="p-4">Prato</th>
-              <th class="p-4">Categoria</th>
-              <th class="p-4">Preço</th>
-              <th class="p-4">Destaque</th>
-              <th class="p-4 text-right">Ações</th>
+              <th>Prato</th>
+              <th>Categoria</th>
+              <th>Preço</th>
+              <th>Destaque</th>
+              <th style="text-align: right;">Ações</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-surface-variant">
+          <tbody>
             ${dishes.map(d => `
-              <tr class="hover:bg-surface-container-lowest/50">
-                <td class="p-4 flex items-center gap-3">
-                  <img src="${d.imagem}" alt="${d.nome}" class="w-10 h-10 rounded-lg object-cover">
-                  <div>
-                    <span class="font-bold text-on-surface">${d.nome}</span>
-                    <p class="text-xs text-on-surface-variant line-clamp-1">${d.descricao}</p>
-                  </div>
-                </td>
-                <td class="p-4 font-semibold text-xs text-on-surface-variant">${d.categoria}</td>
-                <td class="p-4 font-bold text-primary">R$ ${d.preco.toFixed(2)}</td>
-                <td class="p-4">
-                  ${d.destaque ? `
-                    <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold">Sim</span>
-                  ` : `
-                    <span class="px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 text-[10px] font-bold">Não</span>
-                  `}
-                </td>
-                <td class="p-4 text-right space-x-2">
-                  <button data-dish-id="${d.id}" class="btn-edit-dish px-3 py-1.5 rounded-lg bg-surface-container-high text-xs font-bold text-on-surface hover:bg-surface-variant">
-                    Editar
-                  </button>
-                  <button data-dish-id="${d.id}" class="btn-delete-dish px-3 py-1.5 rounded-lg bg-red-100 text-red-700 hover:bg-red-200 text-xs font-bold">
-                    Excluir
-                  </button>
+              <tr>
+                <td><strong>${d.nome}</strong></td>
+                <td>${d.categoria}</td>
+                <td style="color: var(--primary); font-weight: 700;">R$ ${d.preco.toFixed(2)}</td>
+                <td>${d.destaque ? 'Sim' : 'Não'}</td>
+                <td style="text-align: right;">
+                  <button data-dish-id="${d.id}" class="btn-edit-dish btn btn-secondary btn-sm">Editar</button>
+                  <button data-dish-id="${d.id}" class="btn-delete-dish btn btn-danger btn-sm">Excluir</button>
                 </td>
               </tr>
             `).join('')}
@@ -375,27 +251,15 @@ function renderDishesTab(container) {
     </div>
   `;
 
-  document.getElementById('btn-open-add-dish')?.addEventListener('click', () => {
-    openDishModal();
-  });
-
-  document.querySelectorAll('.btn-edit-dish').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const dishId = e.currentTarget.dataset.dishId;
-      openDishModal(dishId);
-    });
-  });
-
-  document.querySelectorAll('.btn-delete-dish').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const dishId = e.currentTarget.dataset.dishId;
-      if (confirm('Tem certeza que deseja excluir este prato?')) {
-        store.deleteDish(dishId);
-        showToast('Prato excluído com sucesso.');
-        renderDishesTab(container);
-      }
-    });
-  });
+  document.getElementById('btn-open-add-dish')?.addEventListener('click', () => openDishModal());
+  document.querySelectorAll('.btn-edit-dish').forEach(btn => btn.addEventListener('click', (e) => openDishModal(e.currentTarget.dataset.dishId)));
+  document.querySelectorAll('.btn-delete-dish').forEach(btn => btn.addEventListener('click', (e) => {
+    if (confirm('Excluir este prato?')) {
+      store.deleteDish(e.currentTarget.dataset.dishId);
+      showToast('Prato excluído!');
+      renderDishesTab(container);
+    }
+  }));
 }
 
 function openDishModal(dishId = null) {
@@ -405,7 +269,6 @@ function openDishModal(dishId = null) {
   const recipeBuilder = document.getElementById('dish-recipe-builder');
 
   if (!modal || !form || !recipeBuilder) return;
-
   recipeBuilder.innerHTML = '';
 
   if (dishId) {
@@ -420,13 +283,9 @@ function openDishModal(dishId = null) {
     document.getElementById('input-dish-imagem').value = dish.imagem;
     document.getElementById('input-dish-destaque').checked = dish.destaque;
 
-    if (dish.ingredientes && dish.ingredientes.length > 0) {
-      dish.ingredientes.forEach(req => addRecipeRow(req.ingrediente_id, req.quantidade));
-    } else {
-      addRecipeRow();
-    }
+    if (dish.ingredientes) dish.ingredientes.forEach(req => addRecipeRow(req.ingrediente_id, req.quantidade));
   } else {
-    title.textContent = 'Cadastrar Novo Prato';
+    title.textContent = 'Novo Prato';
     form.reset();
     document.getElementById('input-dish-id').value = '';
     addRecipeRow();
@@ -436,71 +295,46 @@ function openDishModal(dishId = null) {
 }
 
 function addRecipeRow(ingId = '', qty = 0.1) {
-  const recipeBuilder = document.getElementById('dish-recipe-builder');
-  if (!recipeBuilder) return;
+  const builder = document.getElementById('dish-recipe-builder');
+  if (!builder) return;
 
   const ingredients = store.getIngredients();
-  const rowId = 'recipe_row_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4);
-
   const div = document.createElement('div');
-  div.id = rowId;
   div.className = 'flex items-center gap-2';
   div.innerHTML = `
-    <select class="recipe-ing-id flex-1 px-3 py-1.5 rounded-lg border border-outline/30 bg-surface text-xs">
-      <option value="">Selecione o ingrediente...</option>
-      ${ingredients.map(i => `
-        <option value="${i.id}" ${i.id === ingId ? 'selected' : ''}>${i.nome} (${i.unidade})</option>
-      `).join('')}
+    <select class="recipe-ing-id flex-1">
+      <option value="">Ingrediente...</option>
+      ${ingredients.map(i => `<option value="${i.id}" ${i.id === ingId ? 'selected' : ''}>${i.nome} (${i.unidade})</option>`).join('')}
     </select>
-    <input type="number" step="0.01" value="${qty}" class="recipe-ing-qty w-24 px-3 py-1.5 rounded-lg border border-outline/30 bg-surface text-xs" placeholder="Qtd">
-    <button type="button" class="btn-remove-recipe-row text-red-600 hover:text-red-800 text-xs font-bold">X</button>
+    <input type="number" step="0.01" value="${qty}" class="recipe-ing-qty" style="width: 100px;">
+    <button type="button" class="btn-remove-recipe-row btn btn-danger btn-sm">X</button>
   `;
 
-  div.querySelector('.btn-remove-recipe-row').addEventListener('click', () => {
-    div.remove();
-  });
-
-  recipeBuilder.appendChild(div);
+  div.querySelector('.btn-remove-recipe-row').addEventListener('click', () => div.remove());
+  builder.appendChild(div);
 }
 
-// Tab 3: Stock CRUD (RF-21 to RF-23)
 function renderStockTab(container) {
   const ingredients = store.getIngredients();
-
   container.innerHTML = `
-    <div class="space-y-6">
+    <div class="flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h2 class="text-xl font-bold text-on-surface">Controle de Estoque de Ingredientes</h2>
-        <button id="btn-open-add-ing" class="px-4 py-2.5 rounded-xl bg-primary text-on-primary font-bold text-xs shadow-md hover:bg-primary-container transition-all flex items-center gap-2">
-          <span class="material-symbols-outlined text-base">add</span>
-          <span>Novo Ingrediente</span>
-        </button>
+        <h3>Estoque de Ingredientes</h3>
+        <button id="btn-open-add-ing" class="btn btn-primary btn-sm">+ Novo Ingrediente</button>
       </div>
-
-      <div class="bg-surface-container-lowest rounded-2xl border border-surface-variant overflow-hidden shadow-sm">
-        <table class="w-full text-left text-sm">
-          <thead class="bg-surface-container-low text-xs font-bold text-on-surface-variant border-b border-surface-variant">
-            <tr>
-              <th class="p-4">Ingrediente</th>
-              <th class="p-4">Unidade</th>
-              <th class="p-4">Quantidade Atual</th>
-              <th class="p-4 text-right">Ações</th>
-            </tr>
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <table>
+          <thead>
+            <tr><th>Ingrediente</th><th>Unidade</th><th>Quantidade</th><th style="text-align: right;">Ações</th></tr>
           </thead>
-          <tbody class="divide-y divide-surface-variant">
-            ${ingredients.map(ing => `
-              <tr class="hover:bg-surface-container-lowest/50">
-                <td class="p-4 font-bold text-on-surface">${ing.nome}</td>
-                <td class="p-4 text-xs text-on-surface-variant font-semibold uppercase">${ing.unidade}</td>
-                <td class="p-4">
-                  <span class="font-extrabold ${ing.quantidade < 2 ? 'text-red-600' : 'text-on-surface'}">
-                    ${ing.quantidade} ${ing.unidade}
-                  </span>
-                </td>
-                <td class="p-4 text-right space-x-2">
-                  <button data-ing-id="${ing.id}" class="btn-edit-ing-qty px-3 py-1.5 rounded-lg bg-surface-container-high text-xs font-bold text-on-surface hover:bg-surface-variant">
-                    Ajustar Estoque
-                  </button>
+          <tbody>
+            ${ingredients.map(i => `
+              <tr>
+                <td><strong>${i.nome}</strong></td>
+                <td>${i.unidade}</td>
+                <td style="font-weight: 700;">${i.quantidade} ${i.unidade}</td>
+                <td style="text-align: right;">
+                  <button data-ing-id="${i.id}" class="btn-edit-ing-qty btn btn-secondary btn-sm">Editar</button>
                 </td>
               </tr>
             `).join('')}
@@ -510,35 +344,23 @@ function renderStockTab(container) {
     </div>
   `;
 
-  document.getElementById('btn-open-add-ing')?.addEventListener('click', () => {
-    openIngModal();
-  });
-
-  document.querySelectorAll('.btn-edit-ing-qty').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const ingId = e.currentTarget.dataset.ingId;
-      openIngModal(ingId);
-    });
-  });
+  document.getElementById('btn-open-add-ing')?.addEventListener('click', () => openIngModal());
+  document.querySelectorAll('.btn-edit-ing-qty').forEach(btn => btn.addEventListener('click', (e) => openIngModal(e.currentTarget.dataset.ingId)));
 }
 
 function openIngModal(ingId = null) {
   const modal = document.getElementById('modal-ing-form');
-  const title = document.getElementById('ing-modal-title');
   const form = document.getElementById('form-ing-save');
-
   if (!modal || !form) return;
 
   if (ingId) {
     const ing = store.getIngredientById(ingId);
     if (!ing) return;
-    title.textContent = 'Ajustar Ingrediente';
     document.getElementById('input-ing-id').value = ing.id;
     document.getElementById('input-ing-nome').value = ing.nome;
     document.getElementById('input-ing-unidade').value = ing.unidade;
     document.getElementById('input-ing-quantidade').value = ing.quantidade;
   } else {
-    title.textContent = 'Novo Ingrediente';
     form.reset();
     document.getElementById('input-ing-id').value = '';
   }
@@ -546,50 +368,28 @@ function openIngModal(ingId = null) {
   modal.classList.remove('hidden');
 }
 
-// Tab 4: Accounts Management (RF-10, RF-11)
 function renderAccountsTab(container) {
   const users = store.getUsers();
-
   container.innerHTML = `
-    <div class="space-y-6">
+    <div class="flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h2 class="text-xl font-bold text-on-surface">Gerenciamento de Contas</h2>
-        <button id="btn-open-add-user" class="px-4 py-2.5 rounded-xl bg-primary text-on-primary font-bold text-xs shadow-md hover:bg-primary-container transition-all flex items-center gap-2">
-          <span class="material-symbols-outlined text-base">person_add</span>
-          <span>Criar Conta</span>
-        </button>
+        <h3>Contas de Usuários</h3>
+        <button id="btn-open-add-user" class="btn btn-primary btn-sm">+ Criar Conta</button>
       </div>
-
-      <div class="bg-surface-container-lowest rounded-2xl border border-surface-variant overflow-hidden shadow-sm">
-        <table class="w-full text-left text-sm">
-          <thead class="bg-surface-container-low text-xs font-bold text-on-surface-variant border-b border-surface-variant">
-            <tr>
-              <th class="p-4">Nome / Mesa</th>
-              <th class="p-4">Tipo</th>
-              <th class="p-4">Login</th>
-              <th class="p-4">Status</th>
-              <th class="p-4 text-right">Ações</th>
-            </tr>
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <table>
+          <thead>
+            <tr><th>Nome</th><th>Tipo</th><th>Login</th><th>Status</th><th style="text-align: right;">Ações</th></tr>
           </thead>
-          <tbody class="divide-y divide-surface-variant">
+          <tbody>
             ${users.map(u => `
-              <tr class="hover:bg-surface-container-lowest/50">
-                <td class="p-4 font-bold text-on-surface">${u.nome}</td>
-                <td class="p-4 text-xs font-semibold uppercase text-on-surface-variant">
-                  ${u.tipo === 'mesa' ? 'Mesa (Cliente)' : `Funcionário (${u.perfil})`}
-                </td>
-                <td class="p-4 font-mono text-xs">${u.login}</td>
-                <td class="p-4">
-                  ${u.ativo !== false ? `
-                    <span class="px-2.5 py-0.5 rounded-full bg-green-100 text-green-800 text-[10px] font-bold">Ativo</span>
-                  ` : `
-                    <span class="px-2.5 py-0.5 rounded-full bg-red-100 text-red-800 text-[10px] font-bold">Inativo</span>
-                  `}
-                </td>
-                <td class="p-4 text-right space-x-2">
-                  <button data-user-id="${u.id}" class="btn-toggle-user-active px-3 py-1.5 rounded-lg border border-outline-variant text-xs font-bold text-on-surface hover:bg-surface-container">
-                    ${u.ativo !== false ? 'Inativar' : 'Reativar'}
-                  </button>
+              <tr>
+                <td><strong>${u.nome}</strong></td>
+                <td>${u.tipo === 'mesa' ? 'Mesa' : `Funcionário (${u.perfil})`}</td>
+                <td><code>${u.login}</code></td>
+                <td>${u.ativo !== false ? '<span class="badge badge-available">Ativo</span>' : '<span class="badge badge-unavailable">Inativo</span>'}</td>
+                <td style="text-align: right;">
+                  <button data-user-id="${u.id}" class="btn-toggle-user-active btn btn-secondary btn-sm">${u.ativo !== false ? 'Inativar' : 'Reativar'}</button>
                 </td>
               </tr>
             `).join('')}
@@ -600,56 +400,29 @@ function renderAccountsTab(container) {
   `;
 
   document.getElementById('btn-open-add-user')?.addEventListener('click', () => {
-    openUserModal();
+    const modal = document.getElementById('modal-user-form');
+    document.getElementById('form-user-save')?.reset();
+    modal?.classList.remove('hidden');
   });
 
   document.querySelectorAll('.btn-toggle-user-active').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      const userId = e.currentTarget.dataset.userId;
-      store.toggleUserActive(userId);
-      showToast('Status da conta alterado com sucesso.');
+      store.toggleUserActive(e.currentTarget.dataset.userId);
+      showToast('Status alterado!');
       renderAccountsTab(container);
     });
   });
 }
 
-function openUserModal() {
-  const modal = document.getElementById('modal-user-form');
-  const form = document.getElementById('form-user-save');
-  if (!modal || !form) return;
-
-  form.reset();
-  document.getElementById('input-user-id').value = '';
-  modal.classList.remove('hidden');
-}
-
 function setupManagerEvents() {
-  // Tab Switchers
-  document.querySelectorAll('.mgr-tab-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const tab = e.currentTarget.dataset.tab;
-      renderManagerTab(tab);
-    });
-  });
+  document.querySelectorAll('.mgr-tab-btn').forEach(btn => btn.addEventListener('click', (e) => renderManagerTab(e.currentTarget.dataset.tab)));
 
-  // Modal Closers
-  document.getElementById('close-modal-dish')?.addEventListener('click', () => {
-    document.getElementById('modal-dish-form')?.classList.add('hidden');
-  });
+  document.getElementById('close-modal-dish')?.addEventListener('click', () => document.getElementById('modal-dish-form')?.classList.add('hidden'));
+  document.getElementById('close-modal-ing')?.addEventListener('click', () => document.getElementById('modal-ing-form')?.classList.add('hidden'));
+  document.getElementById('close-modal-user')?.addEventListener('click', () => document.getElementById('modal-user-form')?.classList.add('hidden'));
 
-  document.getElementById('close-modal-ing')?.addEventListener('click', () => {
-    document.getElementById('modal-ing-form')?.classList.add('hidden');
-  });
+  document.getElementById('btn-add-recipe-row')?.addEventListener('click', () => addRecipeRow());
 
-  document.getElementById('close-modal-user')?.addEventListener('click', () => {
-    document.getElementById('modal-user-form')?.classList.add('hidden');
-  });
-
-  document.getElementById('btn-add-recipe-row')?.addEventListener('click', () => {
-    addRecipeRow();
-  });
-
-  // Save Dish Submit
   document.getElementById('form-dish-save')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const id = document.getElementById('input-dish-id').value;
@@ -665,29 +438,15 @@ function setupManagerEvents() {
     recipeRows.forEach(row => {
       const ingId = row.querySelector('.recipe-ing-id').value;
       const qty = parseFloat(row.querySelector('.recipe-ing-qty').value);
-      if (ingId && qty > 0) {
-        ingredientes.push({ ingrediente_id: ingId, quantidade: qty, unidade: 'kg' });
-      }
+      if (ingId && qty > 0) ingredientes.push({ ingrediente_id: ingId, quantidade: qty, unidade: 'kg' });
     });
 
-    store.saveDish({
-      id: id || undefined,
-      nome,
-      preco,
-      categoria,
-      descricao,
-      imagem,
-      destaque,
-      ativo: true,
-      ingredientes
-    });
-
+    store.saveDish({ id: id || undefined, nome, preco, categoria, descricao, imagem, destaque, ativo: true, ingredientes });
     document.getElementById('modal-dish-form')?.classList.add('hidden');
     showToast('Prato salvo com sucesso!');
     renderManagerTab('dishes');
   });
 
-  // Save Ingredient Submit
   document.getElementById('form-ing-save')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const id = document.getElementById('input-ing-id').value;
@@ -695,29 +454,18 @@ function setupManagerEvents() {
     const unidade = document.getElementById('input-ing-unidade').value;
     const quantidade = parseFloat(document.getElementById('input-ing-quantidade').value);
 
-    store.saveIngredient({
-      id: id || undefined,
-      nome,
-      unidade,
-      quantidade
-    });
-
+    store.saveIngredient({ id: id || undefined, nome, unidade, quantidade });
     document.getElementById('modal-ing-form')?.classList.add('hidden');
-    showToast('Ingrediente salvo com sucesso!');
+    showToast('Ingrediente salvo!');
     renderManagerTab('stock');
   });
 
-  // User Account Type Toggle
   document.getElementById('input-user-tipo')?.addEventListener('change', (e) => {
-    const perfilGroup = document.getElementById('group-user-perfil');
-    if (e.target.value === 'funcionario') {
-      perfilGroup?.classList.remove('hidden');
-    } else {
-      perfilGroup?.classList.add('hidden');
-    }
+    const group = document.getElementById('group-user-perfil');
+    if (e.target.value === 'funcionario') group?.classList.remove('hidden');
+    else group?.classList.add('hidden');
   });
 
-  // Save User Submit
   document.getElementById('form-user-save')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const tipo = document.getElementById('input-user-tipo').value;
@@ -726,47 +474,33 @@ function setupManagerEvents() {
     const senha = document.getElementById('input-user-senha').value;
     const perfil = tipo === 'funcionario' ? document.getElementById('input-user-perfil').value : null;
 
-    store.saveUser({
-      tipo,
-      nome,
-      login,
-      senha,
-      perfil,
-      ativo: true
-    });
-
+    store.saveUser({ tipo, nome, login, senha, perfil, ativo: true });
     document.getElementById('modal-user-form')?.classList.add('hidden');
-    showToast('Conta criada com sucesso!');
+    showToast('Conta criada!');
     renderManagerTab('accounts');
   });
 
-  // Export JSON Backup (RF-41)
   document.getElementById('btn-export-backup')?.addEventListener('click', () => {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(store.exportData());
-    const downloadAnchor = document.createElement('a');
-    downloadAnchor.setAttribute("href", dataStr);
-    downloadAnchor.setAttribute("download", `backup_restaurante_${new Date().toISOString().slice(0,10)}.json`);
-    document.body.appendChild(downloadAnchor);
-    downloadAnchor.click();
-    downloadAnchor.remove();
-    showToast('Backup JSON exportado com sucesso!');
+    const anchor = document.createElement('a');
+    anchor.setAttribute("href", dataStr);
+    anchor.setAttribute("download", `backup_${new Date().toISOString().slice(0,10)}.json`);
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    showToast('Backup JSON exportado!');
   });
 
-  // Import JSON Backup (RF-42)
   const fileInput = document.getElementById('json-file-input');
-  document.getElementById('btn-import-backup')?.addEventListener('click', () => {
-    fileInput?.click();
-  });
-
+  document.getElementById('btn-import-backup')?.addEventListener('click', () => fileInput?.click());
   fileInput?.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
     const reader = new FileReader();
-    reader.onload = (event) => {
+    reader.onload = (ev) => {
       try {
-        store.importData(event.target.result);
-        showToast('Dados importados e sistema restaurado com sucesso!');
+        store.importData(ev.target.result);
+        showToast('Dados restaurados!');
         renderManagerTab(activeTab);
       } catch (err) {
         alert(err.message);
