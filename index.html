@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabor & Gestão — Sistema de Gerenciamento de Restaurante</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-container": "#fffbff",
+            "tertiary-container": "#a36700",
+            "surface-container-low": "#f6f3ee",
+            "outline-variant": "#e2bfb5",
+            "on-surface-variant": "#59413a",
+            "surface-container": "#f0ede8",
+            "surface-container-high": "#ebe8e3",
+            "surface": "#fcf9f4",
+            "surface-variant": "#e5e2dd",
+            "on-secondary-container": "#795c52",
+            "secondary-container": "#fed7cb",
+            "surface-tint": "#af3101",
+            "secondary": "#75584e",
+            "on-secondary-fixed-variant": "#5b4138",
+            "error": "#ba1a1a",
+            "outline": "#8d7168",
+            "surface-container-highest": "#e5e2dd",
+            "surface-bright": "#fcf9f4",
+            "on-secondary": "#ffffff",
+            "secondary-fixed-dim": "#e4beb3",
+            "primary": "#ab2f00",
+            "on-error": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-primary-fixed": "#3a0a00",
+            "primary-container": "#ce461a",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-primary-container": "#fffbff",
+            "on-background": "#1c1c19",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#2b160f",
+            "on-tertiary-fixed": "#2a1700",
+            "tertiary-fixed-dim": "#ffb95f",
+            "on-primary": "#ffffff",
+            "on-primary-fixed-variant": "#862300",
+            "background": "#fcf9f4",
+            "primary-fixed": "#ffdbd1",
+            "secondary-fixed": "#ffdbcf",
+            "inverse-surface": "#31302d",
+            "on-surface": "#1c1c19",
+            "primary-fixed-dim": "#ffb59f",
+            "tertiary": "#825100"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          spacing: {
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "gutter-lg": "1.75rem",
+            "gutter-sm": "0.75rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "margin-desktop": "2.5rem",
+            gutter: "1.25rem",
+            margin: "1.5rem"
+          },
+          fontFamily: {
+            body: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background font-body text-on-surface min-h-screen flex flex-col selection:bg-secondary-container selection:text-on-secondary-container">
+
+  <!-- Header Section -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-sm border-b border-surface-variant">
+    <div class="h-20 w-full px-4 md:px-margin-desktop flex items-center justify-between gap-gutter">
+      <!-- Logo & Brand -->
+      <div class="flex items-center gap-space-lg">
+        <div id="brand-logo" class="flex items-center gap-space-sm cursor-pointer">
+          <div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center font-bold text-xl shadow-md">
+            S
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-lg text-on-surface tracking-tight leading-none">Sabor & Gestão</span>
+            <span class="text-xs text-on-surface-variant tracking-wide mt-1">Gastronomia & Operações</span>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav id="nav-links" class="hidden xl:flex items-center gap-space-xs bg-surface-container-low p-1 rounded-xl">
+          <button data-path="landing" class="nav-btn px-space-md py-space-sm rounded-lg text-sm font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all">
+            Início / Cardápio
+          </button>
+          <button data-path="client" class="nav-btn px-space-md py-space-sm rounded-lg text-sm font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all">
+            Área do Cliente (Mesa)
+          </button>
+          <button data-path="staff" class="nav-btn px-space-md py-space-sm rounded-lg text-sm font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all">
+            Painel do Atendente
+          </button>
+          <button data-path="manager" class="nav-btn px-space-md py-space-sm rounded-lg text-sm font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all">
+            Gestão & Faturamento
+          </button>
+        </nav>
+      </div>
+
+      <!-- Right Header Status & Session -->
+      <div class="flex items-center gap-space-md">
+        <div class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-lowest shadow-sm">
+          <span class="w-2.5 h-2.5 rounded-full bg-green-600 animate-pulse"></span>
+          <span class="text-xs text-on-surface-variant font-medium">LocalStorage Active</span>
+        </div>
+
+        <div class="h-6 w-px bg-surface-variant hidden sm:block"></div>
+
+        <div id="user-session-info" class="flex items-center gap-space-sm">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="w-full pt-20 bg-background flex-1 flex flex-col">
+    <!-- View Containers -->
+    <div id="view-landing" class="view-section hidden w-full"></div>
+    <div id="view-client" class="view-section hidden w-full"></div>
+    <div id="view-staff" class="view-section hidden w-full"></div>
+    <div id="view-manager" class="view-section hidden w-full"></div>
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-message" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-space-sm bg-inverse-surface text-white px-space-md py-space-sm rounded-xl shadow-2xl">
+    <span class="material-symbols-outlined text-amber-400" style="font-variation-settings: 'FILL' 1;">info</span>
+    <span id="toast-text" class="text-sm font-medium">Ação executada com sucesso.</span>
+  </div>
+
+  <!-- Global Application Scripts -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
