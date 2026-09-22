@@ -1,4 +1,6 @@
-// js/store.js - Data Store & LocalStorage Management System
+// js/store.js - Data Store & LocalStorage + Supabase REST API Sync Management
+
+import { fetchTable, insertRow, updateRow, deleteRow } from './api.js';
 
 const STORAGE_KEY = 'restaurant_system_db_v1';
 
@@ -152,6 +154,7 @@ export class Store {
   constructor(storage = typeof localStorage !== 'undefined' ? localStorage : null) {
     this.storage = storage;
     this.data = this._loadData();
+    this.syncFromRemote().catch(e => console.warn('Initial remote sync warning:', e.message));
   }
 
   _loadData() {
@@ -176,6 +179,76 @@ export class Store {
     this.data = data;
     if (this.storage) {
       this.storage.setItem(STORAGE_KEY, JSON.stringify(this.data));
+    }
+  }
+
+  // --- Remote Syncing with Supabase ---
+  async syncFromRemote() {
+    try {
+      const remotePratos = await fetchTable('pratos');
+      if (Array.isArray(remotePratos) && remotePratos.length > 0) {
+        remotePratos.forEach(rp => {
+          const mapped = {
+            id: rp.id,
+            nome: rp.nome,
+            descricao: rp.descricao || '',
+            preco: parseFloat(rp.preco) || 0,
+            categoria: rp.categoria_id || 'Geral',
+            imagem: rp.imagem_url || '',
+            destaque: rp.destaque ?? false,
+            ativo: rp.ativo ?? true,
+            ingredientes: rp.ingredientes || []
+          };
+          const idx = this.data.pratos.findIndex(p => p.id === mapped.id);
+          if (idx !== -1) {
+            this.data.pratos[idx] = { ...this.data.pratos[idx], ...mapped };
+          } else {
+            this.data.pratos.push(mapped);
+          }
+        });
+      }
+
+      const remoteIngredientes = await fetchTable('ingredientes');
+      if (Array.isArray(remoteIngredientes) && remoteIngredientes.length > 0) {
+        remoteIngredientes.forEach(ri => {
+          const idx = this.data.ingredientes.findIndex(i => i.id === ri.id);
+          if (idx !== -1) {
+            this.data.ingredientes[idx] = { ...this.data.ingredientes[idx], ...ri };
+          } else {
+            this.data.ingredientes.push(ri);
+          }
+        });
+      }
+
+      const remotePedidos = await fetchTable('pedidos');
+      if (Array.isArray(remotePedidos) && remotePedidos.length > 0) {
+        remotePedidos.forEach(rp => {
+          const idx = this.data.pedidos.findIndex(p => p.id === rp.id);
+          if (idx !== -1) {
+            this.data.pedidos[idx] = { ...this.data.pedidos[idx], ...rp };
+          } else {
+            this.data.pedidos.push(rp);
+          }
+        });
+      }
+
+      const remoteChamados = await fetchTable('chamados');
+      if (Array.isArray(remoteChamados) && remoteChamados.length > 0) {
+        remoteChamados.forEach(rc => {
+          const idx = this.data.chamados.findIndex(c => c.id === rc.id);
+          if (idx !== -1) {
+            this.data.chamados[idx] = { ...this.data.chamados[idx], ...rc };
+          } else {
+            this.data.chamados.push(rc);
+          }
+        });
+      }
+
+      this._saveData();
+      return true;
+    } catch (err) {
+      console.warn('Failed to sync from remote Supabase:', err.message);
+      return false;
     }
   }
 
@@ -229,13 +302,16 @@ export class Store {
   }
 
   saveIngredient(ing) {
-    if (!ing.id) {
+    const isNew = !ing.id;
+    if (isNew) {
       ing.id = 'ing_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4);
       this.data.ingredientes.push(ing);
+      insertRow('ingredientes', ing).catch(() => {});
     } else {
       const idx = this.data.ingredientes.findIndex(i => i.id === ing.id);
       if (idx !== -1) {
         this.data.ingredientes[idx] = { ...this.data.ingredientes[idx], ...ing };
+        updateRow('ingredientes', 'id', ing.id, ing).catch(() => {});
       }
     }
     this._saveData();
@@ -247,6 +323,7 @@ export class Store {
     if (ing) {
       ing.quantidade = Math.max(0, parseFloat(newQty) || 0);
       this._saveData();
+      updateRow('ingredientes', 'id', id, { quantidade: ing.quantidade }).catch(() => {});
     }
     return ing;
   }
@@ -289,13 +366,29 @@ export class Store {
   }
 
   saveDish(dish) {
-    if (!dish.id) {
+    const isNew = !dish.id;
+    if (isNew) {
       dish.id = 'prato_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4);
       this.data.pratos.push(dish);
+      insertRow('pratos', {
+        id: dish.id,
+        nome: dish.nome,
+        descricao: dish.descricao,
+        preco: dish.preco,
+        destaque: dish.destaque,
+        ativo: dish.ativo
+      }).catch(() => {});
     } else {
       const idx = this.data.pratos.findIndex(p => p.id === dish.id);
       if (idx !== -1) {
         this.data.pratos[idx] = { ...this.data.pratos[idx], ...dish };
+        updateRow('pratos', 'id', dish.id, {
+          nome: dish.nome,
+          descricao: dish.descricao,
+          preco: dish.preco,
+          destaque: dish.destaque,
+          ativo: dish.ativo
+        }).catch(() => {});
       }
     }
     this._saveData();
@@ -305,6 +398,7 @@ export class Store {
   deleteDish(id) {
     this.data.pratos = this.data.pratos.filter(p => p.id !== id);
     this._saveData();
+    deleteRow('pratos', 'id', id).catch(() => {});
   }
 
   // --- Orders ---
@@ -344,6 +438,7 @@ export class Store {
           const ing = this.getIngredientById(req.ingrediente_id);
           if (ing) {
             ing.quantidade = Math.max(0, ing.quantidade - req.quantidade * item.quantidade);
+            updateRow('ingredientes', 'id', ing.id, { quantidade: ing.quantidade }).catch(() => {});
           }
         }
       }
@@ -364,6 +459,7 @@ export class Store {
 
     this.data.pedidos.unshift(newOrder);
     this._saveData();
+    insertRow('pedidos', newOrder).catch(() => {});
     return newOrder;
   }
 
@@ -385,6 +481,7 @@ export class Store {
             const ing = this.getIngredientById(req.ingrediente_id);
             if (ing) {
               ing.quantidade = parseFloat((ing.quantidade + req.quantidade * item.quantidade).toFixed(3));
+              updateRow('ingredientes', 'id', ing.id, { quantidade: ing.quantidade }).catch(() => {});
             }
           }
         }
@@ -392,6 +489,7 @@ export class Store {
     }
 
     this._saveData();
+    updateRow('pedidos', 'id', orderId, { status: newStatus, atualizado_em: order.atualizado_em }).catch(() => {});
     return order;
   }
 
@@ -422,6 +520,7 @@ export class Store {
 
     this.data.chamados.unshift(newCall);
     this._saveData();
+    insertRow('chamados', newCall).catch(() => {});
     return newCall;
   }
 
@@ -431,6 +530,7 @@ export class Store {
       call.status = 'Atendido';
       call.atendido_em = new Date().toISOString();
       this._saveData();
+      updateRow('chamados', 'id', callId, { status: 'Atendido', atendido_em: call.atendido_em }).catch(() => {});
     }
     return call;
   }

@@ -1,6 +1,7 @@
 // tests/store.test.js
 import assert from 'assert';
 import { Store } from '../js/store.js';
+import { getApiUrl, getApiKey } from '../js/api.js';
 
 // Mock localStorage for Node environment
 class LocalStorageMock {
@@ -20,6 +21,11 @@ class LocalStorageMock {
 
 async function runTests() {
   console.log('Running Store unit tests...');
+
+  // Test 0: API Obfuscation Credentials
+  assert.strictEqual(getApiUrl(), 'https://vhrpptqqzoltuzvjiiqn.supabase.co/rest/v1', 'API URL decoded correctly');
+  assert.strictEqual(getApiKey(), 'sb_publishable_DBYnu-fuGsRW-vVj8mbKgQ_pBAT3mND', 'API Key decoded correctly');
+  console.log('✔ Test 0 passed: API Credential Obfuscation');
 
   // Test 1: Initialization and Seed Data
   const mockStorage = new LocalStorageMock();
