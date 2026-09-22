@@ -20,6 +20,8 @@ export function renderClientView() {
     return;
   }
 
+  const unpaidTotal = store.getTableUnpaidTotal(currentUser.id);
+
   container.innerHTML = `
     <div class="container" style="display: flex; flex-direction: column; gap: 32px;">
 
@@ -29,7 +31,11 @@ export function renderClientView() {
           <span class="badge badge-available">Mesa Ativa</span>
           <h1 style="font-size: 24px; margin-top: 4px;">Fazer Pedido — ${currentUser.nome}</h1>
         </div>
-        <div class="flex gap-3">
+        <div class="flex gap-3 items-center" style="flex-wrap: wrap;">
+          <button id="btn-pagar-conta" class="btn btn-secondary" style="background-color: #2e7d32; color: #fff; border-color: #2e7d32;">
+            <span class="material-symbols-outlined">payments</span>
+            <span>Pagar Conta (R$ <span id="unpaid-balance-text">${unpaidTotal.toFixed(2)}</span>)</span>
+          </button>
           <button id="btn-chamar-atendente" class="btn btn-secondary">
             <span class="material-symbols-outlined">notifications_active</span>
             <span>Chamar Funcionário</span>
@@ -78,6 +84,30 @@ export function renderClientView() {
       </div>
     </div>
 
+    <!-- Modal Payment (Pagar Conta) -->
+    <div id="modal-payment" class="modal-overlay hidden">
+      <div class="modal-content">
+        <button id="close-modal-payment" class="modal-close">×</button>
+        <h3 style="margin-bottom: 16px;">Pagar Conta da ${currentUser.nome}</h3>
+        <div style="background-color: var(--bg-body); padding: 16px; border-radius: 8px; margin-bottom: 16px; text-align: center;">
+          <span style="color: var(--text-muted); font-size: 14px;">Total Pendente:</span>
+          <div id="modal-payment-total" style="font-size: 28px; font-weight: 700; color: #2e7d32;">R$ ${unpaidTotal.toFixed(2)}</div>
+        </div>
+        <form id="form-process-payment">
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Forma de Pagamento</label>
+            <select id="select-payment-method" class="form-control" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color);">
+              <option value="PIX">PIX (Qr Code instantâneo)</option>
+              <option value="Cartão de Crédito">Cartão de Crédito</option>
+              <option value="Cartão de Débito">Cartão de Débito</option>
+              <option value="Dinheiro">Dinheiro no Balcão</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; background-color: #2e7d32; border-color: #2e7d32;">Finalizar e Pagar Conta</button>
+        </form>
+      </div>
+    </div>
+
     <!-- Modal Call Staff -->
     <div id="modal-call-staff" class="modal-overlay hidden">
       <div class="modal-content">
@@ -98,6 +128,19 @@ export function renderClientView() {
   renderCart();
   renderClientHistory();
   setupClientEvents();
+
+  // Subscribe to real-time database updates from Store
+  store.subscribe(() => {
+    if (document.getElementById('view-client') && currentUser) {
+      renderClientHistory();
+      renderClientMenuGrid('all');
+      const updatedTotal = store.getTableUnpaidTotal(currentUser.id);
+      const balanceElem = document.getElementById('unpaid-balance-text');
+      if (balanceElem) balanceElem.textContent = updatedTotal.toFixed(2);
+      const modalTotalElem = document.getElementById('modal-payment-total');
+      if (modalTotalElem) modalTotalElem.textContent = `R$ ${updatedTotal.toFixed(2)}`;
+    }
+  });
 }
 
 function renderClientMenuGrid(category = 'all') {
@@ -237,7 +280,7 @@ function renderClientHistory() {
     <div class="card">
       <div class="flex items-center justify-between" style="margin-bottom: 8px;">
         <span style="font-weight: 600;">#${o.id}</span>
-        <span class="badge badge-pending">${o.status}</span>
+        <span class="badge ${o.status === 'Pago' ? 'badge-available' : 'badge-pending'}">${o.status}</span>
       </div>
       <div style="font-size: 14px; margin-bottom: 8px;">
         ${o.itens.map(i => `<div>${i.quantidade}x ${i.nome_prato} (R$ ${(i.preco_unitario * i.quantidade).toFixed(2)})</div>`).join('')}
@@ -249,10 +292,22 @@ function renderClientHistory() {
 
 function setupClientEvents() {
   const modalCart = document.getElementById('modal-cart');
+  const modalPayment = document.getElementById('modal-payment');
   const modalCall = document.getElementById('modal-call-staff');
 
   document.getElementById('btn-toggle-cart')?.addEventListener('click', () => modalCart?.classList.remove('hidden'));
   document.getElementById('close-modal-cart')?.addEventListener('click', () => modalCart?.classList.add('hidden'));
+
+  document.getElementById('btn-pagar-conta')?.addEventListener('click', () => {
+    const unpaid = store.getTableUnpaidTotal(currentUser.id);
+    if (unpaid <= 0) {
+      alert('Não existem pedidos pendentes de pagamento para esta mesa.');
+      return;
+    }
+    modalPayment?.classList.remove('hidden');
+  });
+  document.getElementById('close-modal-payment')?.addEventListener('click', () => modalPayment?.classList.add('hidden'));
+
   document.getElementById('btn-chamar-atendente')?.addEventListener('click', () => modalCall?.classList.remove('hidden'));
   document.getElementById('close-modal-call')?.addEventListener('click', () => modalCall?.classList.add('hidden'));
 
@@ -277,7 +332,25 @@ function setupClientEvents() {
       modalCart?.classList.add('hidden');
       renderClientMenuGrid('all');
       renderClientHistory();
+      const unpaid = store.getTableUnpaidTotal(currentUser.id);
+      const balanceElem = document.getElementById('unpaid-balance-text');
+      if (balanceElem) balanceElem.textContent = unpaid.toFixed(2);
       showToast('Pedido realizado com sucesso!');
+    } catch (e) {
+      alert(e.message);
+    }
+  });
+
+  document.getElementById('form-process-payment')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const method = document.getElementById('select-payment-method').value;
+    try {
+      store.processPayment(currentUser.id, method);
+      modalPayment?.classList.add('hidden');
+      renderClientHistory();
+      const balanceElem = document.getElementById('unpaid-balance-text');
+      if (balanceElem) balanceElem.textContent = '0.00';
+      showToast('Pagamento realizado com sucesso!');
     } catch (e) {
       alert(e.message);
     }

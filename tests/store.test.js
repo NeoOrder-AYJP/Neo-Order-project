@@ -80,13 +80,27 @@ async function runTests() {
   assert.strictEqual(arrozIngRefunded, 20.0, 'Arroz stock refunded on cancellation');
   console.log('✔ Test 5 passed: Order cancellation & stock refund');
 
-  // Test 6: Financial Analytics (RF-32, RF-34, RN-08, RN-09)
+  // Test 6: Payment Processing & Order Status Update
+  const orderForPayment = store.createOrder('usr_mesa01', [
+    { prato_id: 'prato_massa', nome_prato: 'Fettuccine com Cogumelos', quantidade: 2, preco_unitario: 54.00 }
+  ]);
+  const unpaidTotal = store.getTableUnpaidTotal('usr_mesa01');
+  assert.strictEqual(unpaidTotal, 108.00, 'Table unpaid total calculated accurately');
+
+  const paymentObj = store.processPayment('usr_mesa01', 'PIX');
+  assert.strictEqual(paymentObj.status, 'Aprovado', 'Payment processed as Aprovado');
+  assert.strictEqual(paymentObj.valor, 108.00, 'Payment amount matched order total');
+  assert.strictEqual(store.getTableUnpaidTotal('usr_mesa01'), 0, 'Table unpaid balance cleared to 0 after payment');
+  assert.strictEqual(store.getOrderById(orderForPayment.id).status, 'Pago', 'Order status changed to Pago');
+  console.log('✔ Test 6 passed: Payment processing & status update');
+
+  // Test 7: Financial Analytics (RF-32, RF-34, RN-08, RN-09)
   const metrics = store.getFinancialMetrics('Este Mês');
   assert.strictEqual(typeof metrics.totalFaturado, 'number');
   assert.strictEqual(typeof metrics.ticketMedio, 'number');
-  console.log('✔ Test 6 passed: Financial Analytics');
+  console.log('✔ Test 7 passed: Financial Analytics');
 
-  // Test 7: Export & Import JSON (RF-41, RF-42)
+  // Test 8: Export & Import JSON (RF-41, RF-42)
   const jsonExport = store.exportData();
   assert.strictEqual(typeof jsonExport, 'string');
 
@@ -94,7 +108,10 @@ async function runTests() {
   const store2 = new Store(newStorage);
   store2.importData(jsonExport);
   assert.strictEqual(store2.getUsers().length, store.getUsers().length);
-  console.log('✔ Test 7 passed: Export & Import JSON');
+  console.log('✔ Test 8 passed: Export & Import JSON');
+
+  store.stopAutoSync();
+  store2.stopAutoSync();
 
   console.log('All Store unit tests passed successfully!');
 }

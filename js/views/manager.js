@@ -145,6 +145,13 @@ export function renderManagerView() {
 
   renderManagerTab(activeTab);
   setupManagerEvents();
+
+  // Register real-time auto-sync listener for manager dashboard
+  store.subscribe(() => {
+    if (document.getElementById('view-manager') && currentUser) {
+      renderManagerTab(activeTab);
+    }
+  });
 }
 
 function renderManagerTab(tab) {

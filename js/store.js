@@ -147,14 +147,17 @@ const INITIAL_SEED = {
       criado_em: new Date(Date.now() - 600000).toISOString(),
       atendido_em: null
     }
-  ]
+  ],
+  pagamentos: []
 };
 
 export class Store {
   constructor(storage = typeof localStorage !== 'undefined' ? localStorage : null) {
     this.storage = storage;
+    this.listeners = [];
     this.data = this._loadData();
     this.syncFromRemote().catch(e => console.warn('Initial remote sync warning:', e.message));
+    this.startAutoSync();
   }
 
   _loadData() {
@@ -167,7 +170,9 @@ export class Store {
       return JSON.parse(JSON.stringify(INITIAL_SEED));
     }
     try {
-      return JSON.parse(raw);
+      const parsed = JSON.parse(raw);
+      if (!parsed.pagamentos) parsed.pagamentos = [];
+      return parsed;
     } catch (e) {
       console.error('Error parsing localStorage database, resetting to seed', e);
       this._saveData(INITIAL_SEED);
@@ -180,11 +185,48 @@ export class Store {
     if (this.storage) {
       this.storage.setItem(STORAGE_KEY, JSON.stringify(this.data));
     }
+    this._notifyListeners();
+  }
+
+  // --- Real-Time Listener System ---
+  subscribe(callback) {
+    if (typeof callback === 'function') {
+      this.listeners.push(callback);
+    }
+    return () => {
+      this.listeners = this.listeners.filter(l => l !== callback);
+    };
+  }
+
+  _notifyListeners() {
+    this.listeners.forEach(cb => {
+      try { cb(this.data); } catch (e) { console.error('Listener error:', e); }
+    });
+  }
+
+  // --- Auto Sync Polling for Multi-Device / PC Synchronization ---
+  startAutoSync(intervalMs = 3000) {
+    if (typeof setInterval !== 'undefined') {
+      if (this._syncInterval) clearInterval(this._syncInterval);
+      this._syncInterval = setInterval(() => {
+        this.syncFromRemote().catch(() => {});
+      }, intervalMs);
+    }
+  }
+
+  stopAutoSync() {
+    if (this._syncInterval) {
+      clearInterval(this._syncInterval);
+      this._syncInterval = null;
+    }
   }
 
   // --- Remote Syncing with Supabase ---
   async syncFromRemote() {
     try {
+      let changed = false;
+
+      // Sync Pratos
       const remotePratos = await fetchTable('pratos');
       if (Array.isArray(remotePratos) && remotePratos.length > 0) {
         remotePratos.forEach(rp => {
@@ -201,50 +243,81 @@ export class Store {
           };
           const idx = this.data.pratos.findIndex(p => p.id === mapped.id);
           if (idx !== -1) {
-            this.data.pratos[idx] = { ...this.data.pratos[idx], ...mapped };
+            if (JSON.stringify(this.data.pratos[idx]) !== JSON.stringify({ ...this.data.pratos[idx], ...mapped })) {
+              this.data.pratos[idx] = { ...this.data.pratos[idx], ...mapped };
+              changed = true;
+            }
           } else {
             this.data.pratos.push(mapped);
+            changed = true;
           }
         });
       }
 
+      // Sync Ingredientes
       const remoteIngredientes = await fetchTable('ingredientes');
       if (Array.isArray(remoteIngredientes) && remoteIngredientes.length > 0) {
         remoteIngredientes.forEach(ri => {
           const idx = this.data.ingredientes.findIndex(i => i.id === ri.id);
           if (idx !== -1) {
             this.data.ingredientes[idx] = { ...this.data.ingredientes[idx], ...ri };
+            changed = true;
           } else {
             this.data.ingredientes.push(ri);
+            changed = true;
           }
         });
       }
 
+      // Sync Pedidos
       const remotePedidos = await fetchTable('pedidos');
       if (Array.isArray(remotePedidos) && remotePedidos.length > 0) {
         remotePedidos.forEach(rp => {
           const idx = this.data.pedidos.findIndex(p => p.id === rp.id);
           if (idx !== -1) {
-            this.data.pedidos[idx] = { ...this.data.pedidos[idx], ...rp };
+            if (this.data.pedidos[idx].status !== rp.status || JSON.stringify(this.data.pedidos[idx]) !== JSON.stringify({ ...this.data.pedidos[idx], ...rp })) {
+              this.data.pedidos[idx] = { ...this.data.pedidos[idx], ...rp };
+              changed = true;
+            }
           } else {
-            this.data.pedidos.push(rp);
+            this.data.pedidos.unshift(rp);
+            changed = true;
           }
         });
       }
 
+      // Sync Chamados
       const remoteChamados = await fetchTable('chamados');
       if (Array.isArray(remoteChamados) && remoteChamados.length > 0) {
         remoteChamados.forEach(rc => {
           const idx = this.data.chamados.findIndex(c => c.id === rc.id);
           if (idx !== -1) {
-            this.data.chamados[idx] = { ...this.data.chamados[idx], ...rc };
+            if (this.data.chamados[idx].status !== rc.status) {
+              this.data.chamados[idx] = { ...this.data.chamados[idx], ...rc };
+              changed = true;
+            }
           } else {
-            this.data.chamados.push(rc);
+            this.data.chamados.unshift(rc);
+            changed = true;
           }
         });
       }
 
-      this._saveData();
+      // Sync Pagamentos
+      const remotePagamentos = await fetchTable('pagamentos');
+      if (Array.isArray(remotePagamentos) && remotePagamentos.length > 0) {
+        remotePagamentos.forEach(rpg => {
+          const idx = this.data.pagamentos.findIndex(p => p.id === rpg.id);
+          if (idx === -1) {
+            this.data.pagamentos.unshift(rpg);
+            changed = true;
+          }
+        });
+      }
+
+      if (changed) {
+        this._saveData();
+      }
       return true;
     } catch (err) {
       console.warn('Failed to sync from remote Supabase:', err.message);
@@ -493,6 +566,55 @@ export class Store {
     return order;
   }
 
+  // --- Payments / Pagamentos da Mesa ---
+  getPayments() {
+    return this.data.pagamentos || [];
+  }
+
+  getTableUnpaidTotal(mesaId) {
+    const tableOrders = this.getOrders().filter(
+      p => p.mesa_id === mesaId && p.status !== 'Cancelado' && p.status !== 'Pago'
+    );
+    return parseFloat(tableOrders.reduce((sum, p) => sum + p.valor_total, 0).toFixed(2));
+  }
+
+  processPayment(mesaId, metodoPagamento, valor) {
+    const mesaUser = this.getUserById(mesaId);
+    if (!mesaUser) throw new Error('Mesa não encontrada.');
+
+    const tableOrders = this.getOrders().filter(
+      p => p.mesa_id === mesaId && p.status !== 'Cancelado' && p.status !== 'Pago'
+    );
+
+    if (tableOrders.length === 0) {
+      throw new Error('Não há pedidos pendentes de pagamento para esta mesa.');
+    }
+
+    const totalDevido = tableOrders.reduce((sum, p) => sum + p.valor_total, 0);
+
+    const newPayment = {
+      id: 'pag_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+      mesa_id: mesaUser.id,
+      nome_mesa: mesaUser.nome,
+      valor: parseFloat((valor || totalDevido).toFixed(2)),
+      metodo: metodoPagamento || 'PIX',
+      status: 'Aprovado',
+      criado_em: new Date().toISOString()
+    };
+
+    // Marcar pedidos como Pago
+    tableOrders.forEach(p => {
+      p.status = 'Pago';
+      p.atualizado_em = new Date().toISOString();
+      updateRow('pedidos', 'id', p.id, { status: 'Pago', atualizado_em: p.atualizado_em }).catch(() => {});
+    });
+
+    this.data.pagamentos.unshift(newPayment);
+    this._saveData();
+    insertRow('pagamentos', newPayment).catch(() => {});
+    return newPayment;
+  }
+
   // --- Calls / Chamados ---
   getCalls() {
     return this.data.chamados || [];
@@ -548,10 +670,10 @@ export class Store {
       startDate = new Date(now.getFullYear(), now.getMonth(), 1);
     }
 
-    // RN-08 & RN-04: apenas pedidos "Entregue" (ou finalizados não-cancelados) dentro do período
+    // RN-08 & RN-04: apenas pedidos "Entregue" ou "Pago" dentro do período
     const validOrders = this.getOrders().filter(p => {
       const pDate = new Date(p.criado_em);
-      return p.status !== 'Cancelado' && pDate >= startDate;
+      return (p.status === 'Entregue' || p.status === 'Pago') && pDate >= startDate;
     });
 
     const totalFaturado = validOrders.reduce((sum, p) => sum + p.valor_total, 0);

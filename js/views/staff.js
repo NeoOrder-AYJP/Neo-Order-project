@@ -2,6 +2,7 @@
 import { store, currentUser, showToast } from '../app.js';
 
 let audioCtx = null;
+let lastKnownOrdersCount = -1;
 
 function playNotificationSound() {
   try {
@@ -80,6 +81,20 @@ export function renderStaffView() {
   renderOrdersQueue();
   renderCallsList();
   setupStaffEvents();
+
+  // Register real-time database auto-sync listener for multi-device/PC synchronization
+  store.subscribe(() => {
+    if (document.getElementById('view-staff') && currentUser) {
+      const currentCount = store.getOrders().length;
+      if (lastKnownOrdersCount !== -1 && currentCount > lastKnownOrdersCount) {
+        playNotificationSound();
+        showToast('Novo pedido recebido de outra mesa!');
+      }
+      lastKnownOrdersCount = currentCount;
+      renderOrdersQueue();
+      renderCallsList();
+    }
+  });
 }
 
 function renderOrdersQueue() {
@@ -87,6 +102,8 @@ function renderOrdersQueue() {
   if (!queue) return;
 
   const orders = store.getOrders();
+  lastKnownOrdersCount = orders.length;
+
   if (orders.length === 0) {
     queue.innerHTML = `<p style="grid-column: 1/-1; color: var(--text-muted);">Nenhum pedido ativo.</p>`;
     return;
@@ -113,6 +130,7 @@ function renderOrdersQueue() {
           <option value="Em preparo" ${o.status === 'Em preparo' ? 'selected' : ''}>Em preparo</option>
           <option value="Pronto" ${o.status === 'Pronto' ? 'selected' : ''}>Pronto</option>
           <option value="Entregue" ${o.status === 'Entregue' ? 'selected' : ''}>Entregue</option>
+          <option value="Pago" ${o.status === 'Pago' ? 'selected' : ''}>Pago</option>
           <option value="Cancelado" ${o.status === 'Cancelado' ? 'selected' : ''}>Cancelado</option>
         </select>
       </div>
