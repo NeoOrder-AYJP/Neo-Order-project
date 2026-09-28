@@ -3,47 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sabor & Gestão — Sistema de Gerenciamento de Restaurante</title>
-  
-  <!-- Google Fonts & Material Symbols -->
+  <title>Neokirk — O Resenha de Gestão de Restaurante 67</title>
+
+  <!-- Fontes do Google & Símbolos do Material -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-  
-  <!-- Pure Custom CSS -->
+
+  <!-- CSS puro, sem firula de framework — tche tcheee -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Header Section -->
+  <!-- Seção do Cabeçalho -->
   <header>
     <div class="header-container">
-      <!-- Logo & Brand -->
+      <!-- Logo & Marca Neokirk -->
       <div id="brand-logo" class="brand-logo">
-        <div class="brand-icon">S</div>
+        <div class="brand-icon">N</div>
         <div>
-          <div class="brand-title">Sabor & Gestão</div>
-          <div class="brand-subtitle">Gastronomia & Operações</div>
+          <div class="brand-title">Neokirk</div>
+          <div class="brand-subtitle">Resenha & Operações — tche tcheee</div>
         </div>
       </div>
 
-      <!-- Navigation Links -->
+      <!-- Links de Navegação -->
       <nav id="nav-links" class="nav-links">
-        <button data-path="landing" class="nav-btn active">Início / Cardápio</button>
-        <button data-path="client" class="nav-btn">Área do Cliente (Mesa)</button>
-        <button data-path="staff" class="nav-btn">Painel do Atendente</button>
-        <button data-path="manager" class="nav-btn">Gestão & Faturamento</button>
+        <button data-path="landing" class="nav-btn active">Início / Cardápio da Resenha</button>
+        <button data-path="client" class="nav-btn">Área do Cliente (Mesa 67)</button>
+        <button data-path="staff" class="nav-btn">Painel do Atendente (Bora Bill)</button>
+        <button data-path="manager" class="nav-btn">Gestão & Faturamento (La Ele)</button>
       </nav>
 
-      <!-- User Session Info -->
+      <!-- Informações da Sessão do Usuário -->
       <div id="user-session-info" class="flex items-center gap-3">
-        <!-- Populated by JS -->
+        <!-- Preenchido pelo JS -->
       </div>
     </div>
   </header>
 
-  <!-- Main Content Area -->
+  <!-- Área Principal de Conteúdo -->
   <main>
     <div id="view-landing" class="view-section hidden"></div>
     <div id="view-client" class="view-section hidden"></div>
@@ -51,13 +51,13 @@
     <div id="view-manager" class="view-section hidden"></div>
   </main>
 
-  <!-- Toast Notification -->
+  <!-- Notificação Toast -->
   <div id="toast-message" class="hidden">
     <span class="material-symbols-outlined" style="color: var(--tertiary)">info</span>
-    <span id="toast-text">Ação executada com sucesso.</span>
+    <span id="toast-text">Eitcha! Ação executada com sucesso.</span>
   </div>
 
-  <!-- Global Application Scripts -->
+  <!-- Scripts Globais da Aplicação -->
   <script type="module" src="js/app.js"></script>
 </body>
 </html>

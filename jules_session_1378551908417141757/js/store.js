@@ -1,15 +1,17 @@
-// js/store.js - Data Store & LocalStorage + Supabase REST API Sync Management
+// js/store.js — Gerenciador de Dados do Neokirk: LocalStorage + Sincronização com a API REST do Supabase
+// Aqui mora a resenha dos dados, bora Bill!
 
 import { fetchTable, insertRow, updateRow, deleteRow } from './api.js';
 
-const STORAGE_KEY = 'restaurant_system_db_v1';
+const STORAGE_KEY = 'neokirk_db_v1';
 
+// Dados iniciais da resenha (seed 67)
 const INITIAL_SEED = {
   usuarios: [
     {
       id: 'usr_admin',
       tipo: 'funcionario',
-      nome: 'Gerente Geral',
+      nome: 'Gerente Geral Bora Bill',
       login: 'gerente',
       senha: '123',
       perfil: 'gerente',
@@ -19,7 +21,7 @@ const INITIAL_SEED = {
     {
       id: 'usr_atendente1',
       tipo: 'funcionario',
-      nome: 'Carlos Atendente',
+      nome: 'Carlos Atendente "La Ele"',
       login: 'atendente',
       senha: '123',
       perfil: 'atendente',
@@ -29,7 +31,7 @@ const INITIAL_SEED = {
     {
       id: 'usr_mesa01',
       tipo: 'mesa',
-      nome: 'Mesa 01',
+      nome: 'Mesa 01 da Resenha',
       login: 'mesa01',
       senha: '123',
       perfil: null,
@@ -39,7 +41,7 @@ const INITIAL_SEED = {
     {
       id: 'usr_mesa05',
       tipo: 'mesa',
-      nome: 'Mesa 05',
+      nome: 'Mesa 05 da Resenha 67',
       login: 'mesa05',
       senha: '123',
       perfil: null,
@@ -48,19 +50,19 @@ const INITIAL_SEED = {
     }
   ],
   ingredientes: [
-    { id: 'ing_feijao', nome: 'Feijão Preto', unidade: 'kg', quantidade: 15.0 },
-    { id: 'ing_arroz', nome: 'Arroz Branco', unidade: 'kg', quantidade: 20.0 },
-    { id: 'ing_picanha', nome: 'Picanha Bovina', unidade: 'kg', quantidade: 8.0 },
-    { id: 'ing_salmao', nome: 'Salmão Fresco', unidade: 'kg', quantidade: 5.0 },
-    { id: 'ing_massa', nome: 'Massa Fettuccine', unidade: 'kg', quantidade: 10.0 },
-    { id: 'ing_cogumelos', nome: 'Cogumelos Paris', unidade: 'kg', quantidade: 2.5 }
+    { id: 'ing_feijao', nome: 'Feijão Preto da Resenha', unidade: 'kg', quantidade: 15.0 },
+    { id: 'ing_arroz', nome: 'Arroz Branco 67', unidade: 'kg', quantidade: 20.0 },
+    { id: 'ing_picanha', nome: 'Picanha Bovina Bora Bill', unidade: 'kg', quantidade: 8.0 },
+    { id: 'ing_salmao', nome: 'Salmão Fresco Tche Tcheee', unidade: 'kg', quantidade: 5.0 },
+    { id: 'ing_massa', nome: 'Massa Fettuccine Eitcha', unidade: 'kg', quantidade: 10.0 },
+    { id: 'ing_cogumelos', nome: 'Cogumelos Paris (la ele)', unidade: 'kg', quantidade: 2.5 }
   ],
   pratos: [
     {
       id: 'prato_feijoada',
-      nome: 'Feijoada Completa Premium',
-      descricao: 'Acompanha arroz, couve refogada, farofa artesanal e fatias de laranja.',
-      preco: 68.90,
+      nome: 'Feijoada Completa Premium da Resenha',
+      descricao: 'Acompanha arroz, couve refogada, farofa artesanal e fatias de laranja. Eitcha, que resenha de prato!',
+      preco: 67.00,
       categoria: 'Pratos Principais',
       imagem: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80',
       destaque: true,
@@ -72,8 +74,8 @@ const INITIAL_SEED = {
     },
     {
       id: 'prato_picanha',
-      nome: 'Picanha Grelhada na Brasa',
-      descricao: 'Corte nobre com mandioca frita, farofa de alho e molho chimichurri da casa.',
+      nome: 'Picanha Grelhada na Brasa do Bora Bill',
+      descricao: 'Corte nobre com mandioca frita, farofa de alho e molho chimichurri da casa. La ele aprova!',
       preco: 89.90,
       categoria: 'Pratos Principais',
       imagem: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80',
@@ -85,8 +87,8 @@ const INITIAL_SEED = {
     },
     {
       id: 'prato_salmao',
-      nome: 'Salmão ao Molho de Maracujá',
-      descricao: 'Filé de salmão grelhado servido com purê de mandioquinha e aspargos.',
+      nome: 'Salmão ao Molho de Maracujá Tche Tcheee',
+      descricao: 'Filé de salmão grelhado servido com purê de mandioquinha e aspargos. Tche tcheee de tão cremoso!',
       preco: 78.50,
       categoria: 'Peixes & Frutos do Mar',
       imagem: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80',
@@ -98,8 +100,8 @@ const INITIAL_SEED = {
     },
     {
       id: 'prato_massa',
-      nome: 'Fettuccine com Cogumelos',
-      descricao: 'Massa fresca ao molho cremoso de queijo parmesão e cogumelos salteados.',
+      nome: 'Fettuccine com Cogumelos Eitcha',
+      descricao: 'Massa fresca ao molho cremoso de queijo parmesão e cogumelos salteados. Eitcha, resenha boa!',
       preco: 54.00,
       categoria: 'Massas',
       imagem: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281292?auto=format&fit=crop&w=600&q=80',
@@ -115,11 +117,11 @@ const INITIAL_SEED = {
     {
       id: 'ped_101',
       mesa_id: 'usr_mesa05',
-      nome_mesa: 'Mesa 05',
+      nome_mesa: 'Mesa 05 da Resenha 67',
       itens: [
-        { prato_id: 'prato_feijoada', nome_prato: 'Feijoada Completa Premium', quantidade: 2, preco_unitario: 68.90 }
+        { prato_id: 'prato_feijoada', nome_prato: 'Feijoada Completa Premium da Resenha', quantidade: 2, preco_unitario: 67.00 }
       ],
-      valor_total: 137.80,
+      valor_total: 134.00,
       status: 'Entregue',
       criado_em: new Date(Date.now() - 3600000 * 2).toISOString(),
       atualizado_em: new Date(Date.now() - 3600000 * 1.5).toISOString()
@@ -127,9 +129,9 @@ const INITIAL_SEED = {
     {
       id: 'ped_102',
       mesa_id: 'usr_mesa05',
-      nome_mesa: 'Mesa 05',
+      nome_mesa: 'Mesa 05 da Resenha 67',
       itens: [
-        { prato_id: 'prato_picanha', nome_prato: 'Picanha Grelhada na Brasa', quantidade: 1, preco_unitario: 89.90 }
+        { prato_id: 'prato_picanha', nome_prato: 'Picanha Grelhada na Brasa do Bora Bill', quantidade: 1, preco_unitario: 89.90 }
       ],
       valor_total: 89.90,
       status: 'Em preparo',
@@ -141,8 +143,8 @@ const INITIAL_SEED = {
     {
       id: 'chm_01',
       mesa_id: 'usr_mesa05',
-      nome_mesa: 'Mesa 05',
-      justificativa: 'Mesa precisa de copos extras e gelo.',
+      nome_mesa: 'Mesa 05 da Resenha 67',
+      justificativa: 'Eitcha! A mesa precisa de copos extras e gelo pra resenha não parar. Bora Bill!',
       status: 'Pendente',
       criado_em: new Date(Date.now() - 600000).toISOString(),
       atendido_em: null
@@ -156,10 +158,11 @@ export class Store {
     this.storage = storage;
     this.listeners = [];
     this.data = this._loadData();
-    this.syncFromRemote().catch(e => console.warn('Initial remote sync warning:', e.message));
+    this.syncFromRemote().catch(e => console.warn('Eitcha! Aviso na sincronização inicial com o remoto:', e.message));
     this.startAutoSync();
   }
 
+  // Carrega os dados do cofre da resenha (localStorage)
   _loadData() {
     if (!this.storage) {
       return JSON.parse(JSON.stringify(INITIAL_SEED));
@@ -174,12 +177,13 @@ export class Store {
       if (!parsed.pagamentos) parsed.pagamentos = [];
       return parsed;
     } catch (e) {
-      console.error('Error parsing localStorage database, resetting to seed', e);
+      console.error('La ele! Erro ao ler o banco do localStorage, resetando pro seed da resenha', e);
       this._saveData(INITIAL_SEED);
       return JSON.parse(JSON.stringify(INITIAL_SEED));
     }
   }
 
+  // Salva tudo no localStorage e avisa a galera que tá ouvindo
   _saveData(data = this.data) {
     this.data = data;
     if (this.storage) {
@@ -188,7 +192,7 @@ export class Store {
     this._notifyListeners();
   }
 
-  // --- Real-Time Listener System ---
+  // --- Sistema de Ouvintes em Tempo Real ---
   subscribe(callback) {
     if (typeof callback === 'function') {
       this.listeners.push(callback);
@@ -200,11 +204,11 @@ export class Store {
 
   _notifyListeners() {
     this.listeners.forEach(cb => {
-      try { cb(this.data); } catch (e) { console.error('Listener error:', e); }
+      try { cb(this.data); } catch (e) { console.error('Eitcha! Erro no ouvinte da resenha:', e); }
     });
   }
 
-  // --- Auto Sync Polling for Multi-Device / PC Synchronization ---
+  // --- Sincronização Automática (polling) pra vários dispositivos/PCs ---
   startAutoSync(intervalMs = 3000) {
     if (typeof setInterval !== 'undefined') {
       if (this._syncInterval) clearInterval(this._syncInterval);
@@ -221,12 +225,12 @@ export class Store {
     }
   }
 
-  // --- Remote Syncing with Supabase ---
+  // --- Sincronização Remota com o Supabase ---
   async syncFromRemote() {
     try {
       let changed = false;
 
-      // Sync Pratos
+      // Sincroniza Pratos
       const remotePratos = await fetchTable('pratos');
       if (Array.isArray(remotePratos) && remotePratos.length > 0) {
         remotePratos.forEach(rp => {
@@ -254,7 +258,7 @@ export class Store {
         });
       }
 
-      // Sync Ingredientes
+      // Sincroniza Ingredientes
       const remoteIngredientes = await fetchTable('ingredientes');
       if (Array.isArray(remoteIngredientes) && remoteIngredientes.length > 0) {
         remoteIngredientes.forEach(ri => {
@@ -269,7 +273,7 @@ export class Store {
         });
       }
 
-      // Sync Pedidos
+      // Sincroniza Pedidos
       const remotePedidos = await fetchTable('pedidos');
       if (Array.isArray(remotePedidos) && remotePedidos.length > 0) {
         remotePedidos.forEach(rp => {
@@ -286,7 +290,7 @@ export class Store {
         });
       }
 
-      // Sync Chamados
+      // Sincroniza Chamados
       const remoteChamados = await fetchTable('chamados');
       if (Array.isArray(remoteChamados) && remoteChamados.length > 0) {
         remoteChamados.forEach(rc => {
@@ -303,7 +307,7 @@ export class Store {
         });
       }
 
-      // Sync Pagamentos
+      // Sincroniza Pagamentos
       const remotePagamentos = await fetchTable('pagamentos');
       if (Array.isArray(remotePagamentos) && remotePagamentos.length > 0) {
         remotePagamentos.forEach(rpg => {
@@ -320,12 +324,12 @@ export class Store {
       }
       return true;
     } catch (err) {
-      console.warn('Failed to sync from remote Supabase:', err.message);
+      console.warn('Tche tcheee! Falhou a sincronização com o Supabase remoto:', err.message);
       return false;
     }
   }
 
-  // --- Users / Auth ---
+  // --- Usuários / Autenticação ---
   getUsers() {
     return this.data.usuarios || [];
   }
@@ -334,6 +338,7 @@ export class Store {
     return this.getUsers().find(u => u.id === id);
   }
 
+  // Confere se o login e a senha batem — sem vacilo na porta da resenha
   authenticate(login, senha) {
     const user = this.getUsers().find(
       u => u.login.toLowerCase() === login.trim().toLowerCase() && u.senha === senha && u.ativo !== false
@@ -365,7 +370,7 @@ export class Store {
     return user;
   }
 
-  // --- Ingredients / Stock ---
+  // --- Ingredientes / Estoque ---
   getIngredients() {
     return this.data.ingredientes || [];
   }
@@ -401,7 +406,7 @@ export class Store {
     return ing;
   }
 
-  // --- Dishes / Menu & Availability ---
+  // --- Pratos / Cardápio & Disponibilidade ---
   getDishes() {
     return this.data.pratos || [];
   }
@@ -410,7 +415,7 @@ export class Store {
     return this.getDishes().find(p => p.id === id);
   }
 
-  // RN-02: Disponibilidade calculada automaticamente por ingrediente
+  // RN-02: Disponibilidade calculada automaticamente a partir dos ingredientes
   getDishAvailability(dishId) {
     const dish = this.getDishById(dishId);
     if (!dish || dish.ativo === false) {
@@ -474,7 +479,7 @@ export class Store {
     deleteRow('pratos', 'id', id).catch(() => {});
   }
 
-  // --- Orders ---
+  // --- Pedidos ---
   getOrders() {
     return this.data.pedidos || [];
   }
@@ -483,27 +488,27 @@ export class Store {
     return this.getOrders().find(p => p.id === id);
   }
 
-  // RF-17 & RN-03: Criar pedido e abater ingrediente do estoque
+  // RF-17 & RN-03: Cria o pedido e já abate o ingrediente do estoque — tche tcheee!
   createOrder(mesaId, cartItems) {
     const mesaUser = this.getUserById(mesaId);
     if (!mesaUser) {
-      throw new Error('Mesa não encontrada para realização do pedido.');
+      throw new Error('La ele! Mesa não encontrada pra realizar o pedido da resenha.');
     }
 
     if (!cartItems || cartItems.length === 0) {
-      throw new Error('O carrinho está vazio.');
+      throw new Error('Eitcha! O carrinho tá vazio. Bora Bill pedir alguma coisa!');
     }
 
-    // Verificar estoque suficiente para todos os itens
+    // Verifica se tem estoque suficiente pra todos os itens, senão a resenha para
     for (const item of cartItems) {
       const avail = this.getDishAvailability(item.prato_id);
       if (item.quantidade > avail.maxQuantity) {
         const dish = this.getDishById(item.prato_id);
-        throw new Error(`Estoque insuficiente para o prato "${dish ? dish.nome : 'desconhecido'}". Máximo disponível: ${avail.maxQuantity}`);
+        throw new Error(`Eitcha! Estoque insuficiente pro prato "${dish ? dish.nome : 'desconhecido'}". Máximo disponível: ${avail.maxQuantity}. La ele comeu tudo!`);
       }
     }
 
-    // Abater estoque de cada ingrediente
+    // Abate o estoque de cada ingrediente, bora Bill!
     for (const item of cartItems) {
       const dish = this.getDishById(item.prato_id);
       if (dish && dish.ingredientes) {
@@ -536,7 +541,7 @@ export class Store {
     return newOrder;
   }
 
-  // RN-04: Atualizar status e estornar estoque se "Cancelado"
+  // RN-04: Atualiza o status e estorna o estoque se for "Cancelado"
   updateOrderStatus(orderId, newStatus) {
     const order = this.getOrderById(orderId);
     if (!order) return null;
@@ -545,7 +550,7 @@ export class Store {
     order.status = newStatus;
     order.atualizado_em = new Date().toISOString();
 
-    // Se mudou para Cancelado e não estava cancelado antes, estorna estoque
+    // Se mudou pra Cancelado e não tava cancelado antes, devolve o estoque — la ele desistiu
     if (newStatus === 'Cancelado' && prevStatus !== 'Cancelado') {
       for (const item of order.itens) {
         const dish = this.getDishById(item.prato_id);
@@ -566,7 +571,7 @@ export class Store {
     return order;
   }
 
-  // --- Payments / Pagamentos da Mesa ---
+  // --- Pagamentos da Mesa ---
   getPayments() {
     return this.data.pagamentos || [];
   }
@@ -580,14 +585,14 @@ export class Store {
 
   processPayment(mesaId, metodoPagamento, valor) {
     const mesaUser = this.getUserById(mesaId);
-    if (!mesaUser) throw new Error('Mesa não encontrada.');
+    if (!mesaUser) throw new Error('La ele... mesa não encontrada na resenha.');
 
     const tableOrders = this.getOrders().filter(
       p => p.mesa_id === mesaId && p.status !== 'Cancelado' && p.status !== 'Pago'
     );
 
     if (tableOrders.length === 0) {
-      throw new Error('Não há pedidos pendentes de pagamento para esta mesa.');
+      throw new Error('Bora Bill! Não tem pedido pendente de pagamento nessa mesa 67.');
     }
 
     const totalDevido = tableOrders.reduce((sum, p) => sum + p.valor_total, 0);
@@ -602,7 +607,7 @@ export class Store {
       criado_em: new Date().toISOString()
     };
 
-    // Marcar pedidos como Pago
+    // Marca os pedidos como Pago — din din na conta, tche tcheee!
     tableOrders.forEach(p => {
       p.status = 'Pago';
       p.atualizado_em = new Date().toISOString();
@@ -615,7 +620,7 @@ export class Store {
     return newPayment;
   }
 
-  // --- Calls / Chamados ---
+  // --- Chamados de Atendimento ---
   getCalls() {
     return this.data.chamados || [];
   }
@@ -627,14 +632,14 @@ export class Store {
   createCall(mesaId, justificativa) {
     const mesaUser = this.getUserById(mesaId);
     if (!mesaUser) {
-      throw new Error('Mesa não encontrada.');
+      throw new Error('La ele! Mesa não encontrada pra chamar o atendimento.');
     }
 
     const newCall = {
       id: 'chm_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
       mesa_id: mesaUser.id,
       nome_mesa: mesaUser.nome,
-      justificativa: justificativa ? justificativa.trim() : 'Atendimento solicitado',
+      justificativa: justificativa ? justificativa.trim() : 'Atendimento solicitado — tche tcheee',
       status: 'Pendente',
       criado_em: new Date().toISOString(),
       atendido_em: null
@@ -657,7 +662,7 @@ export class Store {
     return call;
   }
 
-  // --- Financial Analytics (RF-32, RF-33, RF-34, RN-08, RN-09) ---
+  // --- Análise Financeira (RF-32, RF-33, RF-34, RN-08, RN-09) ---
   getFinancialMetrics(period = 'Este Mês') {
     const now = new Date();
     let startDate = new Date(0);
@@ -670,7 +675,7 @@ export class Store {
       startDate = new Date(now.getFullYear(), now.getMonth(), 1);
     }
 
-    // RN-08 & RN-04: apenas pedidos "Entregue" ou "Pago" dentro do período
+    // RN-08 & RN-04: só conta pedidos "Entregue" ou "Pago" dentro do período
     const validOrders = this.getOrders().filter(p => {
       const pDate = new Date(p.criado_em);
       return (p.status === 'Entregue' || p.status === 'Pago') && pDate >= startDate;
@@ -680,7 +685,7 @@ export class Store {
     const qtdPedidos = validOrders.length;
     const ticketMedio = qtdPedidos > 0 ? totalFaturado / qtdPedidos : 0;
 
-    // Pratos mais vendidos
+    // Pratos mais vendidos da resenha
     const dishSales = {};
     validOrders.forEach(p => {
       p.itens.forEach(item => {
@@ -702,7 +707,7 @@ export class Store {
     };
   }
 
-  // --- Backup / Export & Import (RF-41, RF-42) ---
+  // --- Backup / Exportação & Importação (RF-41, RF-42) ---
   exportData() {
     return JSON.stringify(this.data, null, 2);
   }
@@ -711,12 +716,12 @@ export class Store {
     try {
       const parsed = JSON.parse(jsonString);
       if (!parsed.usuarios || !parsed.pratos || !parsed.ingredientes) {
-        throw new Error('Formato JSON inválido. Estruturas obrigatórias ausentes.');
+        throw new Error('Eitcha! JSON inválido. Tá faltando estrutura obrigatória nessa resenha.');
       }
       this._saveData(parsed);
       return true;
     } catch (e) {
-      throw new Error('Falha ao importar JSON: ' + e.message);
+      throw new Error('La ele! Falha ao importar o JSON: ' + e.message);
     }
   }
 }

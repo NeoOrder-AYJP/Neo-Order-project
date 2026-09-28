@@ -1,9 +1,10 @@
-// js/views/staff.js - Staff Dashboard View
+// js/views/staff.js — Painel Operacional da Equipe do Neokirk (a cozinha da resenha)
 import { store, currentUser, showToast } from '../app.js';
 
 let audioCtx = null;
 let lastKnownOrdersCount = -1;
 
+// Toca aquele "biiip" maroto quando chega pedido novo — tche tcheee!
 function playNotificationSound() {
   try {
     if (!audioCtx) {
@@ -22,7 +23,7 @@ function playNotificationSound() {
     osc.start();
     osc.stop(audioCtx.currentTime + 0.5);
   } catch (e) {
-    console.log('Audio playback error', e);
+    console.log('Eitcha! Erro ao tocar o áudio da resenha', e);
   }
 }
 
@@ -34,9 +35,9 @@ export function renderStaffView() {
     container.innerHTML = `
       <div class="container" style="max-width: 500px; margin-top: 64px; text-align: center;">
         <div class="card">
-          <h2>Acesso Restrito a Funcionários</h2>
-          <p style="color: var(--text-muted); margin-top: 8px;">Logue com uma conta de atendente ou gerente.</p>
-          <button onclick="window.navigateTo('landing')" class="btn btn-primary" style="margin-top: 24px;">Ir para Login</button>
+          <h2>Eitcha! Acesso Restrito a Funcionários</h2>
+          <p style="color: var(--text-muted); margin-top: 8px;">Logue com uma conta de atendente ou gerente pra entrar nessa resenha operacional.</p>
+          <button onclick="window.navigateTo('landing')" class="btn btn-primary" style="margin-top: 24px;">Bora Bill pro Login</button>
         </div>
       </div>
     `;
@@ -45,31 +46,31 @@ export function renderStaffView() {
 
   container.innerHTML = `
     <div class="container flex flex-col gap-6">
-      
-      <!-- Top Bar -->
+
+      <!-- Barra Superior -->
       <div class="card flex items-center justify-between">
         <div>
-          <span class="badge badge-pending">Painel Operacional</span>
+          <span class="badge badge-pending">Painel Operacional 67</span>
           <h1 style="font-size: 24px; margin-top: 4px;">Atendimento & Pedidos — ${currentUser.nome}</h1>
         </div>
         <button id="btn-enable-audio" class="btn btn-secondary">
           <span class="material-symbols-outlined">volume_up</span>
-          <span>Ativar Notificações Sonoras</span>
+          <span>Ativar Som do Tche Tcheee</span>
         </button>
       </div>
 
-      <!-- Queue & Calls Layout -->
+      <!-- Layout da Fila & Chamados -->
       <div class="grid grid-cols-3 gap-6">
-        
-        <!-- Active Orders Queue (2 cols) -->
+
+        <!-- Fila de Pedidos Ativos (2 colunas) -->
         <div style="grid-column: span 2;" class="flex flex-col gap-4">
-          <h2>Pedidos Ativos</h2>
+          <h2>Pedidos Ativos (Bora Bill!)</h2>
           <div id="staff-orders-queue" class="grid grid-cols-2 gap-4"></div>
         </div>
 
-        <!-- Service Calls (1 col) -->
+        <!-- Chamados das Mesas (1 coluna) -->
         <div class="flex flex-col gap-4">
-          <h2>Chamados de Mesas</h2>
+          <h2>Chamados de Mesa 67</h2>
           <div id="staff-calls-list" class="flex flex-col gap-3"></div>
         </div>
 
@@ -82,13 +83,13 @@ export function renderStaffView() {
   renderCallsList();
   setupStaffEvents();
 
-  // Register real-time database auto-sync listener for multi-device/PC synchronization
+  // Registra ouvinte de sincronização em tempo real pra múltiplos dispositivos/PCs
   store.subscribe(() => {
     if (document.getElementById('view-staff') && currentUser) {
       const currentCount = store.getOrders().length;
       if (lastKnownOrdersCount !== -1 && currentCount > lastKnownOrdersCount) {
         playNotificationSound();
-        showToast('Novo pedido recebido de outra mesa!');
+        showToast('Eitcha! Novo pedido chegou de outra mesa! Bora Bill cozinhar, tche tcheee!');
       }
       lastKnownOrdersCount = currentCount;
       renderOrdersQueue();
@@ -97,6 +98,7 @@ export function renderStaffView() {
   });
 }
 
+// Desenha a fila de pedidos ativos da resenha
 function renderOrdersQueue() {
   const queue = document.getElementById('staff-orders-queue');
   if (!queue) return;
@@ -105,7 +107,7 @@ function renderOrdersQueue() {
   lastKnownOrdersCount = orders.length;
 
   if (orders.length === 0) {
-    queue.innerHTML = `<p style="grid-column: 1/-1; color: var(--text-muted);">Nenhum pedido ativo.</p>`;
+    queue.innerHTML = `<p style="grid-column: 1/-1; color: var(--text-muted);">Nenhum pedido ativo. A resenha tá parada, la ele...</p>`;
     return;
   }
 
@@ -122,7 +124,7 @@ function renderOrdersQueue() {
       </div>
       <div>
         <div class="flex items-center justify-between" style="font-weight: 700; color: var(--primary); margin-bottom: 8px;">
-          <span>Total:</span>
+          <span>Total da Resenha:</span>
           <span>R$ ${o.valor_total.toFixed(2)}</span>
         </div>
         <select data-order-id="${o.id}" class="select-order-status">
@@ -142,19 +144,20 @@ function renderOrdersQueue() {
       const id = e.currentTarget.dataset.orderId;
       const status = e.currentTarget.value;
       store.updateOrderStatus(id, status);
-      showToast(`Pedido #${id} alterado para "${status}".`);
+      showToast(`Pedido #${id} mudou pra "${status}". Bora Bill, tche tcheee!`);
       renderOrdersQueue();
     });
   });
 }
 
+// Lista os chamados de atendimento das mesas
 function renderCallsList() {
   const list = document.getElementById('staff-calls-list');
   if (!list) return;
 
   const calls = store.getCalls();
   if (calls.length === 0) {
-    list.innerHTML = `<p style="color: var(--text-muted);">Nenhum chamado.</p>`;
+    list.innerHTML = `<p style="color: var(--text-muted);">Nenhum chamado na resenha. Tudo tranquilo 67.</p>`;
     return;
   }
 
@@ -166,7 +169,7 @@ function renderCallsList() {
       </div>
       <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">"${c.justificativa}"</p>
       ${c.status === 'Pendente' ? `
-        <button data-call-id="${c.id}" class="btn-attend-call btn btn-primary btn-sm" style="width: 100%;">Marcar Atendido</button>
+        <button data-call-id="${c.id}" class="btn-attend-call btn btn-primary btn-sm" style="width: 100%;">Marcar Atendido (Bora Bill)</button>
       ` : ''}
     </div>
   `).join('');
@@ -174,15 +177,16 @@ function renderCallsList() {
   document.querySelectorAll('.btn-attend-call').forEach(btn => {
     btn.addEventListener('click', (e) => {
       store.markCallAttended(e.currentTarget.dataset.callId);
-      showToast('Chamado atendido!');
+      showToast('Chamado atendido! Tche tcheee, resenha salva!');
       renderCallsList();
     });
   });
 }
 
+// Liga os eventos da tela da equipe
 function setupStaffEvents() {
   document.getElementById('btn-enable-audio')?.addEventListener('click', () => {
     playNotificationSound();
-    showToast('Som ativado!');
+    showToast('Som ativado! Tche tcheee! Eitcha, agora a resenha tem trilha sonora!');
   });
 }

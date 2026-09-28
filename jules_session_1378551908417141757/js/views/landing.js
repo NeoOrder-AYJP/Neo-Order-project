@@ -1,4 +1,4 @@
-// js/views/landing.js - Public Landing Page View
+// js/views/landing.js — Página Inicial Pública do Neokirk (a vitrine da resenha)
 import { store, setCurrentUser, navigateTo, showToast } from '../app.js';
 
 let slideInterval = null;
@@ -12,32 +12,32 @@ export function renderLandingView() {
   const featuredDishes = dishes.filter(d => d.destaque);
 
   container.innerHTML = `
-    <!-- Hero Banner with Carousel -->
+    <!-- Banner Herói com Carrossel -->
     <div style="background-color: var(--bg-light); border-bottom: 1px solid var(--border-color); padding: 48px 0;">
       <div class="container flex flex-col items-center justify-between gap-6" style="flex-direction: row; flex-wrap: wrap;">
-        
-        <!-- Text CTA -->
+
+        <!-- Texto de chamada -->
         <div style="flex: 1; min-width: 300px;">
-          <span class="badge badge-available" style="margin-bottom: 12px;">Cardápio Autêntico & Gestão Digital</span>
+          <span class="badge badge-available" style="margin-bottom: 12px;">Resenha Autêntica & Gestão Digital 67</span>
           <h1 style="font-size: 36px; font-weight: 700; margin-bottom: 16px; line-height: 1.2;">
-            Sabor Excepcional, Operação em Tempo Real
+            Neokirk: Sabor de Resenha, Operação em Tempo Real
           </h1>
           <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 16px;">
-            Peça diretamente da sua mesa ou acesse o painel corporativo do restaurante.
+            Bora Bill! Peça direto da sua mesa ou acesse o painel corporativo do restaurante. Tche tcheee!
           </p>
           <div class="flex gap-3">
             <button id="btn-open-login-mesa" class="btn btn-primary">
               <span class="material-symbols-outlined">table_restaurant</span>
-              <span>Fazer Pedido (Mesa)</span>
+              <span>Fazer Pedido (Mesa) — Bora Bill</span>
             </button>
             <button id="btn-open-login-func" class="btn btn-secondary">
               <span class="material-symbols-outlined">badge</span>
-              <span>Área do Funcionário</span>
+              <span>Área do Funcionário (La Ele)</span>
             </button>
           </div>
         </div>
 
-        <!-- Carousel -->
+        <!-- Carrossel -->
         <div style="width: 100%; max-width: 500px;">
           <div class="carousel-container">
             <div id="carousel-track" class="carousel-track">
@@ -45,7 +45,7 @@ export function renderLandingView() {
                 <div class="carousel-slide">
                   <img src="${dish.imagem}" alt="${dish.nome}">
                   <div class="carousel-caption">
-                    <span class="badge badge-pending" style="margin-bottom: 6px;">Destaque</span>
+                    <span class="badge badge-pending" style="margin-bottom: 6px;">Destaque 67</span>
                     <h3 style="font-size: 18px; font-weight: 600;">${dish.nome}</h3>
                     <p style="font-size: 13px; color: #EEE;">${dish.descricao}</p>
                     <div style="font-weight: 700; color: var(--tertiary); margin-top: 8px;">R$ ${dish.preco.toFixed(2)}</div>
@@ -53,7 +53,7 @@ export function renderLandingView() {
                 </div>
               `).join('') : `
                 <div class="carousel-slide flex items-center justify-center" style="color: #FFF;">
-                  Sem pratos em destaque.
+                  Eitcha! Sem pratos em destaque na resenha hoje.
                 </div>
               `}
             </div>
@@ -65,14 +65,14 @@ export function renderLandingView() {
       </div>
     </div>
 
-    <!-- Public Menu Section -->
+    <!-- Seção do Cardápio Público -->
     <div class="container">
       <div class="flex items-center justify-between" style="margin-bottom: 24px;">
-        <h2>Cardápio Completo</h2>
+        <h2>Cardápio Completo da Resenha</h2>
         <div id="landing-category-filters" class="flex gap-2">
-          <button data-cat="all" class="landing-cat-btn btn btn-sm btn-primary">Todos</button>
+          <button data-cat="all" class="landing-cat-btn btn btn-sm btn-primary">Todos (Bora Bill)</button>
           <button data-cat="Pratos Principais" class="landing-cat-btn btn btn-sm btn-secondary">Pratos Principais</button>
-          <button data-cat="Peixes & Frutos do Mar" class="landing-cat-btn btn btn-sm btn-secondary">Peixes</button>
+          <button data-cat="Peixes & Frutos do Mar" class="landing-cat-btn btn btn-sm btn-secondary">Peixes 67</button>
           <button data-cat="Massas" class="landing-cat-btn btn btn-sm btn-secondary">Massas</button>
         </div>
       </div>
@@ -80,30 +80,30 @@ export function renderLandingView() {
       <div id="landing-menu-grid" class="grid grid-cols-4 gap-6"></div>
     </div>
 
-    <!-- Modal Login Client -->
+    <!-- Modal de Login do Cliente (Mesa) -->
     <div id="modal-login-mesa" class="modal-overlay hidden">
       <div class="modal-content">
         <button id="close-modal-mesa" class="modal-close">×</button>
-        <h3 style="margin-bottom: 16px;">Login de Mesa</h3>
+        <h3 style="margin-bottom: 16px;">Login de Mesa — La Ele</h3>
         <form id="form-login-mesa">
           <div class="form-group">
             <label>Usuário / Mesa</label>
-            <input type="text" id="input-mesa-login" required placeholder="ex: mesa05">
+            <input type="text" id="input-mesa-login" required placeholder="ex: mesa05 (a mesa da resenha)">
           </div>
           <div class="form-group">
             <label>Senha</label>
             <input type="password" id="input-mesa-senha" required placeholder="••••••">
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Acessar Minha Mesa</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Acessar Minha Mesa — Bora Bill!</button>
         </form>
       </div>
     </div>
 
-    <!-- Modal Login Staff -->
+    <!-- Modal de Login da Equipe -->
     <div id="modal-login-func" class="modal-overlay hidden">
       <div class="modal-content">
         <button id="close-modal-func" class="modal-close">×</button>
-        <h3 style="margin-bottom: 16px;">Área do Funcionário</h3>
+        <h3 style="margin-bottom: 16px;">Área do Funcionário 67</h3>
         <form id="form-login-func">
           <div class="form-group">
             <label>Usuário</label>
@@ -113,7 +113,7 @@ export function renderLandingView() {
             <label>Senha</label>
             <input type="password" id="input-func-senha" required placeholder="••••••">
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Entrar no Painel</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Entrar no Painel — Tche Tcheee!</button>
         </form>
       </div>
     </div>
@@ -124,6 +124,7 @@ export function renderLandingView() {
   setupLandingEvents();
 }
 
+// Renderiza a grade de pratos do cardápio público
 function renderLandingMenuGrid(category = 'all') {
   const grid = document.getElementById('landing-menu-grid');
   if (!grid) return;
@@ -134,7 +135,7 @@ function renderLandingMenuGrid(category = 'all') {
   }
 
   if (dishes.length === 0) {
-    grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">Nenhum prato nesta categoria.</p>`;
+    grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">Eitcha! Nenhum prato nessa categoria da resenha.</p>`;
     return;
   }
 
@@ -145,7 +146,7 @@ function renderLandingMenuGrid(category = 'all') {
         <div style="height: 180px; position: relative;">
           <img src="${dish.imagem}" alt="${dish.nome}" style="width: 100%; height: 100%; object-fit: cover;">
           <div style="position: absolute; top: 12px; right: 12px;">
-            ${avail.available ? `<span class="badge badge-available">Disponível</span>` : `<span class="badge badge-unavailable">Indisponível</span>`}
+            ${avail.available ? `<span class="badge badge-available">Disponível — Bora Bill</span>` : `<span class="badge badge-unavailable">Esgotado (la ele comeu)</span>`}
           </div>
         </div>
         <div style="padding: 16px;">
@@ -154,13 +155,14 @@ function renderLandingMenuGrid(category = 'all') {
         </div>
         <div style="padding: 16px; border-top: 1px solid var(--border-color);" class="flex items-center justify-between">
           <span style="font-weight: 700; color: var(--primary);">R$ ${dish.preco.toFixed(2)}</span>
-          <button onclick="document.getElementById('btn-open-login-mesa').click()" class="btn btn-secondary btn-sm">Pedir</button>
+          <button onclick="document.getElementById('btn-open-login-mesa').click()" class="btn btn-secondary btn-sm">Pedir (Eitcha)</button>
         </div>
       </div>
     `;
   }).join('');
 }
 
+// Configura o carrossel de destaques da resenha
 function setupCarousel(totalSlides) {
   if (slideInterval) clearInterval(slideInterval);
   if (totalSlides <= 1) return;
@@ -192,6 +194,7 @@ function setupCarousel(totalSlides) {
   }, 5000);
 }
 
+// Liga todos os eventos da página inicial
 function setupLandingEvents() {
   const modalMesa = document.getElementById('modal-login-mesa');
   const modalFunc = document.getElementById('modal-login-func');
@@ -201,6 +204,7 @@ function setupLandingEvents() {
   document.getElementById('close-modal-mesa')?.addEventListener('click', () => modalMesa?.classList.add('hidden'));
   document.getElementById('close-modal-func')?.addEventListener('click', () => modalFunc?.classList.add('hidden'));
 
+  // Filtros de categoria do cardápio
   document.querySelectorAll('.landing-cat-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       document.querySelectorAll('.landing-cat-btn').forEach(b => {
@@ -213,6 +217,7 @@ function setupLandingEvents() {
     });
   });
 
+  // Login da mesa entra direto na resenha do cliente
   document.getElementById('form-login-mesa')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const loginVal = document.getElementById('input-mesa-login').value;
@@ -221,13 +226,14 @@ function setupLandingEvents() {
     if (user && user.tipo === 'mesa') {
       setCurrentUser(user);
       modalMesa.classList.add('hidden');
-      showToast(`Bem-vindo, ${user.nome}!`);
+      showToast(`Eitcha! Bem-vindo, ${user.nome}! Bora Bill começar essa resenha!`);
       navigateTo('client');
     } else {
-      alert('Login de mesa inválido ou inativo.');
+      alert('Eitcha! Login de mesa inválido ou inativo. La ele errou a senha...');
     }
   });
 
+  // Login do funcionário vai pro painel certo conforme o perfil
   document.getElementById('form-login-func')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const loginVal = document.getElementById('input-func-login').value;
@@ -236,11 +242,11 @@ function setupLandingEvents() {
     if (user && user.tipo === 'funcionario') {
       setCurrentUser(user);
       modalFunc.classList.add('hidden');
-      showToast(`Bem-vindo, ${user.nome}!`);
+      showToast(`Tche tcheee! Bem-vindo, ${user.nome}! A resenha operacional começou!`);
       if (user.perfil === 'gerente') navigateTo('manager');
       else navigateTo('staff');
     } else {
-      alert('Login de funcionário inválido ou inativo.');
+      alert('Eitcha! Login de funcionário inválido ou inativo. La ele digitou errado...');
     }
   });
 }

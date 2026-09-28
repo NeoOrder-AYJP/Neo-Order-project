@@ -1,4 +1,4 @@
-// js/views/client.js - Client Area (Mesa) View
+// js/views/client.js — Área do Cliente (Mesa) do Neokirk — onde a resenha acontece
 import { store, currentUser, navigateTo, showToast } from '../app.js';
 
 let cart = [];
@@ -11,9 +11,9 @@ export function renderClientView() {
     container.innerHTML = `
       <div class="container" style="max-width: 500px; margin-top: 64px; text-align: center;">
         <div class="card">
-          <h2>Acesso Restrito a Mesas</h2>
-          <p style="color: var(--text-muted); margin-top: 8px;">Você precisa estar logado com uma conta de mesa para fazer pedidos.</p>
-          <button onclick="window.navigateTo('landing')" class="btn btn-primary" style="margin-top: 24px;">Ir para Login de Mesa</button>
+          <h2>Eitcha! Acesso Restrito a Mesas</h2>
+          <p style="color: var(--text-muted); margin-top: 8px;">Você precisa tá logado com uma conta de mesa pra entrar nessa resenha e fazer pedidos.</p>
+          <button onclick="window.navigateTo('landing')" class="btn btn-primary" style="margin-top: 24px;">Bora Bill pro Login de Mesa</button>
         </div>
       </div>
     `;
@@ -24,37 +24,37 @@ export function renderClientView() {
 
   container.innerHTML = `
     <div class="container" style="display: flex; flex-direction: column; gap: 32px;">
-      
-      <!-- Top Action Bar -->
+
+      <!-- Barra de Ações Principal -->
       <div class="card flex items-center justify-between" style="flex-wrap: wrap; gap: 16px;">
         <div>
-          <span class="badge badge-available">Mesa Ativa</span>
+          <span class="badge badge-available">Mesa Ativa na Resenha</span>
           <h1 style="font-size: 24px; margin-top: 4px;">Fazer Pedido — ${currentUser.nome}</h1>
         </div>
         <div class="flex gap-3 items-center" style="flex-wrap: wrap;">
           <button id="btn-pagar-conta" class="btn btn-secondary" style="background-color: #2e7d32; color: #fff; border-color: #2e7d32;">
             <span class="material-symbols-outlined">payments</span>
-            <span>Pagar Conta (R$ <span id="unpaid-balance-text">${unpaidTotal.toFixed(2)}</span>)</span>
+            <span>Pagar Conta, Bora Bill (R$ <span id="unpaid-balance-text">${unpaidTotal.toFixed(2)}</span>)</span>
           </button>
           <button id="btn-chamar-atendente" class="btn btn-secondary">
             <span class="material-symbols-outlined">notifications_active</span>
-            <span>Chamar Funcionário</span>
+            <span>Chamar Funcionário (Eitcha)</span>
           </button>
           <button id="btn-toggle-cart" class="btn btn-primary">
             <span class="material-symbols-outlined">shopping_cart</span>
-            <span>Carrinho (<span id="cart-badge-count">0</span>)</span>
+            <span>Carrinho 67 (<span id="cart-badge-count">0</span>)</span>
           </button>
         </div>
       </div>
 
-      <!-- Menu Grid & Filter -->
+      <!-- Grade do Cardápio & Filtros -->
       <div>
         <div class="flex items-center justify-between" style="margin-bottom: 16px;">
-          <h2>Selecione os Pratos</h2>
+          <h2>Selecione os Pratos da Resenha</h2>
           <div id="client-category-filters" class="flex gap-2">
             <button data-cat="all" class="client-cat-btn btn btn-sm btn-primary">Todos</button>
             <button data-cat="Pratos Principais" class="client-cat-btn btn btn-sm btn-secondary">Pratos Principais</button>
-            <button data-cat="Peixes & Frutos do Mar" class="client-cat-btn btn btn-sm btn-secondary">Peixes</button>
+            <button data-cat="Peixes & Frutos do Mar" class="client-cat-btn btn btn-sm btn-secondary">Peixes 67</button>
             <button data-cat="Massas" class="client-cat-btn btn btn-sm btn-secondary">Massas</button>
           </div>
         </div>
@@ -62,7 +62,7 @@ export function renderClientView() {
         <div id="client-menu-grid" class="grid grid-cols-4 gap-6"></div>
       </div>
 
-      <!-- History -->
+      <!-- Histórico de Pedidos da Mesa -->
       <div style="border-top: 1px solid var(--border-color); padding-top: 24px;">
         <h2 style="margin-bottom: 16px;">Histórico de Pedidos da ${currentUser.nome}</h2>
         <div id="client-history-list" class="flex flex-col gap-4"></div>
@@ -70,55 +70,55 @@ export function renderClientView() {
 
     </div>
 
-    <!-- Modal Cart -->
+    <!-- Modal do Carrinho -->
     <div id="modal-cart" class="modal-overlay hidden">
       <div class="modal-content">
         <button id="close-modal-cart" class="modal-close">×</button>
-        <h3 style="margin-bottom: 16px;">Seu Carrinho</h3>
+        <h3 style="margin-bottom: 16px;">Seu Carrinho — Tche Tcheee</h3>
         <div id="cart-items-list" style="margin-bottom: 16px;"></div>
         <div class="flex items-center justify-between" style="margin-bottom: 16px; font-weight: 700; font-size: 18px;">
-          <span>Total:</span>
+          <span>Total da Resenha:</span>
           <span id="cart-total-price" style="color: var(--primary);">R$ 0,00</span>
         </div>
-        <button id="btn-checkout-order" class="btn btn-primary" style="width: 100%;">Confirmar Pedido</button>
+        <button id="btn-checkout-order" class="btn btn-primary" style="width: 100%;">Confirmar Pedido — Bora Bill!</button>
       </div>
     </div>
 
-    <!-- Modal Payment (Pagar Conta) -->
+    <!-- Modal de Pagamento (Pagar a Conta) -->
     <div id="modal-payment" class="modal-overlay hidden">
       <div class="modal-content">
         <button id="close-modal-payment" class="modal-close">×</button>
         <h3 style="margin-bottom: 16px;">Pagar Conta da ${currentUser.nome}</h3>
         <div style="background-color: var(--bg-body); padding: 16px; border-radius: 8px; margin-bottom: 16px; text-align: center;">
-          <span style="color: var(--text-muted); font-size: 14px;">Total Pendente:</span>
+          <span style="color: var(--text-muted); font-size: 14px;">Total Pendente (la ele):</span>
           <div id="modal-payment-total" style="font-size: 28px; font-weight: 700; color: #2e7d32;">R$ ${unpaidTotal.toFixed(2)}</div>
         </div>
         <form id="form-process-payment">
           <div class="form-group" style="margin-bottom: 16px;">
-            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Forma de Pagamento</label>
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Forma de Pagamento da Resenha</label>
             <select id="select-payment-method" class="form-control" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color);">
-              <option value="PIX">PIX (Qr Code instantâneo)</option>
+              <option value="PIX">PIX (Qr Code instantâneo, tche tcheee)</option>
               <option value="Cartão de Crédito">Cartão de Crédito</option>
               <option value="Cartão de Débito">Cartão de Débito</option>
-              <option value="Dinheiro">Dinheiro no Balcão</option>
+              <option value="Dinheiro">Dinheiro no Balcão (raiz)</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; background-color: #2e7d32; border-color: #2e7d32;">Finalizar e Pagar Conta</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%; background-color: #2e7d32; border-color: #2e7d32;">Finalizar e Pagar Conta — Eitcha!</button>
         </form>
       </div>
     </div>
 
-    <!-- Modal Call Staff -->
+    <!-- Modal de Chamar a Equipe -->
     <div id="modal-call-staff" class="modal-overlay hidden">
       <div class="modal-content">
         <button id="close-modal-call" class="modal-close">×</button>
-        <h3 style="margin-bottom: 16px;">Chamar Funcionário</h3>
+        <h3 style="margin-bottom: 16px;">Chamar Funcionário 67</h3>
         <form id="form-call-staff">
           <div class="form-group">
             <label>Motivo / Justificativa</label>
-            <textarea id="input-call-reason" required rows="3" placeholder="ex: Preciso de copos extras, gelo ou talheres..."></textarea>
+            <textarea id="input-call-reason" required rows="3" placeholder="ex: Eitcha! Preciso de copos extras, gelo ou talheres pra resenha..."></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Chamado</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Chamado — Tche Tcheee!</button>
         </form>
       </div>
     </div>
@@ -129,7 +129,7 @@ export function renderClientView() {
   renderClientHistory();
   setupClientEvents();
 
-  // Subscribe to real-time database updates from Store
+  // Se inscreve nas atualizações em tempo real do Store
   store.subscribe(() => {
     if (document.getElementById('view-client') && currentUser) {
       renderClientHistory();
@@ -143,6 +143,7 @@ export function renderClientView() {
   });
 }
 
+// Renderiza a grade de pratos disponíveis pra mesa — bora Bill escolher!
 function renderClientMenuGrid(category = 'all') {
   const grid = document.getElementById('client-menu-grid');
   if (!grid) return;
@@ -160,7 +161,7 @@ function renderClientMenuGrid(category = 'all') {
           <div style="height: 160px; position: relative;">
             <img src="${dish.imagem}" alt="${dish.nome}" style="width: 100%; height: 100%; object-fit: cover;">
             <div style="position: absolute; top: 8px; right: 8px;">
-              ${avail.available ? `<span class="badge badge-available">${avail.maxQuantity} disp.</span>` : `<span class="badge badge-unavailable">Indisponível</span>`}
+              ${avail.available ? `<span class="badge badge-available">${avail.maxQuantity} disp. na resenha</span>` : `<span class="badge badge-unavailable">Esgotado (la ele)</span>`}
             </div>
           </div>
           <div style="padding: 16px;">
@@ -170,7 +171,7 @@ function renderClientMenuGrid(category = 'all') {
         </div>
         <div style="padding: 16px; border-top: 1px solid var(--border-color);" class="flex items-center justify-between">
           <span style="font-weight: 700; color: var(--primary);">R$ ${dish.preco.toFixed(2)}</span>
-          <button data-dish-id="${dish.id}" class="btn-add-to-cart btn btn-primary btn-sm" ${!avail.available ? 'disabled style="opacity: 0.5;"' : ''}>+ Adicionar</button>
+          <button data-dish-id="${dish.id}" class="btn-add-to-cart btn btn-primary btn-sm" ${!avail.available ? 'disabled style="opacity: 0.5;"' : ''}>+ Bora Bill</button>
         </div>
       </div>
     `;
@@ -183,19 +184,20 @@ function renderClientMenuGrid(category = 'all') {
   });
 }
 
+// Adiciona o prato no carrinho da resenha
 function addToCart(dishId) {
   const dish = store.getDishById(dishId);
   const avail = store.getDishAvailability(dishId);
 
   if (!dish || !avail.available) {
-    alert('Prato indisponível no momento.');
+    alert('Eitcha! Prato indisponível no momento. La ele acabou com o estoque...');
     return;
   }
 
   const existing = cart.find(i => i.prato_id === dishId);
   if (existing) {
     if (existing.quantidade + 1 > avail.maxQuantity) {
-      alert(`Estoque máximo atingido (${avail.maxQuantity} disponíveis).`);
+      alert(`Tche tcheee! Estoque máximo atingido (${avail.maxQuantity} disponíveis).`);
       return;
     }
     existing.quantidade += 1;
@@ -208,10 +210,11 @@ function addToCart(dishId) {
     });
   }
 
-  showToast(`"${dish.nome}" adicionado!`);
+  showToast(`Eitcha! "${dish.nome}" entrou na resenha!`);
   renderCart();
 }
 
+// Desenha o carrinho na tela
 function renderCart() {
   const list = document.getElementById('cart-items-list');
   const badge = document.getElementById('cart-badge-count');
@@ -226,7 +229,7 @@ function renderCart() {
   if (!list) return;
 
   if (cart.length === 0) {
-    list.innerHTML = `<p style="text-align: center; color: var(--text-muted); padding: 16px;">Carrinho vazio.</p>`;
+    list.innerHTML = `<p style="text-align: center; color: var(--text-muted); padding: 16px;">Carrinho vazio, la ele. Bora Bill adicionar algo da resenha!</p>`;
     return;
   }
 
@@ -252,7 +255,7 @@ function renderCart() {
         const item = cart[idx];
         const avail = store.getDishAvailability(item.prato_id);
         if (item.quantidade + 1 > avail.maxQuantity) {
-          alert('Estoque máximo atingido.');
+          alert('Tche tcheee! Estoque máximo atingido, eitcha.');
           return;
         }
         item.quantidade += 1;
@@ -265,6 +268,7 @@ function renderCart() {
   });
 }
 
+// Mostra o histórico de pedidos da mesa
 function renderClientHistory() {
   const list = document.getElementById('client-history-list');
   if (!list) return;
@@ -272,7 +276,7 @@ function renderClientHistory() {
   const orders = store.getOrders().filter(p => p.mesa_id === currentUser.id);
 
   if (orders.length === 0) {
-    list.innerHTML = `<p style="color: var(--text-muted); font-style: italic;">Nenhum pedido anterior.</p>`;
+    list.innerHTML = `<p style="color: var(--text-muted); font-style: italic;">Nenhum pedido anterior. Bora Bill começar a resenha 67?</p>`;
     return;
   }
 
@@ -290,6 +294,7 @@ function renderClientHistory() {
   `).join('');
 }
 
+// Liga os eventos da área do cliente
 function setupClientEvents() {
   const modalCart = document.getElementById('modal-cart');
   const modalPayment = document.getElementById('modal-payment');
@@ -301,7 +306,7 @@ function setupClientEvents() {
   document.getElementById('btn-pagar-conta')?.addEventListener('click', () => {
     const unpaid = store.getTableUnpaidTotal(currentUser.id);
     if (unpaid <= 0) {
-      alert('Não existem pedidos pendentes de pagamento para esta mesa.');
+      alert('Bora Bill! Não existe pedido pendente de pagamento nessa mesa 67.');
       return;
     }
     modalPayment?.classList.remove('hidden');
@@ -311,6 +316,7 @@ function setupClientEvents() {
   document.getElementById('btn-chamar-atendente')?.addEventListener('click', () => modalCall?.classList.remove('hidden'));
   document.getElementById('close-modal-call')?.addEventListener('click', () => modalCall?.classList.add('hidden'));
 
+  // Filtros de categoria
   document.querySelectorAll('.client-cat-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       document.querySelectorAll('.client-cat-btn').forEach(b => {
@@ -323,8 +329,9 @@ function setupClientEvents() {
     });
   });
 
+  // Finaliza o pedido — bora Bill pra cozinha!
   document.getElementById('btn-checkout-order')?.addEventListener('click', () => {
-    if (cart.length === 0) return alert('Carrinho vazio.');
+    if (cart.length === 0) return alert('Eitcha! Carrinho vazio, la ele. Escolhe algo da resenha primeiro!');
     try {
       store.createOrder(currentUser.id, cart);
       cart = [];
@@ -335,12 +342,13 @@ function setupClientEvents() {
       const unpaid = store.getTableUnpaidTotal(currentUser.id);
       const balanceElem = document.getElementById('unpaid-balance-text');
       if (balanceElem) balanceElem.textContent = unpaid.toFixed(2);
-      showToast('Pedido realizado com sucesso!');
+      showToast('Tche tcheee! Pedido realizado com sucesso! Bora Bill esperar a resenha!');
     } catch (e) {
       alert(e.message);
     }
   });
 
+  // Processa o pagamento da conta
   document.getElementById('form-process-payment')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const method = document.getElementById('select-payment-method').value;
@@ -350,12 +358,13 @@ function setupClientEvents() {
       renderClientHistory();
       const balanceElem = document.getElementById('unpaid-balance-text');
       if (balanceElem) balanceElem.textContent = '0.00';
-      showToast('Pagamento realizado com sucesso!');
+      showToast('Eitcha! Pagamento aprovado! La ele pagou a conta da resenha, tche tcheee!');
     } catch (e) {
       alert(e.message);
     }
   });
 
+  // Envia chamado pra equipe
   document.getElementById('form-call-staff')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const reason = document.getElementById('input-call-reason').value;
@@ -363,7 +372,7 @@ function setupClientEvents() {
       store.createCall(currentUser.id, reason);
       modalCall?.classList.add('hidden');
       document.getElementById('input-call-reason').value = '';
-      showToast('Chamado enviado!');
+      showToast('Chamado enviado! O atendente já vem na resenha, eitcha! 67!');
     } catch (e) {
       alert(e.message);
     }
