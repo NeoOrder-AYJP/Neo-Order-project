@@ -1,8 +1,8 @@
 # Especificação Técnica — Sistema de Gerenciamento de Pedidos de Restaurante
 
-Versao: 1.1  
-Data: 03/09/2026  
-Status: Aprovado para desenvolvimento
+**Versão:** 1.0  
+**Data:** 27/08/2026  
+**Status:** Aprovado para desenvolvimento
 
 ---
 
@@ -10,7 +10,7 @@ Status: Aprovado para desenvolvimento
 
 Sistema web responsivo para gestão de pedidos de um restaurante, operando inteiramente no front-end com persistência via `localStorage`. O sistema permite que clientes façam pedidos por meio de logins vinculados a mesas, visualizem disponibilidade de pratos e chamem funcionários. Funcionários (atendentes e gerentes) gerenciam pedidos, cardápio, estoque de ingredientes, contas de mesas e acompanham faturamento.
 
-> Nota sobre persistência: Como o sistema utiliza apenas armazenamento local (`localStorage`), os dados não sincronizam entre dispositários. Cada dispositário mantém seu próprio estado. Para mitigar perdas, o sistema oferece exportação/importação de dados em JSON.
+> **Nota sobre persistência:** Como o sistema utiliza apenas armazenamento local (`localStorage`), os dados não sincronizam entre dispositários. Cada dispositário mantém seu próprio estado. Para mitigar perdas, o sistema oferece exportação/importação de dados em JSON.
 
 ---
 
@@ -18,9 +18,9 @@ Sistema web responsivo para gestão de pedidos de um restaurante, operando intei
 
 | Ator | Descrição |
 |------|-----------|
-| Cliente (Mesa) | Usuário autenticado via login de mesa. Navega o cardápio, faz pedidos, visualiza histórico e chama funcionários. |
-| Atendente | Funcionário autenticado. Atende chamados, visualiza e atualiza status de pedidos. |
-| Gerente | Funcionário autenticado com permissões totais. Possui todas as permissões do atendente + gerenciamento de cardápio, estoque, contas de mesas e faturamento. |
+| **Cliente (Mesa)** | Usuário autenticado via login de mesa. Navega o cardápio, faz pedidos, visualiza histórico e chama funcionários. |
+| **Atendente** | Funcionário autenticado. Atende chamados, visualiza e atualiza status de pedidos. |
+| **Gerente** | Funcionário autenticado com permissões totais. Possui todas as permissões do atendente + gerenciamento de cardápio, estoque, contas de mesas e faturamento. |
 
 ---
 
@@ -69,7 +69,7 @@ Sistema web responsivo para gestão de pedidos de um restaurante, operando intei
 | RF-22 | Gerentes devem poder adicionar novos ingredientes ao estoque (nome, unidade de medida, quantidade inicial). | Alta |
 | RF-23 | Gerentes devem poder editar a quantidade de cada ingrediente no estoque (entrada manual de reposição ou ajuste). | Alta |
 | RF-24 | Ao cadastrar ou editar um prato, o Gerente deve informar quais ingredientes ele consome e em que quantidade por unidade servida. | Alta |
-| RF-25 | Clientes e Atendentes não devem ter acesso à tela de estoque ou às quantidades de ingredientes. | Alta |
+| RF-25 | Clientes e Atendentes **não** devem ter acesso à tela de estoque ou às quantidades de ingredientes. | Alta |
 
 ### Módulo: Chamados e Comunicação
 
@@ -90,7 +90,7 @@ Sistema web responsivo para gestão de pedidos de um restaurante, operando intei
 | RF-33 | A dashboard de faturamento deve permitir filtrar por período (dia, semana, mês). | Média |
 | RF-34 | A dashboard deve exibir métricas como: total faturado, quantidade de pedidos, ticket médio e pratos mais vendidos. | Média |
 | RF-35 | Pedidos com status "Cancelado" não devem ser considerados no cálculo de faturamento. | Alta |
-| RF-36 | Atendentes e Clientes não devem ter acesso à dashboard de faturamento. | Alta |
+| RF-36 | Atendentes e Clientes **não** devem ter acesso à dashboard de faturamento. | Alta |
 
 ### Módulo: Gerenciamento de Cardápio
 
@@ -120,7 +120,6 @@ Sistema web responsivo para gestão de pedidos de um restaurante, operando intei
 | RNF-04 | O sistema deve operar inteiramente no front-end, utilizando `localStorage` como mecanismo de persistência de dados. |
 | RNF-05 | A interface deve ser intuitiva, permitindo que um novo usuário complete um pedido em no máximo 5 interações após o login. |
 | RNF-06 | Os slides da landing page devem alternar automaticamente a cada 5 segundos, com opção de navegação manual. |
-| RNF-07 | A interface deve priorizar UI/UX corporativo, limpo e minimalista, com hierarquia visual clara, espaçamento generoso, tipografia legível e ausência de elementos desnecessários. |
 
 ---
 
@@ -291,38 +290,53 @@ Dashboard do Gerente
 
 ---
 
-## 10. Limitações Conhecidas
+## 10. Paleta de Cores Sugerida
+
+| Uso | Cor | Hex |
+|-----|-----|-----|
+| Primária (fome/energia) | Laranja vibrante | `#E85D04` |
+| Secundária (calor) | Vermelho tomate | `#D00000` |
+| Destaque (otimismo) | Amarelo mostarda | `#FFBA08` |
+| Base (conforto) | Marrom terroso | `#6F4E37` |
+| Fundo claro | Creme | `#FFF8F0` |
+| Texto principal | Grafite | `#2B2D42` |
+| Texto secundário | Cinza médio | `#8D99AE` |
+| Sucesso | Verde | `#2A9D8F` |
+| Erro/Indisponível | Vermelho escuro | `#9D0208` |
+
+---
+
+## 11. Limitações Conhecidas
 
 | Limitação | Descrição |
 |-----------|-----------|
-| Sincronização | Dados não sincronizam entre dispositários. Cada dispositário possui seu próprio estado no `localStorage`. |
-| Notificações sonoras | Navegadores bloqueiam autoplay de áudio. O som de notificação só funcionará após o usuário interagir com a página e ativar manualmente. |
-| Perda de dados | Limpar cookies/localStorage do navegador apaga todos os dados do sistema. Use a função de exportação JSON regularmente. |
-| Concorrência | Não há controle de concorrência. Se dois usuários editarem o mesmo dado simultaneamente no mesmo dispositário, a última operação sobrescreve a anterior. |
-| Escalabilidade | O `localStorage` tem limite de ~5-10MB por domínio. Sistemas com muitos pedidos ou imagens em base64 podem atingir esse limite. |
+| **Sincronização** | Dados não sincronizam entre dispositários. Cada dispositário possui seu próprio estado no `localStorage`. |
+| **Notificações sonoras** | Navegadores bloqueiam autoplay de áudio. O som de notificação só funcionará após o usuário interagir com a página e ativar manualmente. |
+| **Perda de dados** | Limpar cookies/localStorage do navegador apaga todos os dados do sistema. Use a função de exportação JSON regularmente. |
+| **Concorrência** | Não há controle de concorrência. Se dois usuários editarem o mesmo dado simultaneamente no mesmo dispositário, a última operação sobrescreve a anterior. |
+| **Escalabilidade** | O `localStorage` tem limite de ~5-10MB por domínio. Sistemas com muitos pedidos ou imagens em base64 podem atingir esse limite. |
 
 ---
 
-## 11. Glossário
+## 12. Glossário
 
 | Termo | Definição |
 |-------|-----------|
-| Mesa | Conta de cliente vinculada a uma mesa física do restaurante. |
-| Prato | Item do cardápio que pode ser pedido pelo cliente. |
-| Ingrediente | Componente necessário para preparar um prato, controlado em estoque. |
-| Pedido | Conjunto de pratos solicitados por uma mesa, com valor total e status. |
-| Chamado | Solicitação de atendimento feita por uma mesa aos funcionários. |
-| Faturamento | Soma dos valores de pedidos finalizados em um período. |
-| Ticket Médio | Valor médio gasto por pedido finalizado. |
+| **Mesa** | Conta de cliente vinculada a uma mesa física do restaurante. |
+| **Prato** | Item do cardápio que pode ser pedido pelo cliente. |
+| **Ingrediente** | Componente necessário para preparar um prato, controlado em estoque. |
+| **Pedido** | Conjunto de pratos solicitados por uma mesa, com valor total e status. |
+| **Chamado** | Solicitação de atendimento feita por uma mesa aos funcionários. |
+| **Faturamento** | Soma dos valores de pedidos finalizados em um período. |
+| **Ticket Médio** | Valor médio gasto por pedido finalizado. |
 
 ---
 
-## 12. Histórico de Versões
+## 13. Histórico de Versões
 
-| Versao | Data | Autor | Alteracoes |
+| Versão | Data | Autor | Alterações |
 |--------|------|-------|------------|
-| 1.0 | 27/08/2026 | Especificacao inicial | Criacao do documento com todos os requisitos, regras e arquitetura. |
-| 1.1 | 03/09/2026 | Refatoracao de estrutura | Separacao do design system para agents.md. Remocao da secao de tema e cores. Criacao do backlog.md. |
+| 1.0 | 27/08/2026 | Especificação inicial | Criação do documento com todos os requisitos, regras e arquitetura. |
 
 ---
 
