@@ -1,4 +1,4 @@
-/* css/style.css - Pure CSS Design System & Utility Library */
+/* css/style.css — Sistema de Design Neokirk em CSS puro e biblioteca de utilitários (tche tcheee) */
 
 :root {
   --primary: #E85D04;
@@ -43,7 +43,7 @@ body {
   flex-direction: column;
 }
 
-/* Header & Nav */
+/* Cabeçalho e Navegação */
 header {
   position: fixed;
   top: 0;
@@ -142,7 +142,7 @@ main {
   padding: 32px 24px;
 }
 
-/* Utility Layouts */
+/* Layouts Utilitários */
 .hidden { display: none !important; }
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
@@ -169,7 +169,7 @@ main {
   nav.nav-links { display: none; }
 }
 
-/* Buttons */
+/* Botões (bora bill) */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -216,7 +216,7 @@ main {
   background-color: #7A0106;
 }
 
-/* Cards */
+/* Cards da resenha */
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
@@ -229,7 +229,7 @@ main {
   box-shadow: var(--shadow-md);
 }
 
-/* Badges */
+/* Selos (badges) */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -243,7 +243,7 @@ main {
 .badge-unavailable { background-color: #FCE8E6; color: var(--error); }
 .badge-pending { background-color: #FFF8E1; color: #825100; }
 
-/* Modals */
+/* Modais */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -279,7 +279,7 @@ main {
   color: var(--text-muted);
 }
 
-/* Form inputs */
+/* Campos de formulário */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -310,7 +310,7 @@ input:focus, select:focus, textarea:focus {
   border-color: var(--primary);
 }
 
-/* Tables */
+/* Tabelas */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -331,7 +331,7 @@ td {
   border-bottom: 1px solid var(--border-color);
 }
 
-/* Toast */
+/* Toast — aviso maroto da resenha 67 */
 #toast-message {
   position: fixed;
   bottom: 24px;

@@ -1,4 +1,5 @@
-// js/app.js - Router and Global Application Controller
+// js/app.js — Roteador e Controlador Global da Aplicação Neokirk
+// Aqui é onde a resenha toda se organiza, bora Bill!
 import { Store } from './store.js';
 import { renderLandingView } from './views/landing.js';
 import { renderClientView } from './views/client.js';
@@ -13,6 +14,7 @@ export function setCurrentUser(user) {
   updateSessionHeader();
 }
 
+// Mostra aquele aviso maroto no cantinho da tela — eitcha!
 export function showToast(message) {
   const toastEl = document.getElementById('toast-message');
   const toastText = document.getElementById('toast-text');
@@ -25,6 +27,7 @@ export function showToast(message) {
   }
 }
 
+// Navega entre as telas da resenha
 export function navigateTo(viewName) {
   const views = ['landing', 'client', 'staff', 'manager'];
   views.forEach(v => {
@@ -38,7 +41,7 @@ export function navigateTo(viewName) {
     }
   });
 
-  // Update navbar button highlight
+  // Atualiza o destaque do botão ativo na barra de navegação
   document.querySelectorAll('.nav-btn').forEach(btn => {
     if (btn.dataset.path === viewName) {
       btn.classList.add('active');
@@ -47,7 +50,7 @@ export function navigateTo(viewName) {
     }
   });
 
-  // Render view content
+  // Renderiza o conteúdo da tela escolhida
   if (viewName === 'landing') renderLandingView();
   else if (viewName === 'client') renderClientView();
   else if (viewName === 'staff') renderStaffView();
@@ -56,6 +59,7 @@ export function navigateTo(viewName) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// Atualiza o cabeçalho com os dados de quem tá logado na resenha
 export function updateSessionHeader() {
   const sessionInfo = document.getElementById('user-session-info');
   if (!sessionInfo) return;
@@ -63,11 +67,11 @@ export function updateSessionHeader() {
   if (!currentUser) {
     sessionInfo.innerHTML = `
       <button onclick="window.navigateTo('landing')" class="btn btn-secondary btn-sm">
-        Entrar / Acessar
+        Entrar / Acessar (La ele)
       </button>
     `;
   } else {
-    const roleBadge = currentUser.tipo === 'mesa' ? 'Mesa' : (currentUser.perfil === 'gerente' ? 'Gerente' : 'Atendente');
+    const roleBadge = currentUser.tipo === 'mesa' ? 'Mesa da Resenha 67' : (currentUser.perfil === 'gerente' ? 'Gerente Bora Bill' : 'Atendente Tche Tcheee');
     sessionInfo.innerHTML = `
       <div class="flex items-center gap-3">
         <div class="flex flex-col" style="text-align: right;">
@@ -86,10 +90,11 @@ export function updateSessionHeader() {
 window.navigateTo = navigateTo;
 window.handleLogout = function() {
   setCurrentUser(null);
-  showToast('Sessão encerrada com sucesso.');
+  showToast('Tche tcheee! Sessão encerrada com sucesso. A resenha espera você voltar, bora Bill!');
   navigateTo('landing');
 };
 
+// Quando o DOM carrega, a resenha começa de verdade
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {

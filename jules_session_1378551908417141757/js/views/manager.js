@@ -1,4 +1,4 @@
-// js/views/manager.js - Manager Full Operations & Analytics Dashboard View
+// js/views/manager.js — Painel Completo de Gestão & Análise do Neokirk (resenha do chefão, bora Bill!)
 import { store, currentUser, showToast } from '../app.js';
 
 let activeTab = 'analytics';
@@ -11,9 +11,9 @@ export function renderManagerView() {
     container.innerHTML = `
       <div class="container" style="max-width: 500px; margin-top: 64px; text-align: center;">
         <div class="card">
-          <h2>Acesso Exclusivo a Gerentes</h2>
-          <p style="color: var(--text-muted); margin-top: 8px;">Você precisa estar autenticado como Gerente para acessar esta área.</p>
-          <button onclick="window.navigateTo('landing')" class="btn btn-primary" style="margin-top: 24px;">Ir para Login</button>
+          <h2>Eitcha! Acesso Exclusivo a Gerentes</h2>
+          <p style="color: var(--text-muted); margin-top: 8px;">Você precisa tá autenticado como Gerente pra entrar nessa resenha 67, la ele.</p>
+          <button onclick="window.navigateTo('landing')" class="btn btn-primary" style="margin-top: 24px;">Bora Bill pro Login</button>
         </div>
       </div>
     `;
@@ -22,45 +22,45 @@ export function renderManagerView() {
 
   container.innerHTML = `
     <div class="container flex flex-col gap-6">
-      
-      <!-- Top Bar -->
+
+      <!-- Barra Superior -->
       <div class="card flex items-center justify-between" style="flex-wrap: wrap; gap: 16px;">
         <div>
-          <span class="badge badge-pending">Módulo Administrativo</span>
-          <h1 style="font-size: 24px; margin-top: 4px;">Gestão Estratégica & Faturamento</h1>
+          <span class="badge badge-pending">Módulo Administrativo 67</span>
+          <h1 style="font-size: 24px; margin-top: 4px;">Gestão Estratégica & Faturamento (Tche Tcheee)</h1>
         </div>
 
         <div class="flex gap-2">
           <input type="file" id="json-file-input" accept=".json" class="hidden">
           <button id="btn-import-backup" class="btn btn-secondary btn-sm">
             <span class="material-symbols-outlined">upload_file</span>
-            <span>Importar JSON</span>
+            <span>Importar JSON (Bora Bill)</span>
           </button>
           <button id="btn-export-backup" class="btn btn-primary btn-sm">
             <span class="material-symbols-outlined">cloud_download</span>
-            <span>Exportar Backup</span>
+            <span>Exportar Backup 67</span>
           </button>
         </div>
       </div>
 
-      <!-- Navigation Tabs -->
+      <!-- Abas de Navegação -->
       <div class="flex gap-2" style="border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
-        <button data-tab="analytics" class="mgr-tab-btn btn btn-sm btn-primary">Faturamento & Indicadores</button>
-        <button data-tab="dishes" class="mgr-tab-btn btn btn-sm btn-secondary">Gestão de Cardápio</button>
-        <button data-tab="stock" class="mgr-tab-btn btn btn-sm btn-secondary">Estoque de Ingredientes</button>
+        <button data-tab="analytics" class="mgr-tab-btn btn btn-sm btn-primary">Faturamento & Indicadores (La Ele)</button>
+        <button data-tab="dishes" class="mgr-tab-btn btn btn-sm btn-secondary">Gestão do Cardápio da Resenha</button>
+        <button data-tab="stock" class="mgr-tab-btn btn btn-sm btn-secondary">Estoque de Ingredientes 67</button>
         <button data-tab="accounts" class="mgr-tab-btn btn btn-sm btn-secondary">Contas de Mesas & Funcionários</button>
       </div>
 
-      <!-- Tab Content -->
+      <!-- Conteúdo da Aba -->
       <div id="mgr-tab-content"></div>
 
     </div>
 
-    <!-- Dish Modal -->
+    <!-- Modal de Prato -->
     <div id="modal-dish-form" class="modal-overlay hidden">
       <div class="modal-content">
         <button id="close-modal-dish" class="modal-close">×</button>
-        <h3 id="dish-modal-title" style="margin-bottom: 16px;">Cadastrar Novo Prato</h3>
+        <h3 id="dish-modal-title" style="margin-bottom: 16px;">Cadastrar Novo Prato da Resenha</h3>
         <form id="form-dish-save">
           <input type="hidden" id="input-dish-id">
           <div class="form-group"><label>Nome</label><input type="text" id="input-dish-nome" required></div>
@@ -76,24 +76,24 @@ export function renderManagerView() {
           </div>
           <div class="form-group"><label>Descrição</label><textarea id="input-dish-descricao" rows="2"></textarea></div>
           <div class="form-group"><label>URL da Imagem</label><input type="url" id="input-dish-imagem" required></div>
-          <div style="margin-bottom: 16px;"><input type="checkbox" id="input-dish-destaque"> <label for="input-dish-destaque">Destaque na Landing Page</label></div>
-          
+          <div style="margin-bottom: 16px;"><input type="checkbox" id="input-dish-destaque"> <label for="input-dish-destaque">Destaque na Landing (destaque 67)</label></div>
+
           <div style="border-top: 1px solid var(--border-color); padding-top: 12px; margin-bottom: 16px;">
-            <label style="color: var(--primary);">Receita (Ingredientes Consumidos)</label>
+            <label style="color: var(--primary);">Receita (Ingredientes Consumidos) — Eitcha!</label>
             <div id="dish-recipe-builder" class="flex flex-col gap-2" style="margin-top: 8px;"></div>
-            <button type="button" id="btn-add-recipe-row" class="btn btn-secondary btn-sm" style="margin-top: 8px;">+ Adicionar Ingrediente</button>
+            <button type="button" id="btn-add-recipe-row" class="btn btn-secondary btn-sm" style="margin-top: 8px;">+ Adicionar Ingrediente (Tche Tcheee)</button>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Salvar Prato</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Salvar Prato — Bora Bill!</button>
         </form>
       </div>
     </div>
 
-    <!-- Ingredient Modal -->
+    <!-- Modal de Ingrediente -->
     <div id="modal-ing-form" class="modal-overlay hidden">
       <div class="modal-content">
         <button id="close-modal-ing" class="modal-close">×</button>
-        <h3 id="ing-modal-title" style="margin-bottom: 16px;">Ingrediente</h3>
+        <h3 id="ing-modal-title" style="margin-bottom: 16px;">Ingrediente 67</h3>
         <form id="form-ing-save">
           <input type="hidden" id="input-ing-id">
           <div class="form-group"><label>Nome</label><input type="text" id="input-ing-nome" required></div>
@@ -108,24 +108,24 @@ export function renderManagerView() {
             </div>
             <div class="form-group"><label>Quantidade</label><input type="number" step="0.01" id="input-ing-quantidade" required></div>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Salvar Ingrediente</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Salvar Ingrediente — Eitcha!</button>
         </form>
       </div>
     </div>
 
-    <!-- Account Modal -->
+    <!-- Modal de Conta -->
     <div id="modal-user-form" class="modal-overlay hidden">
       <div class="modal-content">
         <button id="close-modal-user" class="modal-close">×</button>
-        <h3 style="margin-bottom: 16px;">Criar Conta</h3>
+        <h3 style="margin-bottom: 16px;">Criar Conta (La Ele)</h3>
         <form id="form-user-save">
           <div class="form-group"><label>Tipo de Conta</label>
             <select id="input-user-tipo" required>
-              <option value="mesa">Mesa (Cliente)</option>
+              <option value="mesa">Mesa (Cliente da Resenha)</option>
               <option value="funcionario">Funcionário</option>
             </select>
           </div>
-          <div class="form-group"><label>Nome de Exibição</label><input type="text" id="input-user-nome" required placeholder="ex: Mesa 06"></div>
+          <div class="form-group"><label>Nome de Exibição</label><input type="text" id="input-user-nome" required placeholder="ex: Mesa 06 da Resenha"></div>
           <div class="grid grid-cols-2 gap-2">
             <div class="form-group"><label>Login</label><input type="text" id="input-user-login" required></div>
             <div class="form-group"><label>Senha</label><input type="password" id="input-user-senha" required></div>
@@ -137,7 +137,7 @@ export function renderManagerView() {
               <option value="gerente">Gerente</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Salvar Conta</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Salvar Conta — Tche Tcheee!</button>
         </form>
       </div>
     </div>
@@ -146,7 +146,7 @@ export function renderManagerView() {
   renderManagerTab(activeTab);
   setupManagerEvents();
 
-  // Register real-time auto-sync listener for manager dashboard
+  // Registra ouvinte de sincronização em tempo real pro painel do gerente
   store.subscribe(() => {
     if (document.getElementById('view-manager') && currentUser) {
       renderManagerTab(activeTab);
@@ -154,6 +154,7 @@ export function renderManagerView() {
   });
 }
 
+// Alterna entre as abas do painel gerencial
 function renderManagerTab(tab) {
   activeTab = tab;
   const content = document.getElementById('mgr-tab-content');
@@ -175,12 +176,13 @@ function renderManagerTab(tab) {
   else if (tab === 'accounts') renderAccountsTab(content);
 }
 
+// Aba de faturamento e indicadores da resenha
 function renderAnalyticsTab(container, period = 'Este Mês') {
   const metrics = store.getFinancialMetrics(period);
   container.innerHTML = `
     <div class="flex flex-col gap-6">
       <div class="flex items-center justify-between">
-        <h3>Faturamento & Vendas</h3>
+        <h3>Faturamento & Vendas 67</h3>
         <div class="flex gap-2">
           <button data-period="Hoje" class="period-filter-btn btn btn-sm ${period === 'Hoje' ? 'btn-primary' : 'btn-secondary'}">Hoje</button>
           <button data-period="7 Dias" class="period-filter-btn btn btn-sm ${period === '7 Dias' ? 'btn-primary' : 'btn-secondary'}">7 Dias</button>
@@ -190,27 +192,27 @@ function renderAnalyticsTab(container, period = 'Este Mês') {
 
       <div class="grid grid-cols-3 gap-6">
         <div class="card">
-          <span style="font-size: 12px; color: var(--text-muted); text-transform: uppercase;">Faturamento Total</span>
+          <span style="font-size: 12px; color: var(--text-muted); text-transform: uppercase;">Faturamento Total (Eitcha)</span>
           <div style="font-size: 28px; font-weight: 700; color: var(--primary);">R$ ${metrics.totalFaturado.toFixed(2)}</div>
         </div>
         <div class="card">
-          <span style="font-size: 12px; color: var(--text-muted); text-transform: uppercase;">Pedidos Finalizados</span>
+          <span style="font-size: 12px; color: var(--text-muted); text-transform: uppercase;">Pedidos Finalizados (Bora Bill)</span>
           <div style="font-size: 28px; font-weight: 700;">${metrics.qtdPedidos}</div>
         </div>
         <div class="card">
-          <span style="font-size: 12px; color: var(--text-muted); text-transform: uppercase;">Ticket Médio</span>
+          <span style="font-size: 12px; color: var(--text-muted); text-transform: uppercase;">Ticket Médio (Tche Tcheee)</span>
           <div style="font-size: 28px; font-weight: 700; color: var(--secondary);">R$ ${metrics.ticketMedio.toFixed(2)}</div>
         </div>
       </div>
 
       <div class="card">
-        <h4 style="margin-bottom: 12px;">Mais Vendidos</h4>
+        <h4 style="margin-bottom: 12px;">Os Mais Vendidos da Resenha</h4>
         ${metrics.topDishes.length > 0 ? metrics.topDishes.map((item, i) => `
           <div class="flex items-center justify-between" style="padding: 8px 0; border-bottom: 1px solid var(--border-color);">
             <span>${i + 1}. <strong>${item.nome}</strong></span>
             <span style="font-weight: 700; color: var(--primary);">${item.quantidade} un.</span>
           </div>
-        `).join('') : '<p style="color: var(--text-muted);">Sem vendas no período.</p>'}
+        `).join('') : '<p style="color: var(--text-muted);">Eitcha! Sem vendas no período, la ele...</p>'}
       </div>
     </div>
   `;
@@ -220,13 +222,14 @@ function renderAnalyticsTab(container, period = 'Este Mês') {
   });
 }
 
+// Aba de gestão do cardápio
 function renderDishesTab(container) {
   const dishes = store.getDishes();
   container.innerHTML = `
     <div class="flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h3>Pratos do Cardápio</h3>
-        <button id="btn-open-add-dish" class="btn btn-primary btn-sm">+ Novo Prato</button>
+        <h3>Pratos do Cardápio da Resenha</h3>
+        <button id="btn-open-add-dish" class="btn btn-primary btn-sm">+ Novo Prato (Bora Bill)</button>
       </div>
       <div class="card" style="padding: 0; overflow: hidden;">
         <table>
@@ -245,9 +248,9 @@ function renderDishesTab(container) {
                 <td><strong>${d.nome}</strong></td>
                 <td>${d.categoria}</td>
                 <td style="color: var(--primary); font-weight: 700;">R$ ${d.preco.toFixed(2)}</td>
-                <td>${d.destaque ? 'Sim' : 'Não'}</td>
+                <td>${d.destaque ? 'Sim (67)' : 'Não'}</td>
                 <td style="text-align: right;">
-                  <button data-dish-id="${d.id}" class="btn-edit-dish btn btn-secondary btn-sm">Editar</button>
+                  <button data-dish-id="${d.id}" class="btn-edit-dish btn btn-secondary btn-sm">Editar (Eitcha)</button>
                   <button data-dish-id="${d.id}" class="btn-delete-dish btn btn-danger btn-sm">Excluir</button>
                 </td>
               </tr>
@@ -261,14 +264,15 @@ function renderDishesTab(container) {
   document.getElementById('btn-open-add-dish')?.addEventListener('click', () => openDishModal());
   document.querySelectorAll('.btn-edit-dish').forEach(btn => btn.addEventListener('click', (e) => openDishModal(e.currentTarget.dataset.dishId)));
   document.querySelectorAll('.btn-delete-dish').forEach(btn => btn.addEventListener('click', (e) => {
-    if (confirm('Excluir este prato?')) {
+    if (confirm('Eitcha! Tem certeza que quer excluir esse prato da resenha 67?')) {
       store.deleteDish(e.currentTarget.dataset.dishId);
-      showToast('Prato excluído!');
+      showToast('Prato excluído! La ele saiu do cardápio, tche tcheee!');
       renderDishesTab(container);
     }
   }));
 }
 
+// Abre o modal de prato pra criar ou editar
 function openDishModal(dishId = null) {
   const modal = document.getElementById('modal-dish-form');
   const title = document.getElementById('dish-modal-title');
@@ -281,7 +285,7 @@ function openDishModal(dishId = null) {
   if (dishId) {
     const dish = store.getDishById(dishId);
     if (!dish) return;
-    title.textContent = 'Editar Prato';
+    title.textContent = 'Editar Prato da Resenha';
     document.getElementById('input-dish-id').value = dish.id;
     document.getElementById('input-dish-nome').value = dish.nome;
     document.getElementById('input-dish-preco').value = dish.preco;
@@ -292,7 +296,7 @@ function openDishModal(dishId = null) {
 
     if (dish.ingredientes) dish.ingredientes.forEach(req => addRecipeRow(req.ingrediente_id, req.quantidade));
   } else {
-    title.textContent = 'Novo Prato';
+    title.textContent = 'Novo Prato 67 (Bora Bill!)';
     form.reset();
     document.getElementById('input-dish-id').value = '';
     addRecipeRow();
@@ -301,6 +305,7 @@ function openDishModal(dishId = null) {
   modal.classList.remove('hidden');
 }
 
+// Adiciona uma linha de ingrediente na receita
 function addRecipeRow(ingId = '', qty = 0.1) {
   const builder = document.getElementById('dish-recipe-builder');
   if (!builder) return;
@@ -310,7 +315,7 @@ function addRecipeRow(ingId = '', qty = 0.1) {
   div.className = 'flex items-center gap-2';
   div.innerHTML = `
     <select class="recipe-ing-id flex-1">
-      <option value="">Ingrediente...</option>
+      <option value="">Ingrediente... (eitcha)</option>
       ${ingredients.map(i => `<option value="${i.id}" ${i.id === ingId ? 'selected' : ''}>${i.nome} (${i.unidade})</option>`).join('')}
     </select>
     <input type="number" step="0.01" value="${qty}" class="recipe-ing-qty" style="width: 100px;">
@@ -321,13 +326,14 @@ function addRecipeRow(ingId = '', qty = 0.1) {
   builder.appendChild(div);
 }
 
+// Aba de estoque de ingredientes
 function renderStockTab(container) {
   const ingredients = store.getIngredients();
   container.innerHTML = `
     <div class="flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h3>Estoque de Ingredientes</h3>
-        <button id="btn-open-add-ing" class="btn btn-primary btn-sm">+ Novo Ingrediente</button>
+        <h3>Estoque de Ingredientes 67</h3>
+        <button id="btn-open-add-ing" class="btn btn-primary btn-sm">+ Novo Ingrediente (Tche Tcheee)</button>
       </div>
       <div class="card" style="padding: 0; overflow: hidden;">
         <table>
@@ -341,7 +347,7 @@ function renderStockTab(container) {
                 <td>${i.unidade}</td>
                 <td style="font-weight: 700;">${i.quantidade} ${i.unidade}</td>
                 <td style="text-align: right;">
-                  <button data-ing-id="${i.id}" class="btn-edit-ing-qty btn btn-secondary btn-sm">Editar</button>
+                  <button data-ing-id="${i.id}" class="btn-edit-ing-qty btn btn-secondary btn-sm">Editar (Bora Bill)</button>
                 </td>
               </tr>
             `).join('')}
@@ -355,6 +361,7 @@ function renderStockTab(container) {
   document.querySelectorAll('.btn-edit-ing-qty').forEach(btn => btn.addEventListener('click', (e) => openIngModal(e.currentTarget.dataset.ingId)));
 }
 
+// Abre o modal de ingrediente pra criar ou editar
 function openIngModal(ingId = null) {
   const modal = document.getElementById('modal-ing-form');
   const form = document.getElementById('form-ing-save');
@@ -375,13 +382,14 @@ function openIngModal(ingId = null) {
   modal.classList.remove('hidden');
 }
 
+// Aba de contas de usuários (mesas e funcionários da resenha)
 function renderAccountsTab(container) {
   const users = store.getUsers();
   container.innerHTML = `
     <div class="flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h3>Contas de Usuários</h3>
-        <button id="btn-open-add-user" class="btn btn-primary btn-sm">+ Criar Conta</button>
+        <h3>Contas de Usuários 67</h3>
+        <button id="btn-open-add-user" class="btn btn-primary btn-sm">+ Criar Conta (Eitcha)</button>
       </div>
       <div class="card" style="padding: 0; overflow: hidden;">
         <table>
@@ -392,11 +400,11 @@ function renderAccountsTab(container) {
             ${users.map(u => `
               <tr>
                 <td><strong>${u.nome}</strong></td>
-                <td>${u.tipo === 'mesa' ? 'Mesa' : `Funcionário (${u.perfil})`}</td>
+                <td>${u.tipo === 'mesa' ? 'Mesa (resenha)' : `Funcionário (${u.perfil})`}</td>
                 <td><code>${u.login}</code></td>
-                <td>${u.ativo !== false ? '<span class="badge badge-available">Ativo</span>' : '<span class="badge badge-unavailable">Inativo</span>'}</td>
+                <td>${u.ativo !== false ? '<span class="badge badge-available">Ativo (bora bill)</span>' : '<span class="badge badge-unavailable">Inativo (la ele)</span>'}</td>
                 <td style="text-align: right;">
-                  <button data-user-id="${u.id}" class="btn-toggle-user-active btn btn-secondary btn-sm">${u.ativo !== false ? 'Inativar' : 'Reativar'}</button>
+                  <button data-user-id="${u.id}" class="btn-toggle-user-active btn btn-secondary btn-sm">${u.ativo !== false ? 'Inativar' : 'Reativar (tche tcheee)'}</button>
                 </td>
               </tr>
             `).join('')}
@@ -415,12 +423,13 @@ function renderAccountsTab(container) {
   document.querySelectorAll('.btn-toggle-user-active').forEach(btn => {
     btn.addEventListener('click', (e) => {
       store.toggleUserActive(e.currentTarget.dataset.userId);
-      showToast('Status alterado!');
+      showToast('Status alterado! Tche tcheee, la ele mudou de situação!');
       renderAccountsTab(container);
     });
   });
 }
 
+// Liga todos os eventos do painel gerencial
 function setupManagerEvents() {
   document.querySelectorAll('.mgr-tab-btn').forEach(btn => btn.addEventListener('click', (e) => renderManagerTab(e.currentTarget.dataset.tab)));
 
@@ -430,6 +439,7 @@ function setupManagerEvents() {
 
   document.getElementById('btn-add-recipe-row')?.addEventListener('click', () => addRecipeRow());
 
+  // Salva o prato (novo ou editado) com a receita completa
   document.getElementById('form-dish-save')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const id = document.getElementById('input-dish-id').value;
@@ -450,10 +460,11 @@ function setupManagerEvents() {
 
     store.saveDish({ id: id || undefined, nome, preco, categoria, descricao, imagem, destaque, ativo: true, ingredientes });
     document.getElementById('modal-dish-form')?.classList.add('hidden');
-    showToast('Prato salvo com sucesso!');
+    showToast('Prato salvo com sucesso! Bora Bill, tche tcheee, 67!');
     renderManagerTab('dishes');
   });
 
+  // Salva o ingrediente no estoque
   document.getElementById('form-ing-save')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const id = document.getElementById('input-ing-id').value;
@@ -463,16 +474,18 @@ function setupManagerEvents() {
 
     store.saveIngredient({ id: id || undefined, nome, unidade, quantidade });
     document.getElementById('modal-ing-form')?.classList.add('hidden');
-    showToast('Ingrediente salvo!');
+    showToast('Ingrediente salvo! Eitcha, estoque da resenha abastecido!');
     renderManagerTab('stock');
   });
 
+  // Mostra o campo de perfil só quando for funcionário
   document.getElementById('input-user-tipo')?.addEventListener('change', (e) => {
     const group = document.getElementById('group-user-perfil');
     if (e.target.value === 'funcionario') group?.classList.remove('hidden');
     else group?.classList.add('hidden');
   });
 
+  // Cria a conta nova (mesa ou funcionário)
   document.getElementById('form-user-save')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const tipo = document.getElementById('input-user-tipo').value;
@@ -483,21 +496,23 @@ function setupManagerEvents() {
 
     store.saveUser({ tipo, nome, login, senha, perfil, ativo: true });
     document.getElementById('modal-user-form')?.classList.add('hidden');
-    showToast('Conta criada!');
+    showToast('Conta criada! Eitcha, mais um membro na resenha 67!');
     renderManagerTab('accounts');
   });
 
+  // Exporta o backup JSON da resenha inteira
   document.getElementById('btn-export-backup')?.addEventListener('click', () => {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(store.exportData());
     const anchor = document.createElement('a');
     anchor.setAttribute("href", dataStr);
-    anchor.setAttribute("download", `backup_${new Date().toISOString().slice(0,10)}.json`);
+    anchor.setAttribute("download", `neokirk_backup_${new Date().toISOString().slice(0,10)}.json`);
     document.body.appendChild(anchor);
     anchor.click();
     anchor.remove();
-    showToast('Backup JSON exportado!');
+    showToast('Backup JSON exportado! Tche tcheee, resenha 67 salva com sucesso!');
   });
 
+  // Importa o backup JSON
   const fileInput = document.getElementById('json-file-input');
   document.getElementById('btn-import-backup')?.addEventListener('click', () => fileInput?.click());
   fileInput?.addEventListener('change', (e) => {
@@ -507,7 +522,7 @@ function setupManagerEvents() {
     reader.onload = (ev) => {
       try {
         store.importData(ev.target.result);
-        showToast('Dados restaurados!');
+        showToast('Dados restaurados! A resenha tá de volta, bora Bill! Eitcha!');
         renderManagerTab(activeTab);
       } catch (err) {
         alert(err.message);
